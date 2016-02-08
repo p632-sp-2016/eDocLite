@@ -10,7 +10,13 @@ module.exports = function(config) {
         singleRun: true,
         frameworks: ['mocha'],
         'plugins' : [
-            'karma-mocha', 'karma-webpack'
+            'karma-mocha',
+            'karma-webpack',
+            'karma-junit-reporter',
+            'karma-chrome-launcher',
+            'karma-firefox-launcher',
+            'karma-opera-launcher',
+            'karma-ie-launcher'
         ],
         files: [
             'tests.webpack.js'
