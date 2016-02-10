@@ -8,7 +8,8 @@
     "start": "node src/server/index.js",
     "postinstall": "webpack --config config/webpack.config.js",
     "webpack": "webpack --config config/webpack.config.js",
-    "webpack-watch": "webpack --config config/webpack.config.js --watch --colors"
+    "webpack-watch": "webpack --config config/webpack.config.js --watch --colors",
+    "lint": " eslint src/client/components/*.js"
   },
   "repository": {
     "type": "git",
@@ -39,6 +40,8 @@
   "devDependencies": {
     "babel-preset-es2015": "~6.3.13",
     "babel-preset-stage-0": "~6.3.13",
+    "eslint": "^1.10.3",
+    "eslint-plugin-react": "^3.16.1",
     "expect": "~1.14.0",
     "karma": "~0.13.19",
     "karma-chrome-launcher": "~0.2.2",
