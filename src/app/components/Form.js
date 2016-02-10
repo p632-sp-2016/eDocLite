@@ -2,11 +2,23 @@
  * Created by parikhv on 1/31/16.
  */
 
+
+
+
+
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import ReactDom from 'react-dom';
 
 import config from '../../../config/app';
+
+
+
+/**
+ * This is a description of the Form Class
+ * @class
+ * @classdesc This is a description of the Form class built using basic react implementation.
+ */
 
 class Form extends React.Component {
 
@@ -22,6 +34,12 @@ class Form extends React.Component {
         };
     }
 
+/**
+ * Represents a render function.
+ * @constructor
+ * @param {string} username - The username field.
+
+ */
 
     render () {
         console.log(this);

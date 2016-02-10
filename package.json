@@ -43,6 +43,8 @@
     "eslint": "^1.10.3",
     "eslint-plugin-react": "^3.16.1",
     "expect": "~1.14.0",
+    "jsdoc": "^3.4.0",
+    "jsdoc-react": "^0.3.2",
     "karma": "~0.13.19",
     "karma-chrome-launcher": "~0.2.2",
     "karma-firefox-launcher": "^0.1.7",
