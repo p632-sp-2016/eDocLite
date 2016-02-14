@@ -3,9 +3,6 @@
  */
 
 
-
-
-
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import ReactDom from 'react-dom';
@@ -14,32 +11,21 @@ import config from '../../../config/app';
 
 
 
-/**
- * This is a description of the Form Class
- * @class
- * @classdesc This is a description of the Form class built using basic react implementation.
- */
+export default class Form extends React.Component {
 
-class Form extends React.Component {
-
+  constructor () {
+      super();
+      this.state = {
+          username: ""
+      };
+  }
 
     shouldComponentUpdate() {
         return PureRenderMixin.shouldComponentUpdate.apply(this, arguments);
     }
 
-    constructor () {
-        super();
-        this.state = {
-            username: ""
-        };
-    }
 
-/**
- * Represents a render function.
- * @constructor
- * @param {string} username - The username field.
 
- */
 
     render () {
         console.log(this);
