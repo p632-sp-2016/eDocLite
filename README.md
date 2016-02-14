@@ -1,4 +1,7 @@
 ![alt tag](https://travis-ci.org/p632-sp-2016/eDocLite.svg?branch=master)
+[![Code Climate](https://codeclimate.com/github/p632-sp-2016/eDocLite/badges/gpa.svg)](https://codeclimate.com/github/p632-sp-2016/eDocLite)
+[![Test Coverage](https://codeclimate.com/github/p632-sp-2016/eDocLite/badges/coverage.svg)](https://codeclimate.com/github/p632-sp-2016/eDocLite/coverage)
+[![Issue Count](https://codeclimate.com/github/p632-sp-2016/eDocLite/badges/issue_count.svg)](https://codeclimate.com/github/p632-sp-2016/eDocLite)
 
 # eDocLite
 
