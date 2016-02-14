@@ -1,3 +1,5 @@
+![alt tag](https://travis-ci.org/p632-sp-2016/eDocLite.svg?branch=master)
+
 # eDocLite
 
 Steps to Run: 
