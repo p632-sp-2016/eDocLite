@@ -20,3 +20,13 @@ Steps to Test:
       npm run test
       
 2) Open http://localhost:9876 in Chrome
+
+
+Steps to generate documents using esdoc: 
+
+1) npm run docs
+
+Steps to for using eslint:
+
+1) npm run lint
+
