@@ -6,6 +6,8 @@ addons:
     code_climate:
         repo_token: e3b2742d8cb264ace30205d9d204f04d55b769b524ddb71806388e38d82e7fb8
 
-
 after_script:
    - codeclimate-test-reporter < lcov.info
+   
+notifications:
+  slack: p632-s16:oS51LzGLuid8S2kl8QG0C8aj
