@@ -35,3 +35,6 @@ node_modules
 
 #IntelliJ files
 .idea/
+
+#bundle.js
+assets
