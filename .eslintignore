@@ -1,0 +1,12 @@
+# Assets
+assets/
+
+# Node Modules
+node_modules/
+
+# Contact Components
+src/client/
+!src/client/scripts
+
+# ESDoc
+esdoc/

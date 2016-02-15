@@ -2,10 +2,13 @@
  * Created by parikhv on 2/6/16.
  */
 
+/*eslint-disable no-unused-vars*/
 var React = require('react');
+var Form = require('../components/Form');
+/*eslint-enable no-unused-vars*/
+
 var TestUtils = require('react-addons-test-utils');
 var expect = require('expect');
-var Form = require('../components/Form');
 
 describe("Form", function () {
     it('renders without problems', function () {
