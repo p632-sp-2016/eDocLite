@@ -6,7 +6,7 @@ var httpProxy = require('http-proxy');
 
 var proxy = httpProxy.createProxyServer();
 
-var bundle = require('./bundle.js');
+var bundle = require('./dev-server.js');
 
 var app = Express();
 var server;

@@ -36,7 +36,7 @@ node_modules
 #IntelliJ files
 .idea/
 
-#bundle.js
+#dev-server.js
 assets
 
 #ESDoc
