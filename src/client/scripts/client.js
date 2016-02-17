@@ -1,19 +1,12 @@
 /**
  * Created by parikhv on 1/31/16.
  */
+import React from 'react';
+import ReactDOM from 'react-dom';
 import Debug from 'debug';
+import Form from '../../app/components/Form';
 import App from '../../app';
 
 var attachElement = document.getElementById('form');
 
-var state = "Demo";
-
-var app;
-
-Debug.enable('myApp*');
-
-app = new App({
-    state: state
-});
-
-app.renderToDOM(attachElement);
+ReactDOM.render(<Form />, attachElement);
