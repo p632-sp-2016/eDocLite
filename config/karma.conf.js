@@ -3,6 +3,7 @@
  */
 
 var webpack = require('webpack');
+var path = require('path');
 
 module.exports = function(config) {
     config.set({
@@ -13,18 +14,36 @@ module.exports = function(config) {
             'karma-mocha',
             'karma-webpack',
             'karma-phantomjs-launcher',
-            'karma-babel-preprocessor'
+            'karma-babel-preprocessor',
+            'karma-coverage',
+            'karma-sourcemap-loader',
+            'source-map'
         ],
         files: [
             'tests.webpack.js'
         ],
         preprocessors: {
-            'tests.webpack.js': ['webpack']
+            'tests.webpack.js': ['webpack', 'sourcemap']
 
         },
-        reporters: ['dots'],
+        reporters: ['progress', 'coverage'],
+        coverageReporter: {
+            reporters: [
+                {
+                    type: 'text-summary'
+                },
+                {
+                    type: 'html',
+                    dir: path.join(__dirname, '../build/coverage')
+                }
+            ]
+        },
         webpack:{
+            devtool: 'inline-source-map',
             module: {
+                preLoaders: [
+                    { test: /\.js$/, loader: 'isparta', include: path.join(__dirname, '../src/'), exclude: [path.join(__dirname, '../test/')]}
+                ],
                 loaders: [
                     { test: /\.js$/, loader: 'babel-loader' },
                     {
