@@ -4,8 +4,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Debug from 'debug';
-import Form from '../../app/components/Form';
-import App from '../../app';
+import Form from './components/Form';
 
 var attachElement = document.getElementById('form');
 

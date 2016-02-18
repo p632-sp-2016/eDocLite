@@ -4,7 +4,7 @@
 
 
 import React from 'react';
-import styles from '../../client/styles/styles.less';
+import styles from '../styles/styles.less';
 import { Button, Input } from 'react-bootstrap';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 
