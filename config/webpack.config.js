@@ -32,6 +32,7 @@ module.exports = {
             { test: /\.ttf(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "file-loader" },
             { test: /\.eot(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "file-loader" },
             { test: /\.svg(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "file-loader" }
+
         ]
     },
     plugins: [new Webpack.HotModuleReplacementPlugin()]
