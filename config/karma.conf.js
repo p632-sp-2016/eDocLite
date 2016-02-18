@@ -35,6 +35,10 @@ module.exports = function(config) {
                 {
                     type: 'html',
                     dir: path.join(__dirname, '../build/coverage')
+                },
+                {
+                    type: 'lcovonly',
+                    subdir: './../../'
                 }
             ]
         },
