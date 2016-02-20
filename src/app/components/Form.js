@@ -4,6 +4,8 @@
 
 
 import React from 'react';
+import styles from '../../client/styles/styles.less';
+import { Button, Input } from 'react-bootstrap';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 
 export default class Form extends React.Component {
@@ -24,8 +26,8 @@ export default class Form extends React.Component {
 
     render () {
         return <div className="input-group">
-            <input type="text" className="form-control" placeholder="Enter Username.." aria-describedby="basic-addon2" onKeyPress={this.handleChange.bind(this)}></input>
-            <span className="input-group-addon" id="basic-addon2">@edl.com</span>
+            <Input type="text" label="Username" name="username" placeholder="Enter Username..." addonAfter="@edl.com" />
+            <Button bsStyle="primary">My Button</Button>
             <p>{this.state.username}</p>
         </div>;
     }

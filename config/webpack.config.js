@@ -28,27 +28,11 @@ module.exports = {
                 exclude: /node_modules/,
                 loader: 'style!css!less'
             },
+            { test: /\.(woff|woff2)(\?v=[0-9]\.[0-9]\.[0-9])?$/,  loader: "url-loader?limit=10000&mimetype=application/font-woff" },
+            { test: /\.ttf(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "file-loader" },
+            { test: /\.eot(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "file-loader" },
+            { test: /\.svg(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "file-loader" }
 
-            {
-            test: /\.(woff|woff2)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-            exclude: /node_modules/,
-            loader: "url-loader?limit=10000&mimetype=application/font-woff"
-            },
-            {
-              test: /\.ttf(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-              exclude: /node_modules/,
-              loader: "file-loader"
-            },
-            {
-            test: /\.eot(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-            exclude: /node_modules/,
-            loader: "file-loader"
-           },
-           {
-              test: /\.svg(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-              exclude: /node_modules/,
-              loader: "file-loader"
-             }
         ]
     },
     plugins: [new Webpack.HotModuleReplacementPlugin()]
