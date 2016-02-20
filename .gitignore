@@ -41,3 +41,6 @@ assets
 
 #ESDoc
 esdoc
+
+# build/coverage
+build
