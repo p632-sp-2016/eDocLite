@@ -4,7 +4,7 @@
 
 /*eslint-disable no-unused-vars*/
 var React = require('react');
-var Form = require('../components/Form');
+var Form = require('../../src/components/Form');
 /*eslint-enable no-unused-vars*/
 
 var TestUtils = require('react-addons-test-utils');

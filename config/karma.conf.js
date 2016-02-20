@@ -27,7 +27,6 @@ module.exports = function(config) {
             module: {
                 loaders: [
                     { test: /\.js$/, loader: 'babel-loader' },
-                    ,
                     {
                         test: /\.less$/,
                         exclude: /node_modules/,
