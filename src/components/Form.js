@@ -9,26 +9,45 @@ import classNames from 'classnames';
 import { ButtonGroup, DropdownButton, MenuItem, Jumbotron, Button, Input, Accordion, Panel, Nav, NavDropdown, Navbar, NavItem, NavbarBrand, NavbarHeader, NavbarCollapse, NavbarToggle} from 'react-bootstrap';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 
+
+/**
+ * This is a Sample Form Builder Class.
+ */
 export default class Form extends React.Component {
 
-
+  /**
+   * Class constructor
+   */
     constructor () {
         super();
+        /**
+         * @param username
+         */
         this.state = {
             username: ''
         };
     }
 
+    /**
+     * this method returns PureRenderMixin.shouldComponentUpdate
+     */
     shouldComponentUpdate() {
         return PureRenderMixin.shouldComponentUpdate.apply(this, arguments);
     }
 
+    /**
+     * this is the handleClick change method
+     */
     handleClick() {
       //alert('Clicked');
       signInFormClass = classNames('input-group', 'pull-right');
     }
 
+    /**
+     * this is the render method
+     */
     render () {
+
         let signInFormClass = classNames('input-group');
 
         return <div className="container">
@@ -96,6 +115,9 @@ export default class Form extends React.Component {
         </div>;
     }
 
+    /**
+     * this is the handleChange  method
+     */
     handleChange (e) {
         if (e.key === 'Enter') {
             //console.log(e.target.value);
