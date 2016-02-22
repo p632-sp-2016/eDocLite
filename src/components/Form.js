@@ -92,7 +92,7 @@ export default class Form extends React.Component {
         <br></br>
         <br></br>
 
-        <p>{this.state.username}</p>
+        <h3>{this.state.username}</h3>
         </div>;
     }
 

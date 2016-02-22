@@ -19,9 +19,9 @@ describe("Form", function () {
         );
 
         var p = TestUtils.findRenderedDOMComponentWithTag(
-            form, 'p'
+            form, 'h3'
         );
 
-        expect(input.getDOMNode().textContent).toEqual(p.getDOMNode().textContent);
+        expect(input.getDOMNode().textContent).toEqual(p.getDOMNode().textContent);        
     });
 });
