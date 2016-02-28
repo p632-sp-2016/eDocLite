@@ -16,8 +16,9 @@ let store = createStore(todoApp)
 var attachElement = document.getElementById('form');
 var todoElement = document.getElementById('todo');
 
-ReactDOM.render(<Form />, attachElement);
+//ReactDOM.render(<Form />, attachElement);
 ReactDOM.render(
-<Provider store={store}>
-  <App />
-</Provider>, todoElement);
+  <Provider store={store}>
+    <App />
+  </Provider>, todoElement
+);
