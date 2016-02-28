@@ -1,5 +1,5 @@
 TN:
-SF:C:\Users\hp\Documents\GitHub\eDocLite\src\actions\actions.js
+SF:C:\Users\hp\Documents\GitHub\eDocLite\src\actions\index.js
 FN:7,addTodo
 FN:15,setVisibilityFilter
 FN:22,toggleTodo
