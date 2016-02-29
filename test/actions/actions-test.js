@@ -8,14 +8,14 @@ describe('todo actions', () => {
       id: 0,
       text: 'Use Redux'
     })
-  })
+  });
 
   it('setVisibilityFilter should create SET_VISIBILITY_FILTER action', () => {
     expect(actions.setVisibilityFilter('active')).toEqual({
       type: 'SET_VISIBILITY_FILTER',
       filter: 'active'
     })
-  })
+  });
 
   it('toogleTodo should create TOGGLE_TODO action', () => {
     expect(actions.toggleTodo(1)).toEqual({
@@ -23,4 +23,4 @@ describe('todo actions', () => {
       id: 1
     })
   })
-})
+});
