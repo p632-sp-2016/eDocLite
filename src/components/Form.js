@@ -6,7 +6,7 @@
 import React from 'react';
 import styles from '../styles/styles.less';
 import classNames from 'classnames';
-import { ButtonGroup, DropdownButton, MenuItem, Jumbotron, Button, Input, Accordion, Panel, Nav, NavDropdown, Navbar, NavItem, NavbarBrand, NavbarHeader, NavbarCollapse, NavbarToggle} from 'react-bootstrap';
+import { ButtonGroup, MenuItem, Jumbotron, Button, Input, Accordion, Panel, Nav, NavDropdown, Navbar, NavItem, NavbarBrand, NavbarHeader, NavbarCollapse, NavbarToggle} from 'react-bootstrap';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 
 
@@ -39,8 +39,7 @@ export default class Form extends React.Component {
      * this is the handleClick change method
      */
     handleClick() {
-      //alert('Clicked');
-      signInFormClass = classNames('input-group', 'pull-right');
+      
     }
 
     /**

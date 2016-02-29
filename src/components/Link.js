@@ -1,5 +1,8 @@
 import React, { PropTypes } from 'react'
 
+/**
+ * this function returns todo items that belong to current visibility filter..
+ */
 const Link = ({ active, children, onClick }) => {
   if (active) {
     return <span>{children}</span>

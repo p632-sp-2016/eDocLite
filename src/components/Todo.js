@@ -1,6 +1,9 @@
 import React, { PropTypes } from 'react'
 import { ListGroupItem } from 'react-bootstrap';
 
+/**
+ * this function represents each todo item.
+ */
 const Todo = ({ onClick, completed, text }) => (
   <ListGroupItem
     onClick={onClick}
