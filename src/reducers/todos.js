@@ -1,3 +1,6 @@
+/**
+ * this function returns a todo item with initialized values or toggled status as selected by action.
+ */
 const todo = (state, action) => {
   switch (action.type) {
     case 'ADD_TODO':
@@ -22,6 +25,9 @@ const todo = (state, action) => {
   }
 };
 
+/**
+ * this function handles creation and status of todo items.
+ */
 const todos = (state = [], action) => {
   switch (action.type) {
     case 'ADD_TODO':

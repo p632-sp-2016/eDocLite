@@ -1,6 +1,9 @@
 import React from 'react'
 import FilterLink from '../containers/FilterLink'
 
+/**
+ * this function creates visibility filter component.
+ */
 const Footer = () => (
   <p>
     Show:

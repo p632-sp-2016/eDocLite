@@ -1,9 +1,11 @@
-import React from 'react'
-import Footer from './Footer'
-import AddTodo from '../containers/AddTodo'
-import VisibleTodoList from '../containers/VisibleTodoList'
+import Footer from './Footer';
+import AddTodo from '../containers/AddTodo';
+import VisibleTodoList from '../containers/VisibleTodoList';
 import { Panel, PageHeader } from 'react-bootstrap';
 
+/**
+ * this function creates UI components on landing page.
+ */
 const App = () => (
   <div className="container">
     <PageHeader>
@@ -17,4 +19,4 @@ const App = () => (
   </div>
 )
 
-export default App
+export default App;

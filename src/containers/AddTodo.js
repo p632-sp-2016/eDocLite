@@ -4,39 +4,18 @@ import { connect } from 'react-redux'
 import { addTodo } from '../actions'
 import {Button, Input,Glyphicon} from 'react-bootstrap';
 
-//let AddTodo = ({todo_text, dispatch }) => {
-//    console.log(todo_text)
-//    const submitTodoButton =  <Button bsStyle="primary" type="submit"><Glyphicon glyph="plus" /></Button>;
-//
-//    let input = {value: ""};
-//
-//    let handleChange = (event) => {
-//        todo_text = event.target.value;
-//        console.log(todo_text)
-//    };
-//
-//    let todoSubmit = (event) => {
-//        event.preventDefault();
-//        if (!todo_text.trim()) {
-//            return;
-//        }
-//        dispatch(addTodo(todo_text));
-//        todo_text = "";
-//        console.log(todo_text);
-//    };
-//
-//    return (
-//    <div>
-//      <form onSubmit={todoSubmit}>
-//        <Input bsSize="large" type="text" placeholder="Todo item..." onChange={handleChange} defaultValue={todo_text} buttonAfter={submitTodoButton} />
-//      </form>
-//    </div>
-//    )
-//};
-
+/**
+ * this class facilitates creation of new todo items.
+ */
 class AddTodo extends React.Component {
+    /**
+     * Class constructor
+     */
     constructor(props) {
         super(props);
+        /**
+         * @param input
+         */
         this.state = {
             input: {
                 value: ""
@@ -44,6 +23,9 @@ class AddTodo extends React.Component {
         };
     }
 
+    /**
+     * this function dispatches user input for creation of todo item.
+     */
     todoSubmit = (event) => {
         event.preventDefault();
         if (!this.state.input.value.trim()) {
@@ -53,12 +35,18 @@ class AddTodo extends React.Component {
         this.setState({input: {value: ""}})
     };
 
+    /**
+     * this is the handleChange method for todo item
+     */
     handleChange = (event) => {
         this.setState({input: {value: event.target.value}});
         //this.state.input.value = event.target.value;
 
     };
 
+    /**
+     * this function renders input text for creation of new todo items.
+     */
     render = () => {
         const submitTodoButton =  <Button bsStyle="primary" type="submit"><Glyphicon glyph="plus" /></Button>;
 

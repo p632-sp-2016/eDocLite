@@ -2,6 +2,9 @@ import React, { PropTypes } from 'react';
 import Todo from './Todo';
 import { ListGroup } from 'react-bootstrap';
 
+/**
+ * this function holds all the todo items as a list.
+ */
 const TodoList = ({ todos, onTodoClick }) => (
   <ListGroup>
     {todos.map(todo =>

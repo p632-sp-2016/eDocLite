@@ -1,3 +1,6 @@
+/**
+ * this function returns selected visibility filter.
+ */
 const visibilityFilter = (state = 'SHOW_ALL', action) => {
   switch (action.type) {
     case 'SET_VISIBILITY_FILTER':
