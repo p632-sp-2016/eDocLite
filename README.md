@@ -8,6 +8,8 @@ This is the eDocLite project made under UITS for the P632 course.
 
 Website : [http://p632-sp-2016.github.io/eDocLite/](http://p632-sp-2016.github.io/eDocLite/ "eDocLite Homepage")
 
+Documentation : [https://doc.esdoc.org/github.com/p632-sp-2016/eDocLite/](https://doc.esdoc.org/github.com/p632-sp-2016/eDocLite/ "eDocLite Documentation")
+
 Presentation Links : [Week 1](http://p632-sp-2016.github.io/eDocLite/presentations/week1/ "Week 1 Presentation") | [Week 2](http://p632-sp-2016.github.io/eDocLite/presentations/week2/ "Week 2 Presentation") | [Week 3](http://p632-sp-2016.github.io/eDocLite/presentations/week3/presentation.pptx "Week 3 Presentation")
 
 Steps to Run:
