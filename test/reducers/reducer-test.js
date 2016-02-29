@@ -6,7 +6,7 @@ describe('todos reducer', () => {
     expect(
       todos(undefined, {})
     ).toEqual([])
-  })
+  });
 
   it('should handle ADD_TODO', () => {
     expect(
@@ -21,7 +21,7 @@ describe('todos reducer', () => {
         completed: false,
         id: 0
       }
-    ])
+    ]);
 
     expect(
       todos([
@@ -45,7 +45,7 @@ describe('todos reducer', () => {
         completed: false,
         id: 1
       }
-    ])
+    ]);
 
     expect(
       todos([
@@ -78,35 +78,34 @@ describe('todos reducer', () => {
         id: 2
       }
     ])
-  })
+  });
 
-  // it('should handle TOGGLE_TODO', () => {
-  //   expect(
-  //     todos([
-  //       {
-  //         text: 'Run the tests',
-  //         completed: false,
-  //         id: 1
-  //       }, {
-  //         text: 'Use Redux',
-  //         completed: false,
-  //         id: 0
-  //       }
-  //     ], {
-  //       type: 'TOGGLE_TODO',
-  //       id: 1
-  //     })
-  //   ).toEqual([
-  //     {
-  //       text: 'Run the tests',
-  //       completed: true,
-  //       id: 1
-  //     }, {
-  //       text: 'Use Redux',
-  //       completed: false,
-  //       id: 0
-  //     }
-  //   ])
-  // })
-
-})
+   it('should handle TOGGLE_TODO', () => {
+     expect(
+       todos([
+         {
+           text: 'Run the tests',
+           completed: false,
+           id: 1
+         }, {
+           text: 'Use Redux',
+           completed: false,
+           id: 0
+         }
+       ], {
+         type: 'TOGGLE_TODO',
+         id: 1
+       })
+     ).toEqual([
+       {
+         text: 'Run the tests',
+         completed: true,
+         id: 1
+       }, {
+         text: 'Use Redux',
+         completed: false,
+         id: 0
+       }
+     ])
+   })
+});
