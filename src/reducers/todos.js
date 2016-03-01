@@ -10,11 +10,17 @@ const todo = (state, action) => {
         completed: false
       };
 
+    case 'MOVE_TODO':
+      return {
+        id: action.id,
+        text: action.text,
+        completed: action.completed
+      };
+
     case 'TOGGLE_TODO':
       if (state.id !== action.id) {
         return state;
       }
-
       return {
         ...state,
         completed: !state.completed
@@ -35,6 +41,22 @@ const todos = (state = [], action) => {
         ...state,
         todo(undefined, action)
       ];
+
+    case 'MOVE_TODO':
+        state = state.filter(todo => (todo.id !== action.id));
+
+        const targetTodo = state.filter(todo => (todo.id === action.target_id));
+
+        const findTodo = (todo) => {
+            return todo.id === action.target_id;
+        };
+
+        const targetTodoIndex = state.indexOf(state.find(findTodo));
+
+        state.splice(targetTodoIndex, 0, todo(undefined, action));
+
+      return state;
+
     case 'TOGGLE_TODO':
       return state.map(t =>
         todo(t, action)
@@ -44,4 +66,4 @@ const todos = (state = [], action) => {
   }
 };
 
-export default todos
+export default todos;

@@ -14,9 +14,16 @@ export const addTodo = (text) => {
   }
 };
 
-/**
- * this function returns an object to set the visibility filter for the todo list.
- */
+export const moveTodo = (sourceTodo, targetTodo) => {
+  return {
+    type: 'MOVE_TODO',
+    id: sourceTodo.id,
+    text: sourceTodo.text,
+    completed: sourceTodo.completed,
+    target_id: targetTodo.id
+  }
+};
+
 export const setVisibilityFilter = (filter) => {
   return {
     type: 'SET_VISIBILITY_FILTER',
