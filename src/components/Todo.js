@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import { ListGroupItem } from 'react-bootstrap';
 import { DragSource, DropTarget } from 'react-dnd';
-import Constants from '../constants';
+import { DragDrop } from '../constants';
 
 const todoSource = {
   beginDrag(sourceProps) {
@@ -21,11 +21,11 @@ const todoTarget = {
   }
 };
 
-@DragSource(Constants.DragDropItem, todoSource, (connect, monitor) => ({
+@DragSource(DragDrop.item, todoSource, (connect, monitor) => ({
   connectDragSource: connect.dragSource(),
   isDragging: monitor.isDragging()
 }))
-@DropTarget(Constants.DragDropItem, todoTarget, (connect) => ({
+@DropTarget(DragDrop.item, todoTarget, (connect) => ({
   connectDropTarget: connect.dropTarget()
 }))
 

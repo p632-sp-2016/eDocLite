@@ -10,9 +10,9 @@ const getVisibleTodos = (todos, filter) => {
     case 'SHOW_ALL':
       return todos;
     case 'SHOW_COMPLETED':
-      return todos.filter(t => t.completed);
+      return todos.filter(t => t.payload.completed);
     case 'SHOW_ACTIVE':
-      return todos.filter(t => !t.completed);
+      return todos.filter(t => !t.payload.completed);
   }
 };
 

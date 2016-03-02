@@ -13,10 +13,8 @@ import App from './components/App'
 
 
 let store = createStore(todoApp)
-var attachElement = document.getElementById('form');
 var todoElement = document.getElementById('todo');
 
-//ReactDOM.render(<Form />, attachElement);
 ReactDOM.render(
   <Provider store={store}>
     <App />

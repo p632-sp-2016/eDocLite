@@ -38,7 +38,9 @@
     "debug": "~2.2.0",
     "http-proxy": "~1.13.1",
     "react-dnd-html5-backend": "~2.1.2",
-    "react-dnd": "~2.1.2"
+    "react-dnd": "~2.1.2",
+    "redux-actions": "~0.9.1",
+    "redux-form": "~4.2.0"
   },
   "devDependencies": {
     "babel-eslint": "~4.1.8",
