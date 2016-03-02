@@ -44,3 +44,7 @@ esdoc
 
 # build/coverage
 build
+
+# Coverage Report
+lcov.info
+
