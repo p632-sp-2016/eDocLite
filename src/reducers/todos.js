@@ -1,24 +1,26 @@
+import { handleActions, handleAction } from  'redux-actions';
+import { Actions } from '../constants'
 /**
  * this function returns a todo item with initialized values or toggled status as selected by action.
  */
 const todo = (state, action) => {
   switch (action.type) {
-    case 'ADD_TODO':
+    case Actions.addTodo:
       return {
-        id: action.id,
-        text: action.text,
+        id: action.payload.id,
+        text: action.payload.text,
         completed: false
       };
 
-    case 'MOVE_TODO':
+    case Actions.moveTodo:
       return {
-        id: action.id,
-        text: action.text,
-        completed: action.completed
+        id: action.payload.id,
+        text: action.payload.text,
+        completed: action.payload.completed
       };
 
-    case 'TOGGLE_TODO':
-      if (state.id !== action.id) {
+    case Actions.toggleTodo:
+      if (state.id !== action.payload.id) {
         return state;
       }
       return {
@@ -34,36 +36,38 @@ const todo = (state, action) => {
 /**
  * this function handles creation and status of todo items.
  */
-const todos = (state = [], action) => {
-  switch (action.type) {
-    case 'ADD_TODO':
-      return [
+const todos = handleActions({
+    ADD_TODO: (state, action) => ([
         ...state,
         todo(undefined, action)
-      ];
+    ]),
 
-    case 'MOVE_TODO':
-        state = state.filter(todo => (todo.id !== action.id));
+    MOVE_TODO: (state, action) => {
+        state = state.filter(todo => (todo.id !== action.payload.id));
 
-        const targetTodo = state.filter(todo => (todo.id === action.target_id));
+        const targetTodo = state.filter(todo => (todo.id === action.payload.target_id));
 
         const findTodo = (todo) => {
-            return todo.id === action.target_id;
+            return todo.id === action.payload.target_id;
         };
 
-        const targetTodoIndex = state.indexOf(state.find(findTodo));
+        let targetTodoIndex = state.indexOf(findTodo);
+
+        if (targetTodoIndex !== state.length-1) {
+            targetTodoIndex--;
+        } else {
+            targetTodoIndex++;
+        }
 
         state.splice(targetTodoIndex, 0, todo(undefined, action));
 
-      return state;
-
-    case 'TOGGLE_TODO':
-      return state.map(t =>
-        todo(t, action)
-      );
-    default:
-      return state
-  }
-};
+        return state;
+    },
+    TOGGLE_TODO: (state, action) => {
+        return state.map(t =>
+            todo(t, action)
+        );
+    }
+},  ([]));
 
 export default todos;

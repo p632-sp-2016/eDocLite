@@ -1,42 +1,43 @@
+import { createAction } from 'redux-actions';
+import { Actions } from '../constants';
+
+
 /**
  * this variable holds unique incremental ID for every todo item.
  */
 let nextTodoId = 0;
 
-/**
- * this function returns an object to add a new item to todo list.
- */
-export const addTodo = (text) => {
-  return {
-    type: 'ADD_TODO',
-    id: nextTodoId++,
-    text
+const payload = {
+  getAddTodo: (text) => {
+    return {
+      id: nextTodoId++,
+      text
+    };
+  },
+  getMoveTodo: (sourceTodo, targetTodo) => {
+    return {
+      id: sourceTodo.id,
+      text: sourceTodo.text,
+      completed: sourceTodo.completed,
+      target_id: targetTodo.id
+    }
+  },
+  getVisibilityFilter: (filter) => {
+    return {
+      filter
+    }
+  },
+  getToggleTodo: (id) => {
+    return {
+      id
+    }
   }
 };
 
-export const moveTodo = (sourceTodo, targetTodo) => {
-  return {
-    type: 'MOVE_TODO',
-    id: sourceTodo.id,
-    text: sourceTodo.text,
-    completed: sourceTodo.completed,
-    target_id: targetTodo.id
-  }
-};
+export const addTodo = createAction(Actions.addTodo, payload.getAddTodo);
 
-export const setVisibilityFilter = (filter) => {
-  return {
-    type: 'SET_VISIBILITY_FILTER',
-    filter
-  }
-};
+export const moveTodo = createAction(Actions.moveTodo, payload.getMoveTodo);
 
-/**
- * this function returns an object to change the state of todo item.
- */
-export const toggleTodo = (id) => {
-  return {
-    type: 'TOGGLE_TODO',
-    id
-  }
-};
+export const toggleTodo = createAction(Actions.toggleTodo, payload.getToggleTodo);
+
+export const setVisibilityFilter = createAction(Actions.visibilityFilter, payload.getVisibilityFilter);
