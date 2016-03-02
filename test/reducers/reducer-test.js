@@ -147,39 +147,4 @@ describe('todos reducer', () => {
       }
     ])
   });
-  //
-  //it('should handle MOVE_TODO', () => {
-  //  expect(
-  //      todos([
-  //        {
-  //          text: 'Run the tests',
-  //          completed: false,
-  //          id: 0
-  //        }, {
-  //          text: 'Use Redux',
-  //          completed: false,
-  //          id: 1
-  //        }
-  //      ], {
-  //        type: 'MOVE_TODO',
-  //        payload: {
-  //          id: 0,
-  //          text: 'Run the tests',
-  //          completed: false,
-  //          target_id: 1
-  //        }
-  //      })
-  //  ).toEqual([
-  //    {
-  //      text: 'Use Redux',
-  //      completed: false,
-  //      id: 1
-  //    },
-  //    {
-  //      text: 'Run the tests',
-  //      completed: false,
-  //      id: 0
-  //    }
-  //  ])
-  //})
 });

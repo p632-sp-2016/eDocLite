@@ -40,7 +40,6 @@ class AddTodo extends React.Component {
      */
     handleChange = (event) => {
         this.setState({input: {value: event.target.value}});
-        //this.state.input.value = event.target.value;
 
     };
 
