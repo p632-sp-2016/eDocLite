@@ -22,7 +22,12 @@ npm install
 2) Run Application
 ```
 npm start
-```      
+```
+
+3) Stop Application
+```
+npm stop
+```
 
 Steps to Test: 
 

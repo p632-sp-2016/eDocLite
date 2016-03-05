@@ -6,6 +6,7 @@
   "scripts": {
     "test": " karma start config/karma.conf.js --browsers PhantomJS",
     "start": "node server/index.js",
+    "stop": "pkill --signal SIGINT eDocLite",
     "postinstall": "webpack --config config/webpack.config.js",
     "webpack": "webpack --config config/webpack.config.js",
     "webpack-watch": "webpack --config config/webpack.config.js --watch --colors",

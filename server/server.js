@@ -14,6 +14,8 @@ var server;
 const PATH_STYLES = path.resolve(__dirname, '../src/styles');
 const PATH_DIST = path.resolve(__dirname, '../');
 
+process.title = "eDocLite";
+
 app.use('/styles', Express.static(PATH_STYLES));
 app.use(Express.static(PATH_DIST));
 
