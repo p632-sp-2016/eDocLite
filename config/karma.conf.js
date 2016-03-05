@@ -46,10 +46,8 @@ module.exports = function(config) {
             devtool: 'inline-source-map',
             module: {
                 preLoaders: [
-                    { test: /\.js$/, loader: 'isparta', include: path.join(__dirname, '../src/'), exclude: [path.join(__dirname, '../test/')]}
-                ],
-                loaders: [
-                    { test: /\.js$/, loader: 'babel-loader' },
+                    { test: /\.js$/, loader: 'isparta', include: path.join(__dirname, '../src/'), exclude: [path.join(__dirname, '../test/')]},
+                    { test: /\.js$/, loader: 'babel-loader', include: path.join(__dirname, '../test/'), exclude: [path.join(__dirname, '../src/')]},
                     {
                         test: /\.less$/,
                         exclude: /node_modules/,
