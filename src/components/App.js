@@ -15,7 +15,7 @@ export default class App extends React.Component {
                 eDocLite   <small>Simple TODO Application</small>
                 </PageHeader>
                 <Panel header="Todo Box" bsStyle="info">
-                    <AddTodo todo_text=""/>
+                    <AddTodo/>
                     <VisibleTodoList />
                     <Footer />
                 </Panel>

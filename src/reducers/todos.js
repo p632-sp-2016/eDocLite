@@ -3,24 +3,24 @@ import { Actions } from '../constants'
 /**
  * this function returns a todo item with initialized values or toggled status as selected by action.
  */
-const todo = (state, action) => {
-  switch (action.type) {
+const todo = (state, { type, payload: { id, text, completed } }) => {
+  switch (type) {
     case Actions.addTodo:
       return {
-        id: action.payload.id,
-        text: action.payload.text,
+        id,
+        text,
         completed: false
       };
 
     case Actions.moveTodo:
       return {
-        id: action.payload.id,
-        text: action.payload.text,
-        completed: action.payload.completed
+        id,
+        text,
+        completed
       };
 
     case Actions.toggleTodo:
-      if (state.id !== action.payload.id) {
+      if (state.id !== id) {
         return state;
       }
       return {
@@ -45,24 +45,15 @@ const todos = handleActions({
     MOVE_TODO: (state, action) => {
         state = state.filter(todo => (todo.id !== action.payload.id));
 
-        const targetTodo = state.filter(todo => (todo.id === action.payload.target_id));
+        const targetTodo = state.find(todo => (todo.id === action.payload.target_id));
 
-        const findTodo = (todo) => {
-            return todo.id === action.payload.target_id;
-        };
-
-        let targetTodoIndex = state.indexOf(findTodo);
-
-        if (targetTodoIndex !== state.length-1) {
-            targetTodoIndex--;
-        } else {
-            targetTodoIndex++;
-        }
+        let targetTodoIndex = state.indexOf(targetTodo) + 1;
 
         state.splice(targetTodoIndex, 0, todo(undefined, action));
 
         return state;
     },
+
     TOGGLE_TODO: (state, action) => {
         return state.map(t =>
             todo(t, action)
