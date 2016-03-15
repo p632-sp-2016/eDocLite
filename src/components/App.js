@@ -12,32 +12,7 @@ import styles from '../styles/styles.less';
 export default class App extends React.Component {
     render() {
         return (
-            // <Grid>
-            //     <PageHeader>
-            //     eDocLite   <small>Simple TODO Application</small>
-            //     </PageHeader>
-            //     <Panel header="Todo Box" bsStyle="info">
-            //         <AddTodo/>
-            //         <VisibleTodoList />
-            //         <Footer />
-            //     </Panel>
-            // </Grid>,
-            // <Grid>
-            //   <Row>
-            //     <Col xs={6} md={4}>
-            //     <Panel bsStyle="warning" collapsible defaultExpanded header="Drag Source">
-            //      <AddTodo/>
-            //       <VisibleTodoList />
-            //     </Panel>
-            //     </Col>
-            //     <Col xs={10} md={6}>
-            //     <Panel header="Drop Form" bsStyle="warning">
-            //     <UserForm />
-            //     </Panel>
-            //     </Col>
-            //   </Row>
-            // </Grid>
-<UserForm />
+            <UserForm />
 
         );
     }
