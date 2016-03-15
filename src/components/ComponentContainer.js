@@ -18,11 +18,5 @@ class ComponentContainer extends React.Component {
     }
 }
 
-ComponentContainer.propTypes = {
-    //onClick: PropTypes.func.isRequired,
-    //completed: PropTypes.bool.isRequired,
-    //text: PropTypes.string.isRequired
-};
-
 export default ComponentContainer;
 
