@@ -6,13 +6,28 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Debug from 'debug';
 import Form from './components/Form';
-import { Provider } from 'react-redux'
-import { createStore } from 'redux'
-import todoApp from './reducers'
-import App from './components/App'
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import todoApp from './reducers';
+import App from './components/App';
+import createLogger from 'redux-logger';
+import { Actions } from './constants'
 
+const isUserDefinedAction = (action) => {
+  let result = false
+  Object.keys(Actions).forEach(key => {
+    if(action.type === Actions[key]){
+      result = true;
+    }
+  });
+  return result;
+};
 
-let store = createStore(todoApp)
+const logger = createLogger({
+  predicate: (getState, action) => isUserDefinedAction(action)
+});
+
+let store = createStore(todoApp, applyMiddleware(logger));
 var todoElement = document.getElementById('todo');
 
 ReactDOM.render(
