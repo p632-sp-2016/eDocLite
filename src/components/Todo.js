@@ -57,4 +57,3 @@ Todo.propTypes = {
 export default Todo;
 ////export  {DropTarget("Todo", todoTarget, collectTarget)(Todo);
 //export default DragSource("Todo", todoSource, collectSource)(Todo);
-

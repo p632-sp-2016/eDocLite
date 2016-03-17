@@ -6,6 +6,7 @@ import { Actions } from '../constants';
  * this variable holds unique incremental ID for every todo item.
  */
 let nextTodoId = 0;
+let componentId = 0;
 
 const payload = {
   getAddTodo: (text) => {
@@ -31,8 +32,15 @@ const payload = {
     return {
       id
     }
+  },
+  getAddComponent: (component) => {
+    return {
+      id: componentId++,
+      component
+    }
   }
 };
+export const addCompnent = createAction(Actions.addComponent, payload.getAddComponent);
 
 export const addTodo = createAction(Actions.addTodo, payload.getAddTodo);
 

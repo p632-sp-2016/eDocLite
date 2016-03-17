@@ -11,7 +11,8 @@ export const Actions = {
     addTodo: "ADD_TODO",
     moveTodo: "MOVE_TODO",
     visibilityFilter: "SET_VISIBILITY_FILTER",
-    toggleTodo: "TOGGLE_TODO"
+    toggleTodo: "TOGGLE_TODO",
+    addComponent: "ADD_COMPONENT"
 };
 
 export const Filters = {
