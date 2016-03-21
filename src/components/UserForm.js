@@ -21,19 +21,13 @@ export default class UserForm extends Component {
                                 <ToolBox />
                             </Panel>
                         </Accordion>
-                        </Row>
-
-
-                    </Col>
-                   <Col xs={6} md={4}>
-                            <PageHeader>eDocLite</PageHeader>
-
-                            <AddComponent />
-
-
-                    </Col>
+                      </Row>
+                   </Col>
+                   <Col xs={6} md={4} col-md-push-mdPush={5}>
+                      <PageHeader>eDocLite</PageHeader>
+                      <AddComponent />
+                   </Col>
                 </Row>
-
             </Grid>
         );
     }
