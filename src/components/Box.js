@@ -32,7 +32,7 @@ export default class Box extends Component {
     return (
       connectDragSource(
         <div>
-            <ListGroupItem>
+            <ListGroupItem bsStyle="info" font-weight="bold">
               {name}
             </ListGroupItem>
         </div>
