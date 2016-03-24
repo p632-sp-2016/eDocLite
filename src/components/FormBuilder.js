@@ -1,7 +1,7 @@
 import React, { PropTypes, Component } from 'react';
 import ItemTypes from './ItemTypes';
 import { DropTarget } from 'react-dnd';
-import { Grid } from 'react-bootstrap';
+import { Grid, Col } from 'react-bootstrap';
 import ComponentContainer from '../components/ComponentContainer'
 import styles from '../styles/styles.less';
 import classNames from 'classnames';

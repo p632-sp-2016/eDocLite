@@ -15,19 +15,18 @@ export default class UserForm extends Component {
             <Grid fluid>
                 <Row>
                     <Col xs={4} md={3}>
+                      <Row>
                         <Accordion className={styles.sidepanelstyle}>
-                            <Panel bsStyle="success" collapsible defaultExpanded header="Drag Source" className={styles.panelstyle}>
+                            <Panel bsStyle="primary" collapsible defaultExpanded header="Drag Source" className={styles.panelstyle}>
                                 <ToolBox />
                             </Panel>
                         </Accordion>
-                    </Col>
-
-                    <Col xsOffset={2} mdOffset={2}>
-                        <Row>
-                            <PageHeader>eDocLite</PageHeader>
-                            <AddComponent />
-                        </Row>
-                    </Col>
+                      </Row>
+                   </Col>
+                   <Col xs={6} md={4} col-md-push-mdPush={5}>
+                      <PageHeader>eDocLite</PageHeader>
+                      <AddComponent />
+                   </Col>
                 </Row>
             </Grid>
         );
