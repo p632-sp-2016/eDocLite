@@ -6,10 +6,10 @@ import { Input, Button, ButtonGroup } from 'react-bootstrap';
 
 export const CP_ButtonGroup = () => {
    return (
-       <ButtonGroup> 
-           <Button bsStyle="primary" label="Button1">Button1</Button> 
-           <Button bsStyle="primary" label="Button2">Button2</Button> 
-           <Button bsStyle="primary" label="Button3">Button3</Button> 
+       <ButtonGroup>
+           <Button bsStyle="primary" label="Button1">Button1</Button>
+           <Button bsStyle="primary" label="Button2">Button2</Button>
+           <Button bsStyle="primary" label="Button3">Button3</Button>
        </ButtonGroup>
    )
 };
