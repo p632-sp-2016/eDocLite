@@ -20,6 +20,9 @@ export default class UserForm extends Component {
                             <Panel bsStyle="primary" collapsible defaultExpanded header="Drag Source" className={styles.panelstyle}>
                                 <ToolBox />
                             </Panel>
+                            <Panel bsStyle="primary" collapsible defaultExpanded header="Edit Element" className={styles.panelstyle}>
+                                {AddComponent.components}
+                            </Panel>
                         </Accordion>
                       </Row>
                    </Col>

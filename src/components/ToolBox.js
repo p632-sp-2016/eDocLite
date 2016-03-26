@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import Box from './Box';
-import { CP_TextBox, CP_Button,CP_Dropdown,CP_TextArea,CP_Link } from './ToolBoxComponents';
+import { CP_TextBox, CP_Button, CP_Dropdown, CP_TextArea, CP_Link, CP_Radio, CP_ButtonGroup} from './ToolBoxComponents';
 import { Grid, ListGroup } from 'react-bootstrap';
 
 
@@ -16,6 +16,8 @@ const ToolBox = () => {
                 <Box name='Drop Down' component={CP_Dropdown}/>
                 <Box name='Text Area' component={CP_TextArea}/>
                 <Box name='Link' component={CP_Link}/>
+                <Box name='Radio' component={CP_Radio}/>
+                <Box name='ButtonGroup' component={CP_ButtonGroup}/>
             </ListGroup>
         </Grid>
     )
