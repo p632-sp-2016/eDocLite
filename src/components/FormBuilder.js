@@ -79,7 +79,7 @@ export default class Dustbin extends Component {
           }
           <form>
             {this.props.components.map(component =>
-              <ComponentContainer component={component} />
+              <ComponentContainer component={component}/>
             )}
           </form>
         </Grid>

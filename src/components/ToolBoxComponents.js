@@ -2,7 +2,26 @@
  * Created by parikhv on 3/14/16.
  */
 import React from 'react';
-import { Input, Button } from 'react-bootstrap';
+import { Input, Button, ButtonGroup } from 'react-bootstrap';
+
+export const CP_ButtonGroup = () => {
+   return (
+       <ButtonGroup>
+           <Button bsStyle="primary" label="Button1">Button1</Button>
+           <Button bsStyle="primary" label="Button2">Button2</Button>
+           <Button bsStyle="primary" label="Button3">Button3</Button>
+       </ButtonGroup>
+   )
+};
+
+export const CP_Radio = () => {
+   return (
+     <div>
+        <Input type="radio" name="radioButtonSet" wrapperClassName="col-sm-offset-2 col-sm-2" defaultChecked>Input1</Input>
+        <Input type="radio" name="radioButtonSet" wrapperClassName="col-sm-offset-2 col-sm-2">Input2</Input>
+      </div>
+   )
+};
 
 export const CP_TextBox = () => {
     return (
