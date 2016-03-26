@@ -3,7 +3,6 @@
  */
 import React from 'react';
 import { Input, Button, ButtonGroup } from 'react-bootstrap';
-import { Calendar } from 'react-widgets';
 
 export const CP_ButtonGroup = () => {
    return (
