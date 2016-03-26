@@ -1,8 +1,8 @@
 /**
  * Created by parikhv on 3/14/16.
  */
-import React from 'react';
-import { Input, Button,  ButtonToolbar } from 'react-bootstrap';
+import React, { PropTypes } from 'react';
+import { Input, Button, ButtonGroup } from 'react-bootstrap';
 
 export const CP_ButtonGroup = () => {
    return (
@@ -23,10 +23,14 @@ export const CP_Radio = () => {
    )
 };
 
-export const CP_TextBox = () => {
+export const CP_TextBox = (props) => {
     return (
-        <Input type="text" label="Text Box"/>
+        <Input type="text" {...props} />
     )
+};
+
+CP_TextBox.propTypes = {
+    label: PropTypes.string.isRequired
 };
 
 export const CP_Button = () => {

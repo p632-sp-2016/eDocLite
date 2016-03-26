@@ -54,7 +54,7 @@ export default class Dustbin extends Component {
       background: 'green'
     };
 
-    const { canDrop, isOver, connectDropTarget } = this.props;
+    const { canDrop, isOver, connectDropTarget, components } = this.props;
     const isActive = canDrop && isOver;
 
     const handlebackground =() =>{
@@ -68,7 +68,7 @@ export default class Dustbin extends Component {
       }
 
     };
-
+    //console.log(this.props.components);
     return connectDropTarget(
       <div>
 
@@ -77,9 +77,12 @@ export default class Dustbin extends Component {
             'Release to drop' :
             'Drag a box here'
           }
+
+
+        });
           <form>
-            {this.props.components.map(component =>
-              <ComponentContainer component={component}/>
+            {Object.keys(components).map(key =>
+                <ComponentContainer component={components[key]} key={key} />
             )}
           </form>
         </Grid>
