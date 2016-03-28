@@ -8,10 +8,14 @@ import { Grid, Col} from 'react-bootstrap';
 class ComponentContainer extends React.Component {
 
     render() {
-        const Component = <this.props.component.component />;
+        const Component = <this.props.component.component/>;
+
+        const { selected } = this.props;
 
         return (
-            <Grid id="ComponentContainer">
+            <Grid id="ComponentContainer" style={{
+            background: selected ? 'darkred' : 'darkgrey'
+          }}>
             <Col xs={4} md={10}>
                 {Component}
             </Col>

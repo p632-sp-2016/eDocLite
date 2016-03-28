@@ -12,7 +12,8 @@ export const Actions = {
     moveTodo: "MOVE_TODO",
     visibilityFilter: "SET_VISIBILITY_FILTER",
     toggleTodo: "TOGGLE_TODO",
-    addComponent: "ADD_COMPONENT"
+    addComponent: "ADD_COMPONENT",
+    selectComponent: "SELECT_COMPONENT"
 };
 
 export const Filters = {
