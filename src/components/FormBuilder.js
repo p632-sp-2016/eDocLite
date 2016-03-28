@@ -5,6 +5,7 @@ import { Grid, Col } from 'react-bootstrap';
 import ComponentContainer from '../components/ComponentContainer'
 import styles from '../styles/styles.less';
 import classNames from 'classnames';
+import { selectComponent } from '../actions'
 
 const style = {
   height: '12rem',
@@ -29,7 +30,6 @@ const boxTarget = {
     return true;
   },
   drop(targetProps, monitor) {
-    //console.log(monitor)
     targetProps.onDragMove(monitor.getItem().component);
   }
 
@@ -48,6 +48,11 @@ export default class Dustbin extends Component {
     onDragMove: PropTypes.func.isRequired
   };
 
+
+  handleSelect (key) {
+      {this.props.onSelect(key)}
+  };
+
   render() {
 
     const dustbinst = {
@@ -57,38 +62,24 @@ export default class Dustbin extends Component {
     const { canDrop, isOver, connectDropTarget, components } = this.props;
     const isActive = canDrop && isOver;
 
-    const handlebackground =() =>{
-
-      if (isActive) {
-        return 'dusbinstyle-over';
-
-      } else
-      {
-        return 'dusbinstyle';
-      }
-
-    };
     //console.log(this.props.components);
     return connectDropTarget(
       <div>
-
         <Grid className={isActive? styles.dusbinstyle: styles.dusbinstyleover}>
           {isActive ?
             'Release to drop' :
             'Drag a box here'
           }
 
-
-        });
           <form>
             {Object.keys(components).map(key =>
-                <ComponentContainer component={components[key]} key={key} />
+              <Grid onClick={this.handleSelect.bind(this, key)} key={key}>
+                <ComponentContainer component={components[key]} />
+              </Grid>
             )}
           </form>
         </Grid>
       </div>
-
-
   );
   }
 }

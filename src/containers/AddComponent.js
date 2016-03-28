@@ -2,7 +2,7 @@
  * Created by parikhv on 3/9/16.
  */
 import { connect } from 'react-redux'
-import { addCompnent } from '../actions'
+import { addCompnent, selectComponent } from '../actions'
 import FormBuilder from '../components/FormBuilder'
 
 /**
@@ -18,6 +18,9 @@ const mapDispatchToProps = (dispatch) => {
     return {
         onDragMove: (component) => {
             dispatch(addCompnent(component));
+        },
+        onSelect: (key) => {
+            dispatch(selectComponent(key));
         }
     }
 };
@@ -28,4 +31,3 @@ const AddComponent = connect(
 )(FormBuilder);
 
 export default AddComponent;
-

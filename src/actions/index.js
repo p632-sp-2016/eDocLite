@@ -41,10 +41,17 @@ const payload = {
                 label: "TextBox"
             }
         }
+    },
+    getSelectComponent: (id) => {
+        return {
+            id
+        }
     }
 };
 
 export const addCompnent = createAction(Actions.addComponent, payload.getAddComponent);
+
+export const selectComponent = createAction(Actions.selectComponent, payload.getSelectComponent);
 
 export const addTodo = createAction(Actions.addTodo, payload.getAddTodo);
 

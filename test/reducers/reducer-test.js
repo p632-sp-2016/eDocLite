@@ -1,5 +1,6 @@
 import expect from 'expect'
 import todos from '../../src/reducers/todos'
+import components from '../../src/reducers/components'
 
 describe('todos reducer', () => {
   it('should handle initial state', () => {
@@ -147,4 +148,10 @@ describe('todos reducer', () => {
       }
     ])
   });
+}),
+
+
+describe('Components reducer', () => {
+  
+
 });

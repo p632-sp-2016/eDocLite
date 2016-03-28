@@ -2,7 +2,7 @@
  * Created by parikhv on 3/14/16.
  */
 import React, { PropTypes } from 'react';
-import { Input, Button, ButtonGroup } from 'react-bootstrap';
+import { Input, Button, ButtonToolbar } from 'react-bootstrap';
 
 export const CP_ButtonGroup = () => {
    return (
@@ -25,7 +25,7 @@ export const CP_Radio = () => {
 
 export const CP_TextBox = (props) => {
     return (
-        <Input type="text" {...props} />
+        <Input type="text" label="Text Box" {...props} />
     )
 };
 
@@ -42,7 +42,7 @@ export const CP_Button = () => {
 
 export const CP_TextArea = () => {
     return (
-         <Input type="textarea" name="description" value="This is a description" label="Text Area" />
+         <Input type="textarea" name="description" placeholder="This is a description" label="Text Area" />
     )
 };
 

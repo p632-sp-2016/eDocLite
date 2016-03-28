@@ -8,7 +8,7 @@ import { Grid, Col} from 'react-bootstrap';
 class ComponentContainer extends React.Component {
 
     render() {
-        const Component = <this.props.component.component label="TB"/>;
+        const Component = <this.props.component.component/>;
 
         const { selected } = this.props;
 
