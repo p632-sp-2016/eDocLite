@@ -35,6 +35,9 @@ const boxTarget = {
 
 };
 
+/**
+ * Dustbin
+ */
 @DropTarget(ItemTypes.BOX, boxTarget, (connect, monitor) => ({
   connectDropTarget: connect.dropTarget(),
   isOver: monitor.isOver(),

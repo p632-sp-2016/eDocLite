@@ -4,7 +4,9 @@
 import React, { PropTypes } from 'react'
 import { Grid, Col} from 'react-bootstrap';
 
-
+/**
+ * ComponentContainer
+ */
 class ComponentContainer extends React.Component {
 
     render() {

@@ -7,7 +7,9 @@ import ToolBox from './ToolBox';
 import styles from '../styles/styles.less';
 import EditForm from './EditForm'
 
-
+/**
+ * UserForm
+ */
 @DragDropContext(HTML5Backend)
 export default class UserForm extends Component {
 
