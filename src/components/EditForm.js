@@ -3,25 +3,51 @@ import { Panel, PageHeader, Grid, ListGroupItem, ListGroup, Row, Col, Input, But
 import styles from '../styles/styles.less';
 import {reduxForm} from 'redux-form';
 import ComponentContainer from '../components/ComponentContainer'
-export const fields = ['text'];
+import { connect } from 'react-redux'
+import { editComponent } from '../actions'
+export const fields = ['button', 'Label', 'Placeholder'];
 
+/**
+ * EditForm
+ */
 export default class EditForm extends Component {
 
     render() {
-      const {fields: {text}, handleSubmit, dispatch, resetForm, components} = this.props;
-      console.log('EDITFORM', this.props);
+      const {fields: {button, Label, Placeholder, Link}, handleSubmit, dispatch, resetForm, components } = this.props;
+
+      let x = 100;
+      if(components.selectedComponent != undefined){
+          x = components.selectedComponent.id;
+      }
         return (
               <div>
-                  <form onSubmit={handleSubmit(data => {})}>
-                    <div>
+              <form onSubmit={handleSubmit(data => {
+                  console.log(data);
+                  // dispatch(editComponent(x, data));
+                  // resetForm();
+              })}>
+                    {x != 100 ?
                       <div>
-                        <Input type="text" label="Text" placeholder="" />
-                      </div>
-                    </div>
+                        <div>
+                          <Input type="text" label="Label" {...Label} placeholder={components[x].component.defaultProps.label} />
+                        </div>
+                        {components[x].component.defaultProps.placeholder != undefined ?
+                        <div>
+                          <Input type="text" label="Placeholder" {...Placeholder} placeholder={components[x].component.defaultProps.placeholder} />
+                        </div>:''
+                        }
+
+                        {components[x].component.defaultProps.href != undefined ?
+                        <div>
+                          <Input type="text" label="Link" {...Link} placeholder={components[x].component.defaultProps.href} />
+                        </div>:''
+                        }
+                      </div>:''
+                    }
                     <div>
                     <ButtonToolbar>
-                      <Button type="submit" bsStyle="info">Save</Button>
-                      <Button type="button" bsStyle="danger">Cancel</Button>
+                      <Button type="submit" bsStyle="info">Refresh</Button>
+                      <Button type="button" bsStyle="info">Save</Button>
                     </ButtonToolbar>
                     </div>
                   </form>
@@ -38,7 +64,15 @@ EditForm.propTypes = {
 
 EditForm = reduxForm({
     form: 'simple',
-    fields
+    fields: ['Label', 'Placeholder', 'Link']
 })(EditForm);
+
+const mapStateToProps = (state) => {
+    return {
+        components: state.components
+    }
+};
+
+EditForm = connect(mapStateToProps)(EditForm);
 
 export default EditForm;

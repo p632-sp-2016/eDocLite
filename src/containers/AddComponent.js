@@ -17,6 +17,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         onDragMove: (component) => {
+            console.log('GMMM', component);
             dispatch(addCompnent(component));
         },
         onSelect: (key) => {

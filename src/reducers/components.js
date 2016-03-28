@@ -30,6 +30,15 @@ const components = handleActions({
         state['selectedComponent'] = id;
 
         return state;
+    },
+    EDIT_COMPONENT: (state, { type, payload: {id, props} }) => {
+
+        if(state[id] != undefined){
+          state[id].component.defaultProps.label = props.Label;
+          state[id].component.defaultProps.placeholder = props.Placeholder;
+        }
+
+        return state;
     }
 },  ([]));
 

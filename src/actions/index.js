@@ -9,12 +9,18 @@ let nextTodoId = 0;
 let componentId = 0;
 
 const payload = {
+  /**
+   *
+   */
     getAddTodo: (text) => {
         return {
             id: nextTodoId++,
             text
         };
     },
+    /**
+     *
+     */
     getMoveTodo: (sourceTodo, targetTodo) => {
         return {
             id: sourceTodo.id,
@@ -23,16 +29,25 @@ const payload = {
             target_id: targetTodo.id
         }
     },
+    /**
+     *
+     */
     getVisibilityFilter: (filter) => {
         return {
             filter
         }
     },
+    /**
+     *
+     */
     getToggleTodo: (id) => {
         return {
             id
         }
     },
+    /**
+     *
+     */
     getAddComponent: (component) => {
         return {
             id: componentId++,
@@ -42,9 +57,24 @@ const payload = {
             }
         }
     },
+    /**
+     *
+     */
     getSelectComponent: (id) => {
         return {
             id
+        }
+    },
+    /**
+     *
+     */
+    getEditComponent: (id, data) => {
+        return {
+            id: id,
+            props: {
+                label: data.Label,
+                placeholder: data.Placeholder
+            }
         }
     }
 };
@@ -52,6 +82,8 @@ const payload = {
 export const addCompnent = createAction(Actions.addComponent, payload.getAddComponent);
 
 export const selectComponent = createAction(Actions.selectComponent, payload.getSelectComponent);
+
+export const editComponent = createAction(Actions.editComponent, payload.getEditComponent);
 
 export const addTodo = createAction(Actions.addTodo, payload.getAddTodo);
 

@@ -4,6 +4,9 @@
 import React, { PropTypes } from 'react';
 import { Input, Button, ButtonToolbar } from 'react-bootstrap';
 
+/**
+ *
+ */
 export const CP_ButtonGroup = () => {
    return (
        <ButtonToolbar>
@@ -14,39 +17,71 @@ export const CP_ButtonGroup = () => {
    )
 };
 
+/**
+ *
+ */
 export const CP_Radio = () => {
    return (
      <div>
-        <Input type="radio" name="radioButtonSet" wrapperClassName="col-sm-offset-2 col-sm-2" label="Input1" defaultChecked />
-        <Input type="radio" name="radioButtonSet" wrapperClassName="col-sm-offset-2 col-sm-2" label="Input2" />
+        <Input wrapperClassName="col-sm-offset-2 col-sm-2" defaultChecked />
+        <Input wrapperClassName="col-sm-offset-2 col-sm-2" label="Input2" />
       </div>
    )
 };
 
+CP_Radio.defaultProps = {
+  type: "radio",
+  name: "radioButtonSet",
+  label: "Input1"
+};
+
+/**
+ *
+ */
 export const CP_TextBox = (props) => {
-    return (
-        <Input type="text" label="Text Box" {...props} />
-    )
+  return(
+      <Input {...props} />
+  )
 };
 
-CP_TextBox.propTypes = {
-    label: PropTypes.string.isRequired
+CP_TextBox.defaultProps = {
+  type: 'text',
+  label: 'Text Box',
+  placeholder: 'Some Text'
 };
 
+/**
+ *
+ */
 export const CP_Button = () => {
     return (
-         <Button bsStyle="primary" label="Button">Button</Button>
-
+         <Button bsStyle= "primary">Button</Button>
     )
 };
 
-export const CP_TextArea = () => {
+CP_Button.defaultProps = {
+  label: "Button"
+};
+
+/**
+ *
+ */
+export const CP_TextArea = (props) => {
     return (
-         <Input type="textarea" name="description" placeholder="This is a description" label="Text Area" />
+         <Input {...props}/>
     )
 };
 
+CP_TextArea.defaultProps = {
+  type: "textarea",
+  name: "description",
+  placeholder: "This is a description",
+  label: "Text Area"
+};
 
+/**
+ *
+ */
 export const CP_Dropdown = () => {
     return (
       <Input type="select" label="DropDown_Menu">
@@ -54,14 +89,19 @@ export const CP_Dropdown = () => {
         <option value="B">DropDown_B</option>
         <option value="C">DropDown_C</option>
       </Input>
-
     )
 };
 
+/**
+ *
+ */
 export const CP_Link = () => {
     return (
-
-      //  <a  bsStyle="primary" href="http://localhost:3000/">localhost</a>
-      <a href="http://www.google.com/">Google</a>
+      <a>Google</a>
     )
+};
+
+CP_Link.defaultProps = {
+  href: "http://www.google.com/",
+  label: "Google"
 };
