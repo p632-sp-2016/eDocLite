@@ -5,13 +5,14 @@ import { Panel, PageHeader, Grid, ListGroupItem, ListGroup, Row, Col, Input, But
 import AddComponent from '../containers/AddComponent';
 import ToolBox from './ToolBox';
 import styles from '../styles/styles.less';
+import EditForm from './EditForm'
 
 
 @DragDropContext(HTML5Backend)
 export default class UserForm extends Component {
+
     render() {
         return (
-
             <Grid fluid>
                 <Row>
                     <Col xs={4} md={3}>
@@ -21,7 +22,7 @@ export default class UserForm extends Component {
                                 <ToolBox />
                             </Panel>
                             <Panel bsStyle="primary" collapsible defaultExpanded header="Edit Element" className={styles.panelstyle}>
-                                {AddComponent.components}
+                                <EditForm />
                             </Panel>
                         </Accordion>
                       </Row>
