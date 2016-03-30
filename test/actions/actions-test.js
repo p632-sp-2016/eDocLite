@@ -41,17 +41,17 @@ describe('todo actions', () => {
   });
 
 
-  // it('addComponent should create ADD_COMPONENT action', () => {
-  //   let component={CP_ButtonGroup};
-  //   expect(actions.addComponent(component)).toEqual({
-  //     type: 'ADD_COMPONENT',
-  //     payload: {
-  //       id: 0,
-  //       component,
-  //       props: {
-  //           label: "TextBox"
-  //       }
-  //     }
-  //   })
-  // });
+  it('addComponent should create ADD_COMPONENT action', () => {
+    let component={CP_ButtonGroup};
+    expect(actions.addCompnent(component)).toEqual({
+      type: 'ADD_COMPONENT',
+      payload: {
+        id: 0,
+        component,
+        props: {
+            label: "TextBox"
+        }
+      }
+    })
+  });
 });

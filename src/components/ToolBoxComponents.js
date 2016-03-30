@@ -4,64 +4,113 @@
 import React, { PropTypes } from 'react';
 import { Input, Button, ButtonToolbar } from 'react-bootstrap';
 
-export const CP_ButtonGroup = () => {
+/**
+ * This function provides the ButtonGroup component for toolbox.
+ */
+export const ButtonGroup = (props) => {
    return (
        <ButtonToolbar>
-           <Button bsStyle="primary" label="Button1">Button1</Button>
-           <Button bsStyle="primary" label="Button2">Button2</Button>
-           <Button bsStyle="primary" label="Button3">Button3</Button>
+           <Button {...props} label="Button1">Button1</Button>
+           <Button {...props} label="Button2">Button2</Button>
+           <Button {...props} label="Button3">Button3</Button>
        </ButtonToolbar>
    )
 };
 
-export const CP_Radio = () => {
+ButtonGroup.defaultProps = {
+  bsStyle: "primary",
+};
+
+/**
+ * This function provides the Radio buttons component for toolbox.
+ */
+export const RadioButton = (props) => {
    return (
      <div>
-        <Input type="radio" name="radioButtonSet" wrapperClassName="col-sm-offset-2 col-sm-2" label="Input1" defaultChecked />
-        <Input type="radio" name="radioButtonSet" wrapperClassName="col-sm-offset-2 col-sm-2" label="Input2" />
+        <Input wrapperClassName="col-sm-offset-2 col-sm-2" label= "Input1" defaultChecked />
+        <Input wrapperClassName="col-sm-offset-2 col-sm-2" label="Input2" />
       </div>
    )
 };
 
-export const CP_TextBox = (props) => {
+RadioButton.defaultProps = {
+  type: "radio",
+  name: "radioButtonSet"
+};
+
+/**
+ * This function provides the text box component for toolbox.
+ */
+export const TextBox = (props) => {
+  return(
+      <Input {...props} />
+  )
+};
+
+TextBox.defaultProps = {
+  type: 'text',
+  label: 'Text Box',
+  placeholder: 'Some Text'
+};
+
+/**
+ * This function provides the Button component for toolbox.
+ */
+export const Btn = (props) => {
     return (
-        <Input type="text" label="Text Box" {...props} />
+         <Button {...props} />
     )
 };
 
-CP_TextBox.propTypes = {
-    label: PropTypes.string.isRequired
+Btn.defaultProps = {
+  children: "Button",
+  bsStyle: "primary"
 };
 
-export const CP_Button = () => {
+/**
+ * This function provides the text area component for toolbox.
+ */
+export const TextArea = (props) => {
     return (
-         <Button bsStyle="primary" label="Button">Button</Button>
-
+         <Input {...props}/>
     )
 };
 
-export const CP_TextArea = () => {
-    return (
-         <Input type="textarea" name="description" placeholder="This is a description" label="Text Area" />
-    )
+TextArea.defaultProps = {
+  type: "textarea",
+  name: "description",
+  placeholder: "This is a description",
+  label: "Text Area"
 };
 
-
-export const CP_Dropdown = () => {
+/**
+ * This function provides the drop down component for toolbox.
+ */
+export const Dropdown = (props) => {
     return (
-      <Input type="select" label="DropDown_Menu">
+      <Input {...props}>
         <option value="A">DropDown_A</option>
         <option value="B">DropDown_B</option>
         <option value="C">DropDown_C</option>
       </Input>
-
     )
 };
 
-export const CP_Link = () => {
-    return (
+Dropdown.defaultProps = {
+  type: "select",
+  label: "Dropdown Menu"
+};
 
-      //  <a  bsStyle="primary" href="http://localhost:3000/">localhost</a>
-      <a href="http://www.google.com/">Google</a>
+/**
+ * This function provides the navigation link component for toolbox.
+ */
+export const Link = (props) => {
+    return (
+      <a {...props} />
     )
+};
+
+Link.defaultProps = {
+  href: "http://www.google.com/",
+  children: "Google"
 };

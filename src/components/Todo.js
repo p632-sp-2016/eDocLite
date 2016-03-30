@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react'
+import React, { PropTypes } from 'react';
 import { ListGroupItem } from 'react-bootstrap';
 import { DragSource, DropTarget } from 'react-dnd';
 import { DragDrop } from '../constants';

@@ -6,25 +6,11 @@ import ComponentContainer from '../components/ComponentContainer'
 import styles from '../styles/styles.less';
 import classNames from 'classnames';
 import { selectComponent } from '../actions'
+import UserForm from './UserForm'
 
-const style = {
-  height: '12rem',
-  width: '12rem',
-  marginRight: '1.5rem',
-  marginBottom: '1.5rem',
-  color: 'white',
-  padding: '1rem',
-  textAlign: 'center',
-  fontSize: '1rem',
-  lineHeight: 'normal',
-  float: 'left'
-};
-const st = {
-  background : 'blue'
-};
 const boxTarget = {
   hover(props, monitor) {
-    console.log(props);
+
   },
   canDrop() {
     return true;
@@ -35,6 +21,9 @@ const boxTarget = {
 
 };
 
+/**
+ * This class represents the form being built. It acts as a drop target for various form components.
+ */
 @DropTarget(ItemTypes.BOX, boxTarget, (connect, monitor) => ({
   connectDropTarget: connect.dropTarget(),
   isOver: monitor.isOver(),
@@ -48,21 +37,18 @@ export default class Dustbin extends Component {
     onDragMove: PropTypes.func.isRequired
   };
 
-
+  /**
+   * This function handles the SELECT_COMPONENT action. It facilitates editing component props.
+   */
   handleSelect (key) {
       {this.props.onSelect(key)}
   };
 
   render() {
 
-    const dustbinst = {
-      background: 'green'
-    };
-
     const { canDrop, isOver, connectDropTarget, components } = this.props;
     const isActive = canDrop && isOver;
 
-    //console.log(this.props.components);
     return connectDropTarget(
       <div>
         <Grid className={isActive? styles.dusbinstyle: styles.dusbinstyleover}>

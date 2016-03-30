@@ -1,5 +1,5 @@
-import React from 'react'
-import FilterLink from '../containers/FilterLink'
+import React from 'react';
+import FilterLink from '../containers/FilterLink';
 
 /**
  * this function creates visibility filter component.
