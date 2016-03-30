@@ -18,6 +18,24 @@ const component = (state, { type, payload: {id, component, props} }) => {
 };
 
 /**
+ *
+ */
+const editProperties = (state, type, props ) => {
+    switch (type) {
+        case Actions.editComponent:
+            return {
+              ...state,
+              label: props.label,
+              placeholder: props.placeholder,
+              children: props.children,
+              href: props.href
+            };
+        default:
+            return state
+    }
+};
+
+/**
  * this function handles creation and status of todo items.
  */
 const components = handleActions({
@@ -28,14 +46,11 @@ const components = handleActions({
     },
     SELECT_COMPONENT: (state, { type, payload: id }) => {
         state['selectedComponent'] = id;
-
         return state;
     },
     EDIT_COMPONENT: (state, { type, payload: {id, props} }) => {
-
         if(state[id] != undefined){
-          state[id].component.defaultProps.label = props.Label;
-          state[id].component.defaultProps.placeholder = props.Placeholder;
+          state[id].component.defaultProps =  editProperties(state[id].component.defaultProps, type, props);
         }
 
         return state;

@@ -1,11 +1,10 @@
 import React, {  PropTypes, Component } from 'react';
-import { Panel, PageHeader, Grid, ListGroupItem, ListGroup, Row, Col, Input, Button, Accordion, ButtonToolbar} from 'react-bootstrap';
+import { Panel, Grid, Row, Col, Input, Button, ButtonToolbar} from 'react-bootstrap';
 import styles from '../styles/styles.less';
 import {reduxForm} from 'redux-form';
 import ComponentContainer from '../components/ComponentContainer'
 import { connect } from 'react-redux'
 import { editComponent } from '../actions'
-export const fields = ['button', 'Label', 'Placeholder'];
 
 /**
  * EditForm
@@ -13,43 +12,54 @@ export const fields = ['button', 'Label', 'Placeholder'];
 export default class EditForm extends Component {
 
     render() {
-      const {fields: {button, Label, Placeholder, Link}, handleSubmit, dispatch, resetForm, components } = this.props;
+      const {fields: {button, label, placeholder, href, children}, handleSubmit, dispatch, resetForm, components } = this.props;
 
-      let x = 100;
+      let id = undefined;
       if(components.selectedComponent != undefined){
-          x = components.selectedComponent.id;
+          id = components.selectedComponent.id;
       }
         return (
               <div>
               <form onSubmit={handleSubmit(data => {
-                  console.log(data);
-                  // dispatch(editComponent(x, data));
-                  // resetForm();
+                  dispatch(editComponent(id, data));
               })}>
-                    {x != 100 ?
-                      <div>
-                        <div>
-                          <Input type="text" label="Label" {...Label} placeholder={components[x].component.defaultProps.label} />
-                        </div>
-                        {components[x].component.defaultProps.placeholder != undefined ?
-                        <div>
-                          <Input type="text" label="Placeholder" {...Placeholder} placeholder={components[x].component.defaultProps.placeholder} />
-                        </div>:''
+                    {id != undefined ?
+                      <Grid>
+                        {components[id].component.defaultProps.label != undefined ?
+                          <Grid>
+                            <Input type="text" label="Label" {...label} placeholder={components[id].component.defaultProps.label} />
+                          </Grid>:''
                         }
 
-                        {components[x].component.defaultProps.href != undefined ?
-                        <div>
-                          <Input type="text" label="Link" {...Link} placeholder={components[x].component.defaultProps.href} />
-                        </div>:''
+                        {components[id].component.defaultProps.children != undefined ?
+                          <Grid>
+                            <Input type="text" label="Label" {...children} placeholder={components[id].component.defaultProps.children} />
+                          </Grid>:''
                         }
-                      </div>:''
+
+                        {components[id].component.defaultProps.placeholder != undefined ?
+                          <Grid>
+                            <Input type="text" label="Placeholder" {...placeholder} placeholder={components[id].component.defaultProps.placeholder} />
+                          </Grid>:''
+                        }
+
+                        {components[id].component.defaultProps.href != undefined ?
+                          <Grid>
+                            <Input type="text" label="Link" {...href} placeholder={components[id].component.defaultProps.href} />
+                          </Grid>:''
+                        }
+
+                        {components[id].component != undefined ?
+                          <ComponentContainer component={components[id]} />:''
+                        }
+                      </Grid>:''
                     }
-                    <div>
-                    <ButtonToolbar>
-                      <Button type="submit" bsStyle="info">Refresh</Button>
-                      <Button type="button" bsStyle="info">Save</Button>
-                    </ButtonToolbar>
-                    </div>
+                    <Grid>
+                      <ButtonToolbar>
+                        <Button type="submit" bsStyle="info">Save</Button>
+                        <Button type="button" bsStyle="danger">Cancel</Button>
+                      </ButtonToolbar>
+                    </Grid>
                   </form>
               </div>
         );
@@ -64,7 +74,7 @@ EditForm.propTypes = {
 
 EditForm = reduxForm({
     form: 'simple',
-    fields: ['Label', 'Placeholder', 'Link']
+    fields: ['label', 'placeholder', 'href', 'children']
 })(EditForm);
 
 const mapStateToProps = (state) => {

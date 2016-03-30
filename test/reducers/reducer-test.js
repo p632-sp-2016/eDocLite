@@ -1,6 +1,7 @@
 import expect from 'expect'
 import todos from '../../src/reducers/todos'
 import components from '../../src/reducers/components'
+import { CP_TextBox, CP_Button, CP_Dropdown, CP_TextArea, CP_Link, CP_Radio, CP_ButtonGroup} from '../../src/components/ToolBoxComponents';
 
 describe('todos reducer', () => {
   it('should handle initial state', () => {
@@ -150,8 +151,40 @@ describe('todos reducer', () => {
   });
 }),
 
-
 describe('Components reducer', () => {
-  
+
+it('should add a new component to the state', () => {
+  let comp = {CP_ButtonGroup};
+  expect(
+    components([], {
+      type: 'ADD_COMPONENT',
+      payload: {
+        id: 0,
+        component: comp,
+        props: {
+            label: "TextBox"
+        }
+      }
+    })
+  ).toEqual([
+    {
+      component: comp,
+      props: {
+          label: "TextBox"
+      }
+    }
+  ])
+});
+
+it('should select the clicked component', () => {
+  expect(
+    components([], {
+      type: 'SELECT_COMPONENT',
+      payload: {
+        id: 0
+      }
+    })
+  ).toEqual([])
+});
 
 });

@@ -6,6 +6,7 @@ import ComponentContainer from '../components/ComponentContainer'
 import styles from '../styles/styles.less';
 import classNames from 'classnames';
 import { selectComponent } from '../actions'
+import UserForm from './UserForm'
 
 const style = {
   height: '12rem',
@@ -24,7 +25,7 @@ const st = {
 };
 const boxTarget = {
   hover(props, monitor) {
-    console.log(props);
+
   },
   canDrop() {
     return true;
@@ -51,7 +52,6 @@ export default class Dustbin extends Component {
     onDragMove: PropTypes.func.isRequired
   };
 
-
   handleSelect (key) {
       {this.props.onSelect(key)}
   };
@@ -65,7 +65,6 @@ export default class Dustbin extends Component {
     const { canDrop, isOver, connectDropTarget, components } = this.props;
     const isActive = canDrop && isOver;
 
-    //console.log(this.props.components);
     return connectDropTarget(
       <div>
         <Grid className={isActive? styles.dusbinstyle: styles.dusbinstyleover}>

@@ -38,3 +38,5 @@ export default class UserForm extends Component {
         );
     }
 }
+
+export default UserForm

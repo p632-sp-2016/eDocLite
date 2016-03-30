@@ -72,8 +72,10 @@ const payload = {
         return {
             id: id,
             props: {
-                label: data.Label,
-                placeholder: data.Placeholder
+                label: data.label,
+                placeholder: data.placeholder,
+                children: data.children,
+                href: data.href
             }
         }
     }

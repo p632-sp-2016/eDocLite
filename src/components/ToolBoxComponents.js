@@ -7,23 +7,27 @@ import { Input, Button, ButtonToolbar } from 'react-bootstrap';
 /**
  *
  */
-export const CP_ButtonGroup = () => {
+export const CP_ButtonGroup = (props) => {
    return (
        <ButtonToolbar>
-           <Button bsStyle="primary" label="Button1">Button1</Button>
-           <Button bsStyle="primary" label="Button2">Button2</Button>
-           <Button bsStyle="primary" label="Button3">Button3</Button>
+           <Button {...props} label="Button1">Button1</Button>
+           <Button {...props} label="Button2">Button2</Button>
+           <Button {...props} label="Button3">Button3</Button>
        </ButtonToolbar>
    )
+};
+
+CP_ButtonGroup.defaultProps = {
+  bsStyle: "primary",
 };
 
 /**
  *
  */
-export const CP_Radio = () => {
+export const CP_Radio = (props) => {
    return (
      <div>
-        <Input wrapperClassName="col-sm-offset-2 col-sm-2" defaultChecked />
+        <Input wrapperClassName="col-sm-offset-2 col-sm-2" label= "Input1" defaultChecked />
         <Input wrapperClassName="col-sm-offset-2 col-sm-2" label="Input2" />
       </div>
    )
@@ -31,8 +35,7 @@ export const CP_Radio = () => {
 
 CP_Radio.defaultProps = {
   type: "radio",
-  name: "radioButtonSet",
-  label: "Input1"
+  name: "radioButtonSet"
 };
 
 /**
@@ -53,14 +56,15 @@ CP_TextBox.defaultProps = {
 /**
  *
  */
-export const CP_Button = () => {
+export const CP_Button = (props) => {
     return (
-         <Button bsStyle= "primary">Button</Button>
+         <Button {...props} />
     )
 };
 
 CP_Button.defaultProps = {
-  label: "Button"
+  children: "Button",
+  bsStyle: "primary"
 };
 
 /**
@@ -82,9 +86,9 @@ CP_TextArea.defaultProps = {
 /**
  *
  */
-export const CP_Dropdown = () => {
+export const CP_Dropdown = (props) => {
     return (
-      <Input type="select" label="DropDown_Menu">
+      <Input {...props}>
         <option value="A">DropDown_A</option>
         <option value="B">DropDown_B</option>
         <option value="C">DropDown_C</option>
@@ -92,16 +96,21 @@ export const CP_Dropdown = () => {
     )
 };
 
+CP_Dropdown.defaultProps = {
+  type: "select",
+  label: "Dropdown Menu"
+};
+
 /**
  *
  */
-export const CP_Link = () => {
+export const CP_Link = (props) => {
     return (
-      <a>Google</a>
+      <a {...props} />
     )
 };
 
 CP_Link.defaultProps = {
   href: "http://www.google.com/",
-  label: "Google"
+  children: "Google"
 };
