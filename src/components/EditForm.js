@@ -7,7 +7,7 @@ import { connect } from 'react-redux'
 import { editComponent } from '../actions'
 
 /**
- * EditForm
+ * This class represents the editor panel redux form. It allows the user to modify properties of selected component.
  */
 export default class EditForm extends Component {
 
@@ -24,42 +24,44 @@ export default class EditForm extends Component {
                   dispatch(editComponent(id, data));
               })}>
                     {id != undefined ?
-                      <Grid>
+                      <div>
                         {components[id].component.defaultProps.label != undefined ?
-                          <Grid>
+                          <div>
                             <Input type="text" label="Label" {...label} placeholder={components[id].component.defaultProps.label} />
-                          </Grid>:''
+                          </div>:''
                         }
 
                         {components[id].component.defaultProps.children != undefined ?
-                          <Grid>
+                          <div>
                             <Input type="text" label="Label" {...children} placeholder={components[id].component.defaultProps.children} />
-                          </Grid>:''
+                          </div>:''
                         }
 
                         {components[id].component.defaultProps.placeholder != undefined ?
-                          <Grid>
+                          <div>
                             <Input type="text" label="Placeholder" {...placeholder} placeholder={components[id].component.defaultProps.placeholder} />
-                          </Grid>:''
+                          </div>:''
                         }
 
                         {components[id].component.defaultProps.href != undefined ?
-                          <Grid>
+                          <div>
                             <Input type="text" label="Link" {...href} placeholder={components[id].component.defaultProps.href} />
-                          </Grid>:''
+                          </div>:''
                         }
 
                         {components[id].component != undefined ?
-                          <ComponentContainer component={components[id]} />:''
+                          <div>
+                            <ComponentContainer component={components[id]} />
+                          </div>:''
                         }
-                      </Grid>:''
+                      </div>:''
                     }
-                    <Grid>
+                    <div>
                       <ButtonToolbar>
                         <Button type="submit" bsStyle="info">Save</Button>
                         <Button type="button" bsStyle="danger">Cancel</Button>
                       </ButtonToolbar>
-                    </Grid>
+                    </div>
                   </form>
               </div>
         );

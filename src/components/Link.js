@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react'
+import React, { PropTypes } from 'react';
 
 /**
  * this function returns todo items that belong to current visibility filter..

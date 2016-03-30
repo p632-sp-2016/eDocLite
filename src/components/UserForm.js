@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
-import { Panel, PageHeader, Grid, ListGroupItem, ListGroup, Row, Col, Input, Button, Accordion } from 'react-bootstrap';
+import { Panel, PageHeader, Grid, Row, Col, Accordion } from 'react-bootstrap';
 import AddComponent from '../containers/AddComponent';
 import ToolBox from './ToolBox';
 import styles from '../styles/styles.less';
 import EditForm from './EditForm'
 
 /**
- * UserForm
+ * This class represents the main UI container for form builder application. It holds component toolbox, editor panel and builder form.
  */
 @DragDropContext(HTML5Backend)
 export default class UserForm extends Component {

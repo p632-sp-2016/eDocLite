@@ -18,25 +18,20 @@ const component = (state, { type, payload: {id, component, props} }) => {
 };
 
 /**
- *
+ * This function assigns modified properties to a selected form component as specified by user.
  */
-const editProperties = (state, type, props ) => {
-    switch (type) {
-        case Actions.editComponent:
-            return {
-              ...state,
-              label: props.label,
-              placeholder: props.placeholder,
-              children: props.children,
-              href: props.href
-            };
-        default:
-            return state
-    }
+const editProperties = ( state, props ) => {
+    return {
+      ...state,
+      label: props.label,
+      placeholder: props.placeholder,
+      children: props.children,
+      href: props.href
+    };
 };
 
 /**
- * this function handles creation and status of todo items.
+ * This function handles creation and modification of form builder components.
  */
 const components = handleActions({
     ADD_COMPONENT: (state, { type, payload: {id, component, props} }) => {
@@ -50,7 +45,7 @@ const components = handleActions({
     },
     EDIT_COMPONENT: (state, { type, payload: {id, props} }) => {
         if(state[id] != undefined){
-          state[id].component.defaultProps =  editProperties(state[id].component.defaultProps, type, props);
+          state[id].component.defaultProps =  editProperties(state[id].component.defaultProps, props);
         }
 
         return state;

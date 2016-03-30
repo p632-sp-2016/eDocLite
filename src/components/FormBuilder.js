@@ -8,21 +8,6 @@ import classNames from 'classnames';
 import { selectComponent } from '../actions'
 import UserForm from './UserForm'
 
-const style = {
-  height: '12rem',
-  width: '12rem',
-  marginRight: '1.5rem',
-  marginBottom: '1.5rem',
-  color: 'white',
-  padding: '1rem',
-  textAlign: 'center',
-  fontSize: '1rem',
-  lineHeight: 'normal',
-  float: 'left'
-};
-const st = {
-  background : 'blue'
-};
 const boxTarget = {
   hover(props, monitor) {
 
@@ -37,7 +22,7 @@ const boxTarget = {
 };
 
 /**
- * Dustbin
+ * This class represents the form being built. It acts as a drop target for various form components.
  */
 @DropTarget(ItemTypes.BOX, boxTarget, (connect, monitor) => ({
   connectDropTarget: connect.dropTarget(),
@@ -52,15 +37,14 @@ export default class Dustbin extends Component {
     onDragMove: PropTypes.func.isRequired
   };
 
+  /**
+   * This function handles the SELECT_COMPONENT action. It facilitates editing component props.
+   */
   handleSelect (key) {
       {this.props.onSelect(key)}
   };
 
   render() {
-
-    const dustbinst = {
-      background: 'green'
-    };
 
     const { canDrop, isOver, connectDropTarget, components } = this.props;
     const isActive = canDrop && isOver;

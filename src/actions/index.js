@@ -10,7 +10,7 @@ let componentId = 0;
 
 const payload = {
   /**
-   *
+   * This action creates and returns an object to add a new todo item.
    */
     getAddTodo: (text) => {
         return {
@@ -18,8 +18,9 @@ const payload = {
             text
         };
     },
+
     /**
-     *
+     * This action creates and returns an object to drag an existing todo item to a new position.
      */
     getMoveTodo: (sourceTodo, targetTodo) => {
         return {
@@ -29,24 +30,27 @@ const payload = {
             target_id: targetTodo.id
         }
     },
+
     /**
-     *
+     * This action returns an object representing current visibility filter.
      */
     getVisibilityFilter: (filter) => {
         return {
             filter
         }
     },
+
     /**
-     *
+     * This action returns an object representing the todo item to be toggled.
      */
     getToggleTodo: (id) => {
         return {
             id
         }
     },
+
     /**
-     *
+     * This action creates and returns an object to add a new form element in the form builder.
      */
     getAddComponent: (component) => {
         return {
@@ -57,16 +61,18 @@ const payload = {
             }
         }
     },
+
     /**
-     *
+    * This action returns an object representing the selected/clicked element for editing its props.
      */
     getSelectComponent: (id) => {
         return {
             id
         }
     },
+
     /**
-     *
+     * This action creates and returns an object to modify the props of selected component as specified by user.
      */
     getEditComponent: (id, data) => {
         return {

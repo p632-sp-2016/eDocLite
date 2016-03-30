@@ -1,7 +1,7 @@
 import expect from 'expect'
 import todos from '../../src/reducers/todos'
 import components from '../../src/reducers/components'
-import { CP_TextBox, CP_Button, CP_Dropdown, CP_TextArea, CP_Link, CP_Radio, CP_ButtonGroup} from '../../src/components/ToolBoxComponents';
+import * as ToolBoxActions from '../../src/components/ToolBoxComponents';
 
 describe('todos reducer', () => {
   it('should handle initial state', () => {
@@ -154,7 +154,7 @@ describe('todos reducer', () => {
 describe('Components reducer', () => {
 
 it('should add a new component to the state', () => {
-  let comp = {CP_ButtonGroup};
+  let comp = ToolBoxActions.ButtonGroup;
   expect(
     components([], {
       type: 'ADD_COMPONENT',

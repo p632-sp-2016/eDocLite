@@ -3,21 +3,23 @@
  */
 import React from 'react';
 import Box from './Box';
-import { CP_TextBox, CP_Button, CP_Dropdown, CP_TextArea, CP_Link, CP_Radio, CP_ButtonGroup} from './ToolBoxComponents';
+import * as ToolBoxActions from './ToolBoxComponents';
 import { Grid, ListGroup } from 'react-bootstrap';
 
-
+/**
+* This function represents toolbox components available for dragging into form builder.
+**/
 const ToolBox = () => {
     return (
         <Grid name="ToolBox" fluid>
             <ListGroup>
-                <Box name='Text Input'  component={CP_TextBox}/>
-                <Box name='Button' component={CP_Button}/>
-                <Box name='Drop Down' component={CP_Dropdown}/>
-                <Box name='Text Area' component={CP_TextArea}/>
-                <Box name='Link' component={CP_Link}/>
-                <Box name='Radio' component={CP_Radio}/>
-                <Box name='ButtonGroup' component={CP_ButtonGroup}/>
+                <Box name='Text Input'  component={ToolBoxActions.TextBox}/>
+                <Box name='Button' component={ToolBoxActions.Btn}/>
+                <Box name='Drop Down' component={ToolBoxActions.Dropdown}/>
+                <Box name='Text Area' component={ToolBoxActions.TextArea}/>
+                <Box name='Link' component={ToolBoxActions.Link}/>
+                <Box name='Radio' component={ToolBoxActions.RadioButton}/>
+                <Box name='ButtonGroup' component={ToolBoxActions.ButtonGroup}/>
             </ListGroup>
         </Grid>
     )
