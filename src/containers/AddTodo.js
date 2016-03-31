@@ -17,7 +17,7 @@ class AddTodo extends React.Component {
 
         const {fields: {text}, handleSubmit, dispatch, resetForm} = this.props;
         const submitTodoButton =  <Button bsStyle="primary" type="submit"><Glyphicon glyph="plus" /></Button>;
-
+        
 
         return (
             <div>

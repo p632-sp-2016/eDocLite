@@ -10,58 +10,52 @@ import { editComponent } from '../actions'
  * This class represents the editor panel redux form. It allows the user to modify properties of selected component.
  */
 export default class EditForm extends Component {
-
+    
     render() {
-      const {fields: {button, label, placeholder, href, children}, handleSubmit, dispatch, resetForm, components } = this.props;
+      const {fields: {button, label, placeholder, href, children}, handleSubmit, dispatch, resetForm, component, selectedComponent } = this.props;
 
-      let id = undefined;
-      if(components.selectedComponent != undefined){
-          id = components.selectedComponent.id;
-      }
         return (
+
               <div>
               <form onSubmit={handleSubmit(data => {
-                  dispatch(editComponent(id, data));
+                if(data.label != undefined || data.children != undefined){
+                  dispatch(editComponent(selectedComponent, data));
+                }
+                resetForm();
               })}>
-                    {id != undefined ?
+
+              {component != undefined?
+
                       <div>
-                        {components[id].component.defaultProps.label != undefined ?
+                        {component.component.defaultProps.label != undefined ?
                           <div>
-                            <Input type="text" label="Label" {...label} placeholder={components[id].component.defaultProps.label} />
+                            <Input type="text" label="Label" {...label} placeholder={component.component.defaultProps.label} />
                           </div>:''
                         }
 
-                        {components[id].component.defaultProps.children != undefined ?
+                        {component.component.defaultProps.children != undefined ?
                           <div>
-                            <Input type="text" label="Label" {...children} placeholder={components[id].component.defaultProps.children} />
+                            <Input type="text" label="Label" {...children} placeholder={component.component.defaultProps.children} />
                           </div>:''
                         }
 
-                        {components[id].component.defaultProps.placeholder != undefined ?
+                        {component.component.defaultProps.placeholder != undefined ?
                           <div>
-                            <Input type="text" label="Placeholder" {...placeholder} placeholder={components[id].component.defaultProps.placeholder} />
+                            <Input type="text" label="Placeholder" {...placeholder} placeholder={component.component.defaultProps.placeholder} />
                           </div>:''
                         }
 
-                        {components[id].component.defaultProps.href != undefined ?
+                        {component.component.defaultProps.href != undefined ?
                           <div>
-                            <Input type="text" label="Link" {...href} placeholder={components[id].component.defaultProps.href} />
+                            <Input type="text" label="Link" {...href} placeholder={component.component.defaultProps.href} />
                           </div>:''
                         }
-
-                        {components[id].component != undefined ?
-                          <div>
-                            <ComponentContainer component={components[id]} />
-                          </div>:''
-                        }
-                      </div>:''
-                    }
-                    <div>
-                      <ButtonToolbar>
-                        <Button type="submit" bsStyle="info">Save</Button>
-                        <Button type="button" bsStyle="danger">Cancel</Button>
-                      </ButtonToolbar>
-                    </div>
+                    </div>:''
+                  }
+                  <ButtonToolbar>
+                    <Button type="submit" bsStyle="info">Save</Button>
+                    <Button type="button" bsStyle="danger">Cancel</Button>
+                  </ButtonToolbar>
                   </form>
               </div>
         );
@@ -80,8 +74,14 @@ EditForm = reduxForm({
 })(EditForm);
 
 const mapStateToProps = (state) => {
-    return {
-        components: state.components
+
+    if(state.components.selectedComponent != undefined){
+      return {
+        component: state.components[state.components.selectedComponent.id],
+        selectedComponent : state.components.selectedComponent
+      }
+    }else{
+      return {}
     }
 };
 

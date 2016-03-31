@@ -36,7 +36,6 @@ const editProperties = ( state, props ) => {
 const components = handleActions({
     ADD_COMPONENT: (state, { type, payload: {id, component, props} }) => {
         state[id] = {component, props};
-
         return state;
     },
     SELECT_COMPONENT: (state, { type, payload: id }) => {
@@ -44,11 +43,20 @@ const components = handleActions({
         return state;
     },
     EDIT_COMPONENT: (state, { type, payload: {id, props} }) => {
-        if(state[id] != undefined){
-          state[id].component.defaultProps =  editProperties(state[id].component.defaultProps, props);
-        }
 
-        return state;
+        if(id != undefined){
+          id = id.id;
+          if(state[id] != undefined){
+            state[id].component.defaultProps =  editProperties(state[id].component.defaultProps, props);
+          }
+      }
+
+      return state;
+    },
+    DELETE_COMPONENT: (state, { type, payload: id }) => {
+      return state.filter(function(comp){
+        return state[id.id] !== comp;
+      });
     }
 },  ([]));
 

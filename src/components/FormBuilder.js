@@ -1,12 +1,9 @@
 import React, { PropTypes, Component } from 'react';
 import ItemTypes from './ItemTypes';
 import { DropTarget } from 'react-dnd';
-import { Grid, Col } from 'react-bootstrap';
+import { Button, Glyphicon, Grid, Col } from 'react-bootstrap';
 import ComponentContainer from '../components/ComponentContainer'
 import styles from '../styles/styles.less';
-import classNames from 'classnames';
-import { selectComponent } from '../actions'
-import UserForm from './UserForm'
 
 const boxTarget = {
   hover(props, monitor) {
@@ -42,6 +39,14 @@ export default class Dustbin extends Component {
    */
   handleSelect (key) {
       {this.props.onSelect(key)}
+
+  };
+
+  /**
+   * This function deletes the clicked component from form builder.
+   */
+  remove(key){
+    {this.props.onDelete(key)}
   };
 
   render() {
@@ -58,11 +63,19 @@ export default class Dustbin extends Component {
           }
 
           <form>
-            {Object.keys(components).map(key =>
-              <Grid onClick={this.handleSelect.bind(this, key)} key={key}>
-                <ComponentContainer component={components[key]} />
-              </Grid>
-            )}
+            {Object.keys(components).map(key =>{
+              if(key != 'selectedComponent'){
+                return(
+                  <Grid key={key}>
+                    <Glyphicon glyph="remove" id="delete-button" onClick={this.remove.bind(this, key)} />
+                    <Grid onClick={this.handleSelect.bind(this, key)} key={key}>
+                      <ComponentContainer component={components[key]} key={key}/>
+                    </Grid>
+                  </Grid>
+                )
+              }
+            }
+          )}
           </form>
         </Grid>
       </div>

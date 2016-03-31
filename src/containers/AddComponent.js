@@ -2,7 +2,7 @@
  * Created by parikhv on 3/9/16.
  */
 import { connect } from 'react-redux'
-import { addCompnent, selectComponent } from '../actions'
+import { addCompnent, selectComponent, deleteComponent } from '../actions'
 import FormBuilder from '../components/FormBuilder'
 
 /**
@@ -21,6 +21,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         onSelect: (key) => {
             dispatch(selectComponent(key));
+        },
+        onDelete: (key) => {
+            dispatch(deleteComponent(key));
         }
     }
 };
