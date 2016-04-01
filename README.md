@@ -46,8 +46,11 @@ Steps to for using eslint:
 npm lint
 ```
 
-Steps to generate documentation using esdoc hosting service: 
-Go to: [https://doc.esdoc.org/-/generate.html](https://doc.esdoc.org/-/generate.html "https://doc.esdoc.org/-/generate.html")
-Input: "git@github.com:p632-sp-2016/eDocLite.git"
-Click the "Generate" button
-View documentation on: [https://doc.esdoc.org/github.com/p632-sp-2016/eDocLite/](https://doc.esdoc.org/github.com/p632-sp-2016/eDocLite/ "https://doc.esdoc.org/github.com/p632-sp-2016/eDocLite/")
+Steps to generate documentation using esdoc hosting service:
+1. Go to: [https://doc.esdoc.org/-/generate.html](https://doc.esdoc.org/-/generate.html "https://doc.esdoc.org/-/generate.html")
+
+2. Input: "git@github.com:p632-sp-2016/eDocLite.git"
+
+3. Click the "Generate" button
+
+4. View documentation on: [https://doc.esdoc.org/github.com/p632-sp-2016/eDocLite/](https://doc.esdoc.org/github.com/p632-sp-2016/eDocLite/ "https://doc.esdoc.org/github.com/p632-sp-2016/eDocLite/")
