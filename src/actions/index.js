@@ -56,9 +56,7 @@ const payload = {
       return {
             id: componentId++,
             component,
-            props: {
-                label: "TextBox"
-            }
+            props: component.defaultProps
         }
     },
 

@@ -9,8 +9,10 @@ import FormBuilder from '../components/FormBuilder'
  * this function returns todo item list that belong to selected filter.
  */
 const mapStateToProps = (state) => {
-    return {
-        components: state.components
+    if(state.components.componentArray === undefined){
+        return {components: {componentArray : []}};
+    }else{
+        return {components: state.components};
     }
 };
 

@@ -10,11 +10,13 @@ import { editComponent } from '../actions'
  * This class represents the editor panel redux form. It allows the user to modify properties of selected component.
  */
 export default class EditForm extends Component {
-    
+
     render() {
       const {fields: {button, label, placeholder, href, children}, handleSubmit, dispatch, resetForm, component, selectedComponent } = this.props;
 
-        return (
+      if(selectedComponent != undefined){
+
+      return (
 
               <div>
               <form onSubmit={handleSubmit(data => {
@@ -27,38 +29,43 @@ export default class EditForm extends Component {
               {component != undefined?
 
                       <div>
-                        {component.component.defaultProps.label != undefined ?
+                        {component.props.label != undefined ?
                           <div>
-                            <Input type="text" label="Label" {...label} placeholder={component.component.defaultProps.label} />
+                            <Input type="text" label="Label" {...label} placeholder={component.props.label} />
                           </div>:''
                         }
 
-                        {component.component.defaultProps.children != undefined ?
+                        {component.props.children != undefined ?
                           <div>
-                            <Input type="text" label="Label" {...children} placeholder={component.component.defaultProps.children} />
+                            <Input type="text" label="Label" {...children} placeholder={component.props.children} />
                           </div>:''
                         }
 
-                        {component.component.defaultProps.placeholder != undefined ?
+                        {component.props.placeholder != undefined ?
                           <div>
-                            <Input type="text" label="Placeholder" {...placeholder} placeholder={component.component.defaultProps.placeholder} />
+                            <Input type="text" label="Placeholder" {...placeholder} placeholder={component.props.placeholder} />
                           </div>:''
                         }
 
-                        {component.component.defaultProps.href != undefined ?
+                        {component.props.href != undefined ?
                           <div>
-                            <Input type="text" label="Link" {...href} placeholder={component.component.defaultProps.href} />
+                            <Input type="text" label="Link" {...href} placeholder={component.props.href} />
                           </div>:''
                         }
+
+                        <ButtonToolbar>
+                          <Button type="submit" bsStyle="info">Save</Button>
+                          <Button type="button" bsStyle="danger">Cancel</Button>
+                        </ButtonToolbar>
                     </div>:''
                   }
-                  <ButtonToolbar>
-                    <Button type="submit" bsStyle="info">Save</Button>
-                    <Button type="button" bsStyle="danger">Cancel</Button>
-                  </ButtonToolbar>
+
                   </form>
               </div>
         );
+      } else {
+          return(<div />)
+      }
     }
 }
 
@@ -74,10 +81,9 @@ EditForm = reduxForm({
 })(EditForm);
 
 const mapStateToProps = (state) => {
-
     if(state.components.selectedComponent != undefined){
       return {
-        component: state.components[state.components.selectedComponent.id],
+        component: state.components.componentArray[state.components.selectedComponent],
         selectedComponent : state.components.selectedComponent
       }
     }else{

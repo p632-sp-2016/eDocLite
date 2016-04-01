@@ -10,7 +10,8 @@ import { Grid, Col} from 'react-bootstrap';
 class ComponentContainer extends React.Component {
 
     render() {
-        const Component = <this.props.component.component/>;
+        const Props = this.props.component.props;
+        const Component = <this.props.component.component {...Props}/>;
 
         const { selected } = this.props;
 

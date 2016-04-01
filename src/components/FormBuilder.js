@@ -63,17 +63,15 @@ export default class Dustbin extends Component {
           }
 
           <form>
-            {Object.keys(components).map(key =>{
-              if(key != 'selectedComponent'){
+            {Object.keys(components.componentArray).map(key =>{
                 return(
                   <Grid key={key}>
                     <Glyphicon glyph="remove" id="delete-button" onClick={this.remove.bind(this, key)} />
-                    <Grid onClick={this.handleSelect.bind(this, key)} key={key}>
-                      <ComponentContainer component={components[key]} key={key}/>
+                    <Grid onClick={this.handleSelect.bind(this, key)}>
+                      <ComponentContainer component={components.componentArray[key]} key={key}/>
                     </Grid>
                   </Grid>
                 )
-              }
             }
           )}
           </form>
