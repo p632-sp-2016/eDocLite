@@ -41,7 +41,7 @@ Steps to generate documents using esdoc:
 npm docs
 ```
 
-Steps to for using eslint:
+Steps for using eslint:
 ```
 npm lint
 ```
