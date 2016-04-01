@@ -10,7 +10,7 @@ Website : [http://p632-sp-2016.github.io/eDocLite/](http://p632-sp-2016.github.i
 
 Documentation : [https://doc.esdoc.org/github.com/p632-sp-2016/eDocLite/](https://doc.esdoc.org/github.com/p632-sp-2016/eDocLite/ "eDocLite Documentation")
 
-Presentation Links : [Week 1](http://p632-sp-2016.github.io/eDocLite/presentations/week1/ "Week 1 Presentation") | [Week 2](http://p632-sp-2016.github.io/eDocLite/presentations/week2/ "Week 2 Presentation") | [Week 3](http://p632-sp-2016.github.io/eDocLite/presentations/week3/presentation.pptx "Week 3 Presentation")
+Presentation Links : [Week 1](http://p632-sp-2016.github.io/eDocLite/presentations/week1/ "Week 1 Presentation") | [Week 2](http://p632-sp-2016.github.io/eDocLite/presentations/week2/ "Week 2 Presentation") | [Week 3](http://p632-sp-2016.github.io/eDocLite/presentations/week3/presentation.pptx "Week 3 Presentation") | [Week 4](http://p632-sp-2016.github.io/eDocLite/presentations/week4/presentation.pptx "Week 4 Presentation") | [Week 7](http://p632-sp-2016.github.io/eDocLite/presentations/week7/eDocLite.pptx "Week 7 Presentation")
 
 Steps to Run:
 
@@ -33,14 +33,21 @@ Steps to Test:
 
 Start Karma Server
 ```
-npm run test
+npm test
 ```
 
 Steps to generate documents using esdoc: 
 ```
-npm run docs
+npm docs
 ```
+
 Steps to for using eslint:
 ```
-npm run lint
+npm lint
 ```
+
+Steps to generate documentation using esdoc hosting service: 
+Go to: [https://doc.esdoc.org/-/generate.html](https://doc.esdoc.org/-/generate.html "https://doc.esdoc.org/-/generate.html")
+Input: "git@github.com:p632-sp-2016/eDocLite.git"
+Click the "Generate" button
+View documentation on: [https://doc.esdoc.org/github.com/p632-sp-2016/eDocLite/](https://doc.esdoc.org/github.com/p632-sp-2016/eDocLite/ "https://doc.esdoc.org/github.com/p632-sp-2016/eDocLite/")
