@@ -41,15 +41,15 @@ describe('todo actions', () => {
   });
 
 
-  // it('addComponent should create ADD_COMPONENT action', () => {
-  //   let component= ToolBoxActions.ButtonGroup;
-  //   expect(actions.addCompnent(component)).toEqual({
-  //     type: 'ADD_COMPONENT',
-  //     payload: {
-  //       id: 0,
-  //       component,
-  //       props: component.props
-  //     }
-  //   })
-  // });
+   it('addComponent should create ADD_COMPONENT action', () => {
+     let component= ToolBoxActions.ButtonGroup;
+     expect(actions.addCompnent(component)).toEqual({
+       type: 'ADD_COMPONENT',
+       payload: {
+         id: 0,
+         component,
+         props: component.defaultProps
+       }
+     })
+   });
 });

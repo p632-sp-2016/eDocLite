@@ -43,12 +43,12 @@ RadioButton.defaultProps = {
  */
 export const TextBox = (props) => {
   return(
-      <Input {...props} />
+      <Input type='text' {...props} />
   )
 };
 
 TextBox.defaultProps = {
-  type: 'text',
+
   label: 'Text Box',
   placeholder: 'Some Text'
 };
@@ -72,12 +72,11 @@ Btn.defaultProps = {
  */
 export const TextArea = (props) => {
     return (
-         <Input {...props}/>
+         <Input type="textarea" {...props}/>
     )
 };
 
 TextArea.defaultProps = {
-  type: "textarea",
   name: "description",
   placeholder: "This is a description",
   label: "Text Area"
@@ -88,7 +87,7 @@ TextArea.defaultProps = {
  */
 export const Dropdown = (props) => {
     return (
-      <Input {...props}>
+      <Input type="select" {...props}>
         <option value="A">DropDown_A</option>
         <option value="B">DropDown_B</option>
         <option value="C">DropDown_C</option>
@@ -97,7 +96,6 @@ export const Dropdown = (props) => {
 };
 
 Dropdown.defaultProps = {
-  type: "select",
   label: "Dropdown Menu"
 };
 

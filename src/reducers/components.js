@@ -21,35 +21,39 @@ const editComp = ( componentArray, id, props ) => {
 /**
  * This function adds dragged component to form builder.
  */
-const addComp = ( state = [], component, props ) => {
-    let obj = {component, props};
-    return [
-      ...state,
-      obj
-    ];
+const addComp = ( state = {}, id, component, props ) => {
+    state[id] = {component, props}
+    return {
+        ...state
+    };
 };
 
 /**
  * This function deletes clicked form component.
  */
-const deleteComp = ( state = [], id ) => {
-  return state.filter(function(comp){
-    return state[id] !== comp;
-  });
+const deleteComp = ( state = {}, id ) => {
+  delete state[id];
+    return {...state}
 };
 
 /**
- * This function handles creation and modification of form builder components.
+ * This function handles creation and modification of form builder components
  */
 const components = handleActions({
     ADD_COMPONENT: (state, { type, payload: {id, component, props} }) => {
-        return {...state, componentArray: addComp(state.componentArray, component, props)};
+        return {...state, componentArray: addComp(state.componentArray, id, component, props), selectedComponent: -1};
     },
     SELECT_COMPONENT: (state, { type, payload: id }) => {
-        return {...state, selectedComponent:id.id};
+        // Selects a component if not selected or unselects the component if already selected
+        if (id.id === state.selectedComponent)
+            return {...state, selectedComponent: -1};
+        else
+            return {...state, selectedComponent:id.id};
     },
     EDIT_COMPONENT: (state, { type, payload: {id, props} }) => {
-        return {...state, componentArray: editComp(state.componentArray, id, props)};
+        state.componentArray[id] = {...state.componentArray[id], props: props};
+
+        return {...state};
     },
     DELETE_COMPONENT: (state, { type, payload: id }) => {
         return {...state, componentArray: deleteComp(state.componentArray, id.id)}

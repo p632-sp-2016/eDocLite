@@ -75,12 +75,7 @@ const payload = {
     getEditComponent: (id, data) => {
         return {
             id: id,
-            props: {
-                label: data.label,
-                placeholder: data.placeholder,
-                children: data.children,
-                href: data.href
-            }
+            props: data
         }
     },
 

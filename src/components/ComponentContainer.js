@@ -13,12 +13,8 @@ class ComponentContainer extends React.Component {
         const Props = this.props.component.props;
         const Component = <this.props.component.component {...Props}/>;
 
-        const { selected } = this.props;
-
         return (
-            <Grid id="ComponentContainer" style={{
-            background: selected ? 'darkred' : 'darkgrey'
-          }}>
+            <Grid id="ComponentContainer" >
             <Col xs={4} md={10}>
                 {Component}
             </Col>

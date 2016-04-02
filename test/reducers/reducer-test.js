@@ -153,38 +153,43 @@ describe('todos reducer', () => {
 
 describe('Components reducer', () => {
 
-// it('should add a new component to the state', () => { 
-//   let comp = ToolBoxActions.ButtonGroup;
-//   expect(
-//     components({}, {
-//       type: 'ADD_COMPONENT',
-//       payload: {
-//         id: 0,
-//         component: comp,
-//         props: comp.props
-//       }
-//     })
-//   ).toEqual(
-//     {
-//       componentArray:[{
-//         0: {
-//           component: comp,
-//           props: comp.props
-//         }
-//       }]
-//     }
-//   )
-// });
-//
-// it('should select the clicked component', () => {
-//   expect(
-//     components([], {
-//       type: 'SELECT_COMPONENT',
-//       payload: {
-//         id: 0
-//       }
-//     })
-//   ).toEqual([])
-// });
+ it('should add a new component to the state', () => {
+   let component = ToolBoxActions.TextBox;
+   expect(
+     components({}, {
+       type: 'ADD_COMPONENT',
+       payload: {
+         id: 0,
+         component: component,
+         props: component.defaultProps
+       }
+     })
+   ).toEqual(
+     {
+       componentArray:{
+         0: {
+           component: component,
+           props: component.defaultProps
+         }
+       },
+       selectedComponent: -1
+     }
+   )
+ });
+
+ it('should select the clicked component', () => {
+   expect(
+     components([], {
+       type: 'SELECT_COMPONENT',
+       payload: {
+         id: 0
+       }
+     })
+   ).toEqual(
+       {
+         selectedComponent: 0
+       }
+   )
+ });
 
 });
