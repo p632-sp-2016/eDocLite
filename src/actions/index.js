@@ -5,7 +5,6 @@ import { Actions } from '../constants';
 /**
  * this variable holds unique incremental ID for every todo item.
  */
-let nextTodoId = 0;
 let componentId = 0;
 
 const payload = {
