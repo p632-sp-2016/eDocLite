@@ -64,6 +64,39 @@ describe('Components reducer', () => {
    )
  });
 
+ it('should de-select the clicked component', () => {
+
+   const input = {
+     componentArray:{
+       0: {
+         component: component,
+         props: component.defaultProps
+       }
+     },
+     selectedComponent: 0
+   };
+  //  deepFreeze(input);
+
+   expect(
+     components(input, {
+       type: 'SELECT_COMPONENT',
+       payload: {
+         id: 0
+       }
+     })
+   ).toEqual(
+     {
+       componentArray:{
+         0: {
+           component: component,
+           props: component.defaultProps
+         }
+       },
+       selectedComponent: -1
+     }
+   )
+ });
+
  it('should edit the modified component', () => {
 
    const input = {
@@ -114,6 +147,34 @@ describe('Components reducer', () => {
        }
      },
      selectedComponent: -1
+   };
+  //  deepFreeze(input);
+
+   expect(
+     components(input, {
+       type: 'DELETE_COMPONENT',
+       payload: {
+         id: 0
+       }
+     })
+   ).toEqual(
+     {
+       componentArray:{},
+       selectedComponent: -1
+     }
+   )
+ });
+
+ it('should delete the clicked component which is selected', () => {
+
+   const input = {
+     componentArray:{
+       0: {
+         component: component,
+         props: component.defaultProps
+       }
+     },
+     selectedComponent: 0
    };
   //  deepFreeze(input);
 
