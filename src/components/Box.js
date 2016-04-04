@@ -24,7 +24,7 @@ export default class Box extends Component {
   };
 
   render() {
-    const { isDragging, connectDragSource } = this.props;
+    const { connectDragSource } = this.props;
     const { name } = this.props;
 
     return (

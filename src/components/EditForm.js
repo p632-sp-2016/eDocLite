@@ -4,7 +4,6 @@
 import React, {  PropTypes, Component } from 'react';
 import { Input, Button, ButtonToolbar} from 'react-bootstrap';
 import {reduxForm} from 'redux-form';
-import ComponentContainer from '../components/ComponentContainer';
 import { connect } from 'react-redux';
 import { editComponent } from '../actions';
 

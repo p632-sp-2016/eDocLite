@@ -6,7 +6,7 @@ import ComponentContainer from '../components/ComponentContainer';
 import styles from '../styles/styles.less';
 
 const boxTarget = {
-  hover(props, monitor) {
+  hover(props) {
 
   },
   canDrop() {
@@ -70,7 +70,7 @@ export default class Dustbin extends Component {
                           <ComponentContainer component={components.componentArray[key]} key={key} />
                         </Row>
                       </Row>
-                    )
+                    );
                   }
               )}
             </form>
