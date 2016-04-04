@@ -2,8 +2,7 @@
  * Created by parikhv on 4/1/16.
  */
 import React, {  PropTypes, Component } from 'react';
-import { Panel, Grid, Row, Col, Input, Button, ButtonToolbar} from 'react-bootstrap';
-import styles from '../styles/styles.less';
+import { Input, Button, ButtonToolbar} from 'react-bootstrap';
 import {reduxForm} from 'redux-form';
 import ComponentContainer from '../components/ComponentContainer'
 import { connect } from 'react-redux'

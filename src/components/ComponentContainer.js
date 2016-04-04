@@ -19,7 +19,7 @@ class ComponentContainer extends React.Component {
                 {Component}
             </Col>
             </Grid>
-        )
+        );
     }
 }
 
