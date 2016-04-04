@@ -1,9 +1,9 @@
 /**
  * Created by parikhv on 3/9/16.
  */
-import { connect } from 'react-redux'
-import { addCompnent, selectComponent, deleteComponent } from '../actions'
-import FormBuilder from '../components/FormBuilder'
+import { connect } from 'react-redux';
+import { addCompnent, selectComponent, deleteComponent } from '../actions';
+import FormBuilder from '../components/FormBuilder';
 
 /**
  * this function returns todo item list that belong to selected filter.
@@ -27,7 +27,7 @@ const mapDispatchToProps = (dispatch) => {
         onDelete: (key) => {
             dispatch(deleteComponent(key));
         }
-    }
+    };
 };
 
 const AddComponent = connect(

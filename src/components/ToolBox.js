@@ -22,7 +22,7 @@ const ToolBox = () => {
                 <Box name='ButtonGroup' component={ToolBoxActions.ButtonGroup}/>
             </ListGroup>
         </Grid>
-    )
+    );
 };
 
 export default ToolBox;

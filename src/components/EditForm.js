@@ -4,9 +4,9 @@
 import React, {  PropTypes, Component } from 'react';
 import { Input, Button, ButtonToolbar} from 'react-bootstrap';
 import {reduxForm} from 'redux-form';
-import ComponentContainer from '../components/ComponentContainer'
-import { connect } from 'react-redux'
-import { editComponent } from '../actions'
+import ComponentContainer from '../components/ComponentContainer';
+import { connect } from 'react-redux';
+import { editComponent } from '../actions';
 
 /**
  * This class represents the editor panel redux form that is dynamically generated using component properties
@@ -28,7 +28,6 @@ export default class EditForm extends Component {
                     >
 
                         {Object.keys(fields).map(name => {
-                            const value = fields[name];
                             return (
                                 <div key={name}>
                                     <Input type="text" label={name} placeholder={fields[name].defaultValue} {...fields[name]} />
@@ -45,7 +44,7 @@ export default class EditForm extends Component {
                 </div>
             );
         } else {
-            return(<div />)
+            return(<div />);
         }
     }
 }
@@ -68,7 +67,7 @@ EditForm = reduxForm({
 
         return {
             initialValues: state.components.componentArray[id].props
-        }
+        };
     }
 )(EditForm);
 

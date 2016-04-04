@@ -1,6 +1,6 @@
-import { combineReducers } from 'redux'
-import components from './components'
-import { reducer as todoReducer } from 'redux-form'
+import { combineReducers } from 'redux';
+import components from './components';
+import { reducer as todoReducer } from 'redux-form';
 
 
 /**
@@ -11,4 +11,4 @@ const todoApp = combineReducers({
   form: todoReducer
 });
 
-export default todoApp
+export default todoApp;

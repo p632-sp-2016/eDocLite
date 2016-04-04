@@ -1,7 +1,7 @@
 /**
  * Created by parikhv on 3/14/16.
  */
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { Input, Button, ButtonToolbar } from 'react-bootstrap';
 
 /**
@@ -14,11 +14,11 @@ export const ButtonGroup = (props) => {
            <Button {...props} label="Button2">Button2</Button>
            <Button {...props} label="Button3">Button3</Button>
        </ButtonToolbar>
-   )
+   );
 };
 
 ButtonGroup.defaultProps = {
-  bsStyle: "primary",
+  bsStyle: "primary"
 };
 
 /**
@@ -30,7 +30,7 @@ export const RadioButton = (props) => {
         <Input wrapperClassName="col-sm-offset-2 col-sm-2" label= "Input1" defaultChecked />
         <Input wrapperClassName="col-sm-offset-2 col-sm-2" label="Input2" />
       </div>
-   )
+   );
 };
 
 RadioButton.defaultProps = {
@@ -44,11 +44,10 @@ RadioButton.defaultProps = {
 export const TextBox = (props) => {
   return(
       <Input type='text' {...props} />
-  )
+  );
 };
 
 TextBox.defaultProps = {
-
   label: 'Text Box',
   placeholder: 'Some Text'
 };
@@ -59,7 +58,7 @@ TextBox.defaultProps = {
 export const Btn = (props) => {
     return (
          <Button {...props} />
-    )
+    );
 };
 
 Btn.defaultProps = {
@@ -73,7 +72,7 @@ Btn.defaultProps = {
 export const TextArea = (props) => {
     return (
          <Input type="textarea" {...props}/>
-    )
+    );
 };
 
 TextArea.defaultProps = {
@@ -92,7 +91,7 @@ export const Dropdown = (props) => {
         <option value="B">DropDown_B</option>
         <option value="C">DropDown_C</option>
       </Input>
-    )
+    );
 };
 
 Dropdown.defaultProps = {
@@ -105,7 +104,7 @@ Dropdown.defaultProps = {
 export const Link = (props) => {
     return (
       <a {...props} />
-    )
+    );
 };
 
 Link.defaultProps = {
