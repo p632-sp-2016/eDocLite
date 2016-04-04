@@ -7,32 +7,22 @@ import { Actions } from '../constants'
 /**
  * This function assigns modified properties to a selected form component as specified by user.
  */
-const editComp = ( componentArray, id, props ) => {
-  return Object.keys(componentArray).map(key =>{
-      if(key === id){
-          return {...componentArray[key], props: props}
-      } else{
-          return componentArray[key];
-      }
-  }
-)
+const editComp = ( component, props ) => {
+      return {...component, props: props}
 };
 
 /**
  * This function adds dragged component to form builder.
  */
 const addComp = ( state = {}, id, component, props ) => {
-    state[id] = {component, props}
-    return {
-        ...state
-    };
+    return {...state, [id]: {component, props}};
 };
 
 /**
  * This function deletes clicked form component.
  */
 const deleteComp = ( state = {}, id ) => {
-  delete state[id];
+    delete state[id];
     return {...state}
 };
 
@@ -51,11 +41,12 @@ const components = handleActions({
             return {...state, selectedComponent:id.id};
     },
     EDIT_COMPONENT: (state, { type, payload: {id, props} }) => {
-        state.componentArray[id] = {...state.componentArray[id], props: props};
-
-        return {...state};
+        return {...state, componentArray: {...state.componentArray, [id]: editComp(state.componentArray[id], props)}};
     },
     DELETE_COMPONENT: (state, { type, payload: id }) => {
+      if (id.id === state.selectedComponent)
+        return {...state, componentArray: deleteComp(state.componentArray, id.id), selectedComponent: -1}
+      else
         return {...state, componentArray: deleteComp(state.componentArray, id.id)}
     }
 },  ({}));

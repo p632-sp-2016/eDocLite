@@ -65,10 +65,12 @@ export default class Dustbin extends Component {
             <form>
               {Object.keys(components.componentArray).map(key =>{
                     return(
-                        <Row  key={key} onClick={this.handleSelect.bind(this, key)} style={{ background: key == components.selectedComponent ? 'lightblue' : 'whitesmoke', padding: '5px'}}>
-                          <Glyphicon glyph="remove" id="delete-button" onClick={this.remove.bind(this, key)} style={{float: "right"}} />
+                      <Row key={key} style={{ background: key == components.selectedComponent ? 'lightblue' : 'whitesmoke', padding: '5px'}}>
+                        <Glyphicon glyph="remove" id="delete-button" onClick={this.remove.bind(this, key)} style={{float: "right"}} />
+                        <Row key={key} onClick={this.handleSelect.bind(this, key)}>
                           <ComponentContainer component={components.componentArray[key]} key={key} />
                         </Row>
+                      </Row>
                     )
                   }
               )}

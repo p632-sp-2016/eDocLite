@@ -23,9 +23,7 @@ export default class EditForm extends Component {
 
                 <div>
                     <form onSubmit={handleSubmit(data => {
-                        console.log(data)
                         dispatch(editComponent(selectedComponent, data));
-
                         resetForm();
                     })}
                     >

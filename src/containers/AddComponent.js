@@ -10,7 +10,7 @@ import FormBuilder from '../components/FormBuilder'
  */
 const mapStateToProps = (state) => {
     if(state.components.componentArray === undefined){
-        return {components: {componentArray : []}};
+        return {components: {componentArray : {}}};
     }else{
         return {components: state.components};
     }
