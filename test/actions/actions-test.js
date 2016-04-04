@@ -24,4 +24,39 @@ describe('todo actions', () => {
        }
      })
    });
+
+   it('selectComponent should return SELECT_COMPONENT action', () => {
+     expect(actions.selectComponent(1)).toEqual({
+       type: 'SELECT_COMPONENT',
+       payload: {
+         id: 1
+       }
+     })
+   });
+
+   it('editComponent should return EDIT_COMPONENT action', () => {
+     const input = {
+         label: 'abc',
+         placeholder: 'klm'
+     };
+     expect(actions.editComponent(0, input)).toEqual({
+       type: 'EDIT_COMPONENT',
+       payload: {
+         id: 0,
+         props: {
+           label: 'abc',
+           placeholder: 'klm'
+         }
+       }
+     })
+   });
+
+   it('deleteComponent should return DELETE_COMPONENT action', () => {
+     expect(actions.deleteComponent(1)).toEqual({
+       type: 'DELETE_COMPONENT',
+       payload: {
+         id: 1
+       }
+     })
+   });
 });

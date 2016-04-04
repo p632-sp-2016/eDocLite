@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import ItemTypes from './ItemTypes';
 import { DragSource } from 'react-dnd';
-import styles from '../styles/styles.less';
 import { ListGroupItem } from 'react-bootstrap';
 
 const boxSource = {

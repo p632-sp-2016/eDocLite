@@ -28,7 +28,7 @@ const payload = {
             text: sourceTodo.text,
             completed: sourceTodo.completed,
             target_id: targetTodo.id
-        }
+        };
     },
 
     /**
@@ -37,7 +37,7 @@ const payload = {
     getVisibilityFilter: (filter) => {
         return {
             filter
-        }
+        };
     },
 
     /**
@@ -46,7 +46,7 @@ const payload = {
     getToggleTodo: (id) => {
         return {
             id
-        }
+        };
     },
 
     /**
@@ -57,7 +57,7 @@ const payload = {
             id: componentId++,
             component,
             props: component.defaultProps
-        }
+        };
     },
 
     /**
@@ -66,7 +66,7 @@ const payload = {
     getSelectComponent: (id) => {
         return {
             id
-        }
+        };
     },
 
     /**
@@ -76,7 +76,7 @@ const payload = {
         return {
             id: id,
             props: data
-        }
+        };
     },
 
     /**
@@ -85,7 +85,7 @@ const payload = {
     getDeleteComponent: (id) => {
         return {
             id
-        }
+        };
     }
 };
 
