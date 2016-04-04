@@ -1,12 +1,9 @@
 import React, { PropTypes, Component } from 'react';
 import ItemTypes from './ItemTypes';
 import { DropTarget } from 'react-dnd';
-import { Grid, Col } from 'react-bootstrap';
+import { Button, Glyphicon, Grid, Col, Row } from 'react-bootstrap';
 import ComponentContainer from '../components/ComponentContainer'
 import styles from '../styles/styles.less';
-import classNames from 'classnames';
-import { selectComponent } from '../actions'
-import UserForm from './UserForm'
 
 const boxTarget = {
   hover(props, monitor) {
@@ -41,7 +38,15 @@ export default class Dustbin extends Component {
    * This function handles the SELECT_COMPONENT action. It facilitates editing component props.
    */
   handleSelect (key) {
-      {this.props.onSelect(key)}
+    {this.props.onSelect(key)}
+
+  };
+
+  /**
+   * This function deletes the clicked component from form builder.
+   */
+  remove(key){
+    {this.props.onDelete(key)}
   };
 
   render() {
@@ -50,23 +55,29 @@ export default class Dustbin extends Component {
     const isActive = canDrop && isOver;
 
     return connectDropTarget(
-      <div>
-        <Grid className={isActive? styles.dusbinstyle: styles.dusbinstyleover}>
-          {isActive ?
-            'Release to drop' :
-            'Drag a box here'
-          }
+        <div>
+          <Grid className={isActive? styles.dusbinstyle: styles.dusbinstyleover}>
+            {isActive ?
+                'Release to drop' :
+                'Drag a box here'
+            }
 
-          <form>
-            {Object.keys(components).map(key =>
-              <Grid onClick={this.handleSelect.bind(this, key)} key={key}>
-                <ComponentContainer component={components[key]} />
-              </Grid>
-            )}
-          </form>
-        </Grid>
-      </div>
-  );
+            <form>
+              {Object.keys(components.componentArray).map(key =>{
+                    return(
+                      <Row key={key} style={{ background: key == components.selectedComponent ? 'lightblue' : 'whitesmoke', padding: '5px'}}>
+                        <Glyphicon glyph="remove" id="delete-button" onClick={this.remove.bind(this, key)} style={{float: "right"}} />
+                        <Row key={key} onClick={this.handleSelect.bind(this, key)}>
+                          <ComponentContainer component={components.componentArray[key]} key={key} />
+                        </Row>
+                      </Row>
+                    )
+                  }
+              )}
+            </form>
+          </Grid>
+        </div>
+    );
   }
 }
 

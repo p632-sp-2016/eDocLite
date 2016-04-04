@@ -3,53 +3,52 @@
  */
 import { handleActions, handleAction } from  'redux-actions';
 import { Actions } from '../constants'
-/**
- * this function returns a todo item with initialized values or toggled status as selected by action.
- */
-const component = (state, { type, payload: {id, component, props} }) => {
-    switch (type) {
-        case Actions.addComponent:
-            return payload;
-        case Actions.selectComponent:
-            return payload;
-        default:
-            return state
-    }
-};
 
 /**
  * This function assigns modified properties to a selected form component as specified by user.
  */
-const editProperties = ( state, props ) => {
-    return {
-      ...state,
-      label: props.label,
-      placeholder: props.placeholder,
-      children: props.children,
-      href: props.href
-    };
+const editComp = ( component, props ) => {
+      return {...component, props: props}
 };
 
 /**
- * This function handles creation and modification of form builder components.
+ * This function adds dragged component to form builder.
+ */
+const addComp = ( state = {}, id, component, props ) => {
+    return {...state, [id]: {component, props}};
+};
+
+/**
+ * This function deletes clicked form component.
+ */
+const deleteComp = ( state = {}, id ) => {
+    delete state[id];
+    return {...state}
+};
+
+/**
+ * This function handles creation and modification of form builder components
  */
 const components = handleActions({
     ADD_COMPONENT: (state, { type, payload: {id, component, props} }) => {
-        state[id] = {component, props};
-
-        return state;
+        return {...state, componentArray: addComp(state.componentArray, id, component, props), selectedComponent: -1};
     },
     SELECT_COMPONENT: (state, { type, payload: id }) => {
-        state['selectedComponent'] = id;
-        return state;
+        // Selects a component if not selected or unselects the component if already selected
+        if (id.id === state.selectedComponent)
+            return {...state, selectedComponent: -1};
+        else
+            return {...state, selectedComponent:id.id};
     },
     EDIT_COMPONENT: (state, { type, payload: {id, props} }) => {
-        if(state[id] != undefined){
-          state[id].component.defaultProps =  editProperties(state[id].component.defaultProps, props);
-        }
-
-        return state;
+        return {...state, componentArray: {...state.componentArray, [id]: editComp(state.componentArray[id], props)}};
+    },
+    DELETE_COMPONENT: (state, { type, payload: id }) => {
+      if (id.id === state.selectedComponent)
+        return {...state, componentArray: deleteComp(state.componentArray, id.id), selectedComponent: -1}
+      else
+        return {...state, componentArray: deleteComp(state.componentArray, id.id)}
     }
-},  ([]));
+},  ({}));
 
 export default components;

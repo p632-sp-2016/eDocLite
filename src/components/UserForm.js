@@ -5,7 +5,7 @@ import { Panel, PageHeader, Grid, Row, Col, Accordion } from 'react-bootstrap';
 import AddComponent from '../containers/AddComponent';
 import ToolBox from './ToolBox';
 import styles from '../styles/styles.less';
-import EditForm from './EditForm'
+import EditFormContainer from './EditFormContainer'
 
 /**
  * This class represents the main UI container for form builder application. It holds component toolbox, editor panel and builder form.
@@ -24,7 +24,7 @@ export default class UserForm extends Component {
                                 <ToolBox />
                             </Panel>
                             <Panel bsStyle="primary" collapsible defaultExpanded header="Edit Element" className={styles.panelstyle}>
-                                <EditForm />
+                                <EditFormContainer />
                             </Panel>
                         </Accordion>
                       </Row>

@@ -14,7 +14,8 @@ export const Actions = {
     toggleTodo: "TOGGLE_TODO",
     addComponent: "ADD_COMPONENT",
     selectComponent: "SELECT_COMPONENT",
-    editComponent: "EDIT_COMPONENT"
+    editComponent: "EDIT_COMPONENT",
+    deleteComponent: "DELETE_COMPONENT"
 };
 
 export const Filters = {
