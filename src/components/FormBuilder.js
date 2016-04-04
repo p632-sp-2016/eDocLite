@@ -1,8 +1,8 @@
 import React, { PropTypes, Component } from 'react';
 import ItemTypes from './ItemTypes';
 import { DropTarget } from 'react-dnd';
-import { Button, Glyphicon, Grid, Col, Row } from 'react-bootstrap';
-import ComponentContainer from '../components/ComponentContainer'
+import { Glyphicon, Grid, Row } from 'react-bootstrap';
+import ComponentContainer from '../components/ComponentContainer';
 import styles from '../styles/styles.less';
 
 const boxTarget = {
@@ -38,16 +38,15 @@ export default class Dustbin extends Component {
    * This function handles the SELECT_COMPONENT action. It facilitates editing component props.
    */
   handleSelect (key) {
-    {this.props.onSelect(key)}
-
-  };
+    {this.props.onSelect(key)};
+  }
 
   /**
    * This function deletes the clicked component from form builder.
    */
   remove(key){
-    {this.props.onDelete(key)}
-  };
+    {this.props.onDelete(key)};
+  }
 
   render() {
 
