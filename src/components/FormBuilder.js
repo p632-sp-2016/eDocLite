@@ -1,4 +1,4 @@
-import React, { PropTypes, Component } from 'react';
+import React, { PropTypes, Component } from 'react'; // eslint-disable-line no-unused-vars
 import ItemTypes from './ItemTypes';
 import { DropTarget } from 'react-dnd';
 import { Glyphicon, Grid, Row } from 'react-bootstrap';
@@ -6,7 +6,7 @@ import ComponentContainer from '../components/ComponentContainer';
 import styles from '../styles/styles.less';
 
 const boxTarget = {
-  hover(props) {
+  hover() {
 
   },
   canDrop() {
@@ -38,14 +38,14 @@ export default class Dustbin extends Component {
    * This function handles the SELECT_COMPONENT action. It facilitates editing component props.
    */
   handleSelect (key) {
-    {this.props.onSelect(key)};
+    {this.props.onSelect(key);}
   }
 
   /**
    * This function deletes the clicked component from form builder.
    */
   remove(key){
-    {this.props.onDelete(key)};
+    {this.props.onDelete(key);}
   }
 
   render() {

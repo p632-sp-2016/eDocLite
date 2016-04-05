@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react'; // eslint-disable-line no-unused-vars
 import ItemTypes from './ItemTypes';
 import { DragSource } from 'react-dnd';
 import { ListGroupItem } from 'react-bootstrap';
