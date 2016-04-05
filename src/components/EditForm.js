@@ -11,7 +11,9 @@ import { editComponent } from '../actions';
  * This class represents the editor panel redux form that is dynamically generated using component properties
  */
 export default class EditForm extends Component {
-
+  /**
+   *  This function represents EditForm Class UI render method
+   */
     render() {
         const {fields, handleSubmit, dispatch, resetForm, selectedComponent } = this.props;
 

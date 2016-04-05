@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React, {  PropTypes, Component } from 'react';
 import {reduxForm} from 'redux-form';
+
 import { connect } from 'react-redux';
 import EditForm from './EditForm';
 
@@ -7,15 +8,19 @@ import EditForm from './EditForm';
  * This class represents the container for editor panel redux form. It generates form for editing compnent properties dynamically.
  */
 export default class EditFormContainer extends Component {
-
+  /**
+   * This function represents the UI render method for the EditFormContainer Class
+   */
     render() {
         const {component, selectedComponent } = this.props;
 
         if (selectedComponent != -1) {
 
             return (
+
                 <div>
                     <EditForm fields={ Object.keys(component.props) } selectedComponent={ selectedComponent }/>
+
                 </div>
             );
         }
@@ -42,5 +47,3 @@ const mapStateToProps = (state) => {
 };
 
 EditFormContainer = connect(mapStateToProps)(EditFormContainer);
-
-export default EditFormContainer;
