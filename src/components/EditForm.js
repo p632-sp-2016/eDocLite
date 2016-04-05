@@ -4,7 +4,6 @@
 import React, {  PropTypes, Component } from 'react'; // eslint-disable-line no-unused-vars
 import { Input, Button, ButtonToolbar} from 'react-bootstrap';
 import {reduxForm} from 'redux-form';
-import { connect } from 'react-redux';
 import { editComponent } from '../actions';
 
 /**
@@ -31,7 +30,7 @@ export default class EditForm extends Component {
                                 <div key={name}>
                                     <Input type="text" label={name} placeholder={fields[name].defaultValue} {...fields[name]} />
                                 </div>
-                            )
+                            );
                         })}
 
 

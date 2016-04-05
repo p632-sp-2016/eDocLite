@@ -24,7 +24,7 @@ ButtonGroup.defaultProps = {
 /**
  * This function provides the Radio buttons component for toolbox.
  */
-export const RadioButton = (props) => {
+export const RadioButton = () => {
    return (
      <div>
         <Input wrapperClassName="col-sm-offset-2 col-sm-2" label= "Input1" defaultChecked />

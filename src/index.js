@@ -2,9 +2,8 @@
  * Created by parikhv on 1/31/16.
  */
 import 'babel-polyfill';
-import React from 'react';
+import React from 'react'; // eslint-disable-line no-unused-vars
 import ReactDOM from 'react-dom';
-import Debug from 'debug';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import todoApp from './reducers';
