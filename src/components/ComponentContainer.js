@@ -1,7 +1,7 @@
 /**
  * Created by parikhv on 3/9/16.
  */
-import React, { PropTypes } from 'react';
+import React, { PropTypes } from 'react'; // eslint-disable-line no-unused-vars
 import { Grid, Col} from 'react-bootstrap';
 
 

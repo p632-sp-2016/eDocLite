@@ -1,6 +1,5 @@
-import React, {  PropTypes, Component } from 'react';
+import React, { Component } from 'react'; // eslint-disable-line no-unused-vars
 import {reduxForm} from 'redux-form';
-
 import { connect } from 'react-redux';
 import EditForm from './EditForm';
 

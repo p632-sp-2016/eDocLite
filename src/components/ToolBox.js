@@ -1,7 +1,7 @@
 /**
  * Created by parikhv on 3/14/16.
  */
-import React from 'react';
+import React from 'react'; // eslint-disable-line no-unused-vars
 import Box from './Box';
 import * as ToolBoxActions from './ToolBoxComponents';
 import { Grid, ListGroup } from 'react-bootstrap';

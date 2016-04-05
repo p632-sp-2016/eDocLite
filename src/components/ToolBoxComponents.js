@@ -1,7 +1,7 @@
 /**
  * Created by parikhv on 3/14/16.
  */
-import React from 'react';
+import React from 'react'; // eslint-disable-line no-unused-vars
 import { Input, Button, ButtonToolbar } from 'react-bootstrap';
 
 /**
