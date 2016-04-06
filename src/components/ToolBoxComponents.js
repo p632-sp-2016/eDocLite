@@ -18,7 +18,9 @@ export const ButtonGroup = (props) => {
 };
 
 ButtonGroup.defaultProps = {
-  bsStyle: "primary"
+    children: "Button",
+    bsStyle: "primary",
+    bsSize:""
 };
 
 /**
@@ -49,7 +51,8 @@ export const TextBox = (props) => {
 
 TextBox.defaultProps = {
   label: 'Text Box',
-  placeholder: 'Some Text'
+  placeholder: 'Some Text',
+  bsSize:""
 };
 
 /**
@@ -63,7 +66,8 @@ export const Btn = (props) => {
 
 Btn.defaultProps = {
   children: "Button",
-  bsStyle: "primary"
+  bsStyle: "primary",
+  bsSize: ""
 };
 
 /**
@@ -78,7 +82,8 @@ export const TextArea = (props) => {
 TextArea.defaultProps = {
   name: "description",
   placeholder: "This is a description",
-  label: "Text Area"
+  label: "Text Area",
+  bsSize:""
 };
 
 /**
@@ -95,7 +100,8 @@ export const Dropdown = (props) => {
 };
 
 Dropdown.defaultProps = {
-  label: "Dropdown Menu"
+  label: "Dropdown Menu",
+  bsSize:""
 };
 
 /**
