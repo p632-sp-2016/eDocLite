@@ -18,7 +18,7 @@ describe('Edit form tests', () => {
 
     shallowRenderer.render(<EditForm fields={ Object.keys(c.props) } selectedComponent={ selectedComponent } />);
     const component = shallowRenderer.getRenderOutput();
-    expect(component.props.fields).toEqual(['label','placeholder']);
+    expect(component.props.fields).toEqual(['label','placeholder','bsSize']);
  });
 
 });
