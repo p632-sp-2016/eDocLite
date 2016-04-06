@@ -4,7 +4,6 @@
 import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Debug from 'debug';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import todoApp from './reducers';
