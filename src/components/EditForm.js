@@ -1,7 +1,7 @@
 /**
  * Created by parikhv on 4/1/16.
  */
-import React, {  PropTypes, Component } from 'react'; // eslint-disable-line no-unused-vars
+import React, {  PropTypes, Component } from 'react';
 import { Input, Button, ButtonToolbar} from 'react-bootstrap';
 import {reduxForm} from 'redux-form';
 import { editComponent } from '../actions';

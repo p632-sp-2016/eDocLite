@@ -2,7 +2,7 @@
  * Created by parikhv on 1/31/16.
  */
 import 'babel-polyfill';
-import React from 'react'; // eslint-disable-line no-unused-vars
+import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
