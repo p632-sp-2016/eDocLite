@@ -31,9 +31,10 @@ const payload = {
     /**
      * This action creates and returns an object to modify the props of selected component as specified by user.
      */
-    getEditComponent: (id, data) => {
+    getEditComponent: (id, selectedElement, data) => {
         return {
             id: id,
+            selectedElement,
             props: data
         };
     },
@@ -45,12 +46,24 @@ const payload = {
         return {
             id
         };
+    },
+
+    /**
+    * This action returns an object representing the selected/clicked element for editing its props.
+    */
+    getSelectElement: (selectedComponent, selectedElement) => {
+        return {
+            selectedComponent,
+            selectedElement
+        };
     }
 };
 
 export const addCompnent = createAction(Actions.addComponent, payload.getAddComponent);
 
 export const selectComponent = createAction(Actions.selectComponent, payload.getSelectComponent);
+
+export const selectElement = createAction(Actions.selectElement, payload.getSelectElement);
 
 export const deleteComponent = createAction(Actions.deleteComponent, payload.getDeleteComponent);
 

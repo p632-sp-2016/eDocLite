@@ -17,7 +17,7 @@ export default class UserForm extends Component {
         return (
             <Grid fluid>
                 <Row>
-                    <Col xs={4} md={3}>
+                    <Col xs={6} md={3}>
                       <Row>
                         <Accordion className={styles.sidepanelstyle}>
                             <Panel bsStyle="primary" collapsible defaultExpanded header="Drag Source" className={styles.panelstyle}>
@@ -29,7 +29,7 @@ export default class UserForm extends Component {
                         </Accordion>
                       </Row>
                    </Col>
-                   <Col xs={6} md={4} col-md-push-mdPush={5}>
+                   <Col xs={11} md={8}>
                       <PageHeader>eDocLite</PageHeader>
                       <AddComponent />
                    </Col>

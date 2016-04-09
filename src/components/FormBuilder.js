@@ -1,7 +1,7 @@
 import React, { PropTypes, Component } from 'react';
 import ItemTypes from './ItemTypes';
 import { DropTarget } from 'react-dnd';
-import { Glyphicon, Grid, Row } from 'react-bootstrap';
+import { Glyphicon, Grid, Row, Col } from 'react-bootstrap';
 import ComponentContainer from '../components/ComponentContainer';
 import styles from '../styles/styles.less';
 
@@ -55,7 +55,8 @@ export default class Dustbin extends Component {
 
     return connectDropTarget(
         <div>
-          <Grid className={isActive? styles.dusbinstyle: styles.dusbinstyleover}>
+          <Col style={{ padding: '20px'}}>
+          <Row className={isActive? styles.dusbinstyle: styles.dusbinstyleover} style={{ padding: '40px'}}>
             {isActive ?
                 'Release to drop' :
                 'Drag a box here'
@@ -74,7 +75,8 @@ export default class Dustbin extends Component {
                   }
               )}
             </form>
-          </Grid>
+          </Row>
+          </Col>
         </div>
     );
   }

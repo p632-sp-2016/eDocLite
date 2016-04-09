@@ -2,7 +2,22 @@
  * Created by parikhv on 3/14/16.
  */
 import React from 'react';
-import { Input, Button, ButtonToolbar } from 'react-bootstrap';
+import { FormControls, Select, Input, Button, ButtonToolbar } from 'react-bootstrap';
+
+/**
+ * This function provides the TextLabel component for toolbox.
+ */
+export const TextLabel = (props) => {
+   return (
+     <div className="form-horizontal">
+       <FormControls.Static {...props} wrapperClassName="col-md-8"/>
+     </div>
+   );
+};
+
+TextLabel.defaultProps = {
+    value: "Sample label"
+};
 
 /**
  * This function provides the ButtonGroup component for toolbox.
@@ -10,34 +25,68 @@ import { Input, Button, ButtonToolbar } from 'react-bootstrap';
 export const ButtonGroup = (props) => {
    return (
        <ButtonToolbar>
-           <Button {...props} label="Button1">Button1</Button>
-           <Button {...props} label="Button2">Button2</Button>
-           <Button {...props} label="Button3">Button3</Button>
+           {props.elements.map((obj, key) =>{
+             return (<Button bsStyle={obj.bsStyle.value} bsSize={obj.bsSize.value} key={key}>{obj.label}</Button>)
+           })}
        </ButtonToolbar>
    );
 };
 
 ButtonGroup.defaultProps = {
-    children: "Button",
-    bsStyle: "primary",
-    bsSize:""
+  elements: [
+    {
+      label: "Button1",
+      bsStyle: {
+        value: "default",
+        options: ["default", "danger", "info", "primary", "success", "warning"]
+      },
+      bsSize: {
+        value: "small",
+        options: ["default", "large", "small", "xsmall"]
+      }
+    },
+    {
+      label: "Button2",
+      bsStyle: {
+        value: "danger",
+        options: ["default", "danger", "info", "primary", "success", "warning"]
+      },
+      bsSize: {
+        value: "large",
+        options: ["default", "large", "small", "xsmall"]
+      }
+    }
+ ]
 };
 
 /**
  * This function provides the Radio buttons component for toolbox.
  */
-export const RadioButton = () => {
+// export const RadioButton = (props) => {
+//    return (
+//      <div>
+//         <Input type="radio" name="radioButtonSet" label={props.label_1} {...props} />
+//         <Input type="radio" name="radioButtonSet" label={props.label_2} {...props} />
+//      </div>
+//    );
+// };
+
+export const RadioButton = (props) => {
    return (
      <div>
-        <Input wrapperClassName="col-sm-offset-2 col-sm-2" label= "Input1" defaultChecked />
-        <Input wrapperClassName="col-sm-offset-2 col-sm-2" label="Input2" />
-      </div>
+        <Input label="Radio" {...props}>
+          <div><label><input type="radio" {...props}/> {props.label_1}</label></div>
+          <div><label><input type="radio" {...props}/> {props.label_2}</label></div>
+        </Input>
+     </div>
    );
 };
 
 RadioButton.defaultProps = {
-  type: "radio",
-  name: "radioButtonSet"
+    label: "Radio",
+    label_1: "Option1",
+    label_2: "Option2",
+    name: ""
 };
 
 /**
@@ -92,15 +141,18 @@ TextArea.defaultProps = {
 export const Dropdown = (props) => {
     return (
       <Input type="select" {...props}>
-        <option value="A">DropDown_A</option>
-        <option value="B">DropDown_B</option>
-        <option value="C">DropDown_C</option>
+        <option value={props.label_1}>{props.label_1}</option>
+        <option value={props.label_2}>{props.label_2}</option>
+        <option value={props.label_3}>{props.label_3}</option>
       </Input>
     );
 };
 
 Dropdown.defaultProps = {
   label: "Dropdown Menu",
+  label_1: "Drop 1",
+  label_2: "Drop 2",
+  label_3: "Drop 3",
   bsSize:""
 };
 
