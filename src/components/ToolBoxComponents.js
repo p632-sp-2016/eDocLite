@@ -142,7 +142,7 @@ export const Btn = (props) => {
     return (
         <div>
             {props.elements.map( (obj, objKey) => {
-                <Button {...obj} key={objKey} />
+                return <Button {...obj} key={objKey} />
             })}
         </div>
     );
