@@ -7,8 +7,8 @@ import { handleActions } from  'redux-actions';
  * This function assigns modified properties to a selected form component as specified by user.
  */
 const editComp = ( component, selectedElement, props ) => {
-  console.log('sdadsadas', selectedElement, props);
-      return {...component, props: {...component.props, elements: {...component.props.elements, [selectedElement]: {...props} }}};
+    component.props.elements[selectedElement] = props;
+    return {...component, props: {...component.props, elements: [...component.props.elements ] }};
 };
 
 const edit = ( state, props ) => {
@@ -58,7 +58,6 @@ const components = handleActions({
         return {...state, componentArray: deleteComp(state.componentArray, id.id)};
     },
     SELECT_ELEMENT: (state, { payload: {selectedComponent, selectedElement} }) => {
-      console.log(selectedElement);
         return {...state, componentArray: {...state.componentArray, [selectedComponent]: selectElement(state.componentArray[selectedComponent], selectedElement)}};
     }
 },  ({}));

@@ -7,6 +7,9 @@ import { Actions } from '../constants';
  */
 let componentId = 0;
 
+/**
+ * This action creates and returns an object to add a new form element in the form builder.
+ */
 const payload = {
     /**
      * This action creates and returns an object to add a new form element in the form builder.
@@ -15,7 +18,7 @@ const payload = {
       return {
             id: componentId++,
             component,
-            props: component.defaultProps
+            props: JSON.parse(JSON.stringify(component.defaultProps))
         };
     },
 
@@ -66,5 +69,26 @@ export const selectComponent = createAction(Actions.selectComponent, payload.get
 export const selectElement = createAction(Actions.selectElement, payload.getSelectElement);
 
 export const deleteComponent = createAction(Actions.deleteComponent, payload.getDeleteComponent);
-
+/**
+ * Export constant EDIT_COMPONENT Action.
+ */
 export const editComponent = createAction(Actions.editComponent, payload.getEditComponent);
+
+/**
+ * Export constant SAVE_FORM Action
+ */
+export const saveFormPOST = createAction(Actions.saveFormPOST, async components => {
+
+        await fetch('/saveForm', {
+            method: 'POST',
+            headers: {
+                'Accept': 'text/html',
+                'Content-Type': 'text/html'
+            },
+            body: components
+        }).then(
+            data => console.log(data),
+            error => console.log(error)
+        )
+
+})

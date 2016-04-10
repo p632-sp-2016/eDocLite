@@ -11,9 +11,8 @@ import { Input, DropdownButton, MenuItem } from 'react-bootstrap';
 export default class EditFormContainer extends Component {
 
     compSelectionHandler = (key) =>{
-      // this.props.dispatch(change('containerForm', 'selectedElement', key));
       this.props.dispatch(selectElement(this.props.selectedComponent, key));
-    }
+    };
 
     render() {
         const {component, selectedComponent, fields: {selectedElement}} = this.props;
@@ -27,6 +26,7 @@ export default class EditFormContainer extends Component {
                       })}
                     </DropdownButton>
                   :''}
+
                     {component.props.selectedElement != undefined ?
                       <EditForm fields={ Object.keys(component.props.elements[component.props.selectedElement]) } selectedComponent={ selectedComponent } selectedElement={ component.props.selectedElement }/>
                       :''

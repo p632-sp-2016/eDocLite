@@ -8,100 +8,131 @@ import { FormControls, Select, Input, Button, ButtonToolbar } from 'react-bootst
  * This function provides the TextLabel component for toolbox.
  */
 export const TextLabel = (props) => {
-   return (
-     <div className="form-horizontal">
-       <FormControls.Static {...props} wrapperClassName="col-md-8"/>
-     </div>
-   );
+    console.log({...props.elements[props.selectedElement]})
+    return (
+        <div className="form-horizontal">
+            {props.elements.map((obj, key) => {
+                return <FormControls.Static {...obj} key={key} wrapperClassName="col-md-8"/>
+            })}
+        </div>
+    );
 };
 
 TextLabel.defaultProps = {
-    value: "Sample label"
+    elements: [
+        {
+            label: "Label",
+            value: "Sample label"
+        }
+    ],
+    selectedElement: 0
 };
 
 /**
  * This function provides the ButtonGroup component for toolbox.
  */
 export const ButtonGroup = (props) => {
-   return (
-       <ButtonToolbar>
-           {props.elements.map((obj, key) =>{
-             return (<Button bsStyle={obj.bsStyle.value} bsSize={obj.bsSize.value} key={key}>{obj.label}</Button>)
-           })}
-       </ButtonToolbar>
-   );
+    return (
+        <ButtonToolbar>
+            {props.elements.map((obj, key) =>{
+                return (<Button bsStyle={obj.bsStyle.value} bsSize={obj.bsSize.value} key={key}>{obj.label}</Button>)
+            })}
+        </ButtonToolbar>
+    );
 };
 
 ButtonGroup.defaultProps = {
-  elements: [
-    {
-      label: "Button1",
-      bsStyle: {
-        value: "default",
-        options: ["default", "danger", "info", "primary", "success", "warning"]
-      },
-      bsSize: {
-        value: "small",
-        options: ["default", "large", "small", "xsmall"]
-      }
-    },
-    {
-      label: "Button2",
-      bsStyle: {
-        value: "danger",
-        options: ["default", "danger", "info", "primary", "success", "warning"]
-      },
-      bsSize: {
-        value: "large",
-        options: ["default", "large", "small", "xsmall"]
-      }
-    }
- ]
+    elements: [
+        {
+            label: "Button1",
+            bsStyle: {
+                value: "default",
+                options: ["default", "danger", "info", "primary", "success", "warning"]
+            },
+            bsSize: {
+                value: "small",
+                options: ["default", "large", "small", "xsmall"]
+            }
+        },
+        {
+            label: "Button2",
+            bsStyle: {
+                value: "danger",
+                options: ["default", "danger", "info", "primary", "success", "warning"]
+            },
+            bsSize: {
+                value: "large",
+                options: ["default", "large", "small", "xsmall"]
+            }
+        }
+    ],
+    selectedElement: 0
 };
 
-/**
- * This function provides the Radio buttons component for toolbox.
- */
-// export const RadioButton = (props) => {
-//    return (
-//      <div>
-//         <Input type="radio" name="radioButtonSet" label={props.label_1} {...props} />
-//         <Input type="radio" name="radioButtonSet" label={props.label_2} {...props} />
-//      </div>
-//    );
-// };
-
 export const RadioButton = (props) => {
-   return (
-     <div>
-        <Input label="Radio" {...props}>
-          <div><label><input type="radio" {...props}/> {props.label_1}</label></div>
-          <div><label><input type="radio" {...props}/> {props.label_2}</label></div>
-        </Input>
-     </div>
-   );
+    return (
+        <div>
+            {props.elements.map( (obj, objKey) => {
+                return (
+                    <Input key={objKey}>
+                        {obj.options.map( (opt, optKey) => {
+                            return <div><label><input type="radio" {...obj} key={optKey} /> { opt } </label></div>
+                        })}
+
+                    </Input>
+                )
+            })}
+
+        </div>
+    );
 };
 
 RadioButton.defaultProps = {
-    label: "Radio",
-    label_1: "Option1",
-    label_2: "Option2",
-    name: ""
+    elements: [
+        {
+            type: "radio",
+            name: "RadioButtonSet",
+            label: "RadioButtonSet",
+            options:[
+                "AA", "BB", "CC"
+            ],
+            bsSize: {
+                value: "large",
+                options: ["default", "large", "small", "xsmall"]
+            },
+            wrapperClassName:"col-sm-offset-2 col-sm-2"
+        }
+    ],
+    selectedElement: 0
+
 };
 
 /**
  * This function provides the text box component for toolbox.
  */
 export const TextBox = (props) => {
-  return(
-      <Input type='text' {...props} />
-  );
+    return(
+        <div>
+            {props.elements.map( (obj, objKey) => {
+                return <Input type='text' {...obj} key={objKey} />
+            })}
+        </div>
+    );
 };
 
 TextBox.defaultProps = {
-  label: 'Text Box',
-  placeholder: 'Some Text',
-  bsSize:""
+    elements: [
+        {
+            label: 'Text Box',
+            placeholder: 'Some Text',
+            bsSize: {
+                value: "large",
+                options: ["default", "large", "small", "xsmall"]
+            }
+        }
+    ],
+    selectedElement: 0
+
 };
 
 /**
@@ -109,14 +140,31 @@ TextBox.defaultProps = {
  */
 export const Btn = (props) => {
     return (
-         <Button {...props} />
+        <div>
+            {props.elements.map( (obj, objKey) => {
+                <Button {...obj} key={objKey} />
+            })}
+        </div>
     );
 };
 
 Btn.defaultProps = {
-  children: "Button",
-  bsStyle: "primary",
-  bsSize: ""
+    elements: [
+        {
+            children: "Button",
+            bsStyle: "primary",
+            bsStyle: {
+                value: "default",
+                options: ["default", "danger", "info", "primary", "success", "warning"]
+            },
+            bsSize: {
+                value: "small",
+                options: ["default", "large", "small", "xsmall"]
+            }
+        }
+    ],
+    selectedElement: 0
+
 };
 
 /**
@@ -124,15 +172,29 @@ Btn.defaultProps = {
  */
 export const TextArea = (props) => {
     return (
-         <Input type="textarea" {...props}/>
+        <div>
+            {props.elements.map( (obj, objKey) => {
+                <Input type="textarea" {...obj} key={objKey} />
+            })}
+        </div>
+
     );
 };
 
 TextArea.defaultProps = {
-  name: "description",
-  placeholder: "This is a description",
-  label: "Text Area",
-  bsSize:""
+    elements: [
+        {
+            name: "description",
+            placeholder: "This is a description",
+            label: "Text Area",
+            bsSize: {
+                value: "large",
+                options: ["default", "large", "small", "xsmall"]
+            }
+
+        }
+    ],
+    selectedElement: 0
 };
 
 /**
@@ -140,20 +202,34 @@ TextArea.defaultProps = {
  */
 export const Dropdown = (props) => {
     return (
-      <Input type="select" {...props}>
-        <option value={props.label_1}>{props.label_1}</option>
-        <option value={props.label_2}>{props.label_2}</option>
-        <option value={props.label_3}>{props.label_3}</option>
-      </Input>
+        <div>
+            {props.elements.map( (obj, objKey) => {
+                return (<Input type="select" {...obj} key={objKey}>
+                    {obj.options.map((opt,optKey) => {
+                        return  (<option value={opt} key={optKey}>{opt}</option>)
+                    })}
+                </Input>)
+            })}
+        </div>
+
     );
 };
 
 Dropdown.defaultProps = {
-  label: "Dropdown Menu",
-  label_1: "Drop 1",
-  label_2: "Drop 2",
-  label_3: "Drop 3",
-  bsSize:""
+    elements: [
+        {
+            label: "Dropdown Menu",
+            options:[
+                "A", "B", "C"
+            ],
+            bsSize: {
+                value: "medium",
+                options: ["default", "large", "small", "xsmall"]
+            }
+
+        }
+    ],
+    selectedElement: 0
 };
 
 /**
@@ -161,11 +237,22 @@ Dropdown.defaultProps = {
  */
 export const Link = (props) => {
     return (
-      <a {...props} />
-    );
+    <div>
+        {props.elements.map( (obj, objKey) => {
+            return <a {...obj} key={objKey} />
+        })}
+    </div>
+);
 };
 
 Link.defaultProps = {
-  href: "http://www.google.com/",
-  children: "Google"
+    elements: [
+        {
+            label: "Link",
+            href: "http://www.google.com/",
+            children: "Google"
+        }
+    ],
+    selectedElement: 0
+
 };

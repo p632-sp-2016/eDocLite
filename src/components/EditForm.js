@@ -1,24 +1,30 @@
 /**
  * Created by parikhv on 4/1/16.
  */
-import React, {  PropTypes, Component } from 'react';
+import React, {  PropTypes, Component } from 'react'; // eslint-disable-line no-unused-vars
 import { Input, Button, ButtonToolbar} from 'react-bootstrap';
 import {reduxForm} from 'redux-form';
+import { connect } from 'react-redux';
 import { editComponent } from '../actions';
+import TagEditor from './TagEditor';
 import * as ToolBoxComponents from './ToolBoxComponents';
 import ComponentContainer from './ComponentContainer';
+import EditList from './EditList';
 
 /**
  * This class represents the editor panel redux form that is dynamically generated using component properties
  */
-export default class EditForm extends Component {
+class EditForm extends Component {
     render() {
         const {fields, handleSubmit, dispatch, resetForm, selectedComponent, selectedElement} = this.props;
-        console.log("VRAJ", fields);
+
+        const parse = (event, options) => {
+            return {value: {value: event.target.value, options}};
+        };
+
         if(selectedComponent != undefined){
 
             return (
-
                 <div>
                     <form onSubmit={handleSubmit(data => {
                         dispatch(editComponent(selectedComponent, selectedElement, data));
@@ -27,26 +33,21 @@ export default class EditForm extends Component {
                     >
 
                         {Object.keys(fields).map(name => {
+
                             return (
                                 <div key={name}>
-                                {name == 'bsSize'?
-                                    <Input type="select" label={name} placeholder={fields[name].defaultValue} {...fields[name]}>
-                                      <option value="">Default</option>
-                                      <option value="large">Large</option>
-                                      <option value="small">Small</option>
-                                      <option value="xsmall">X-Small</option>
-                                    </Input>:
-                                    name.startsWith('bsStyle')?
-                                        <Input type="select" label={name} placeholder={fields[name].defaultValue} {...fields[name]}>
-                                          <option value="default">Default</option>
-                                          <option value="danger">Danger</option>
-                                          <option value="info">Info</option>
-                                          <option value="primary">Primary</option>
-                                          <option value="success">Success</option>
-                                          <option value="warning">Warning</option>
-                                        </Input>:
-                                        <Input type="text" label={name} placeholder={fields[name].defaultValue} {...fields[name]} />
-                                }
+                                    {
+                                        (name === 'options') ?
+                                            <TagEditor fields={['tags', 'val']}
+                                                       initialTags={fields[name].defaultValue}/>
+                                            :
+                                            (name == 'bsSize' || name == 'bsStyle') ?
+
+                                                <EditList { ...fields[name] } options={fields[name].defaultValue.options} name={name} />
+                                                :
+                                                <Input type="text" label={name} {...fields[name]} />
+                                    }
+
                                 </div>
                             );
                         })}

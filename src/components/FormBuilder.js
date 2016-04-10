@@ -1,9 +1,11 @@
 import React, { PropTypes, Component } from 'react';
 import ItemTypes from './ItemTypes';
 import { DropTarget } from 'react-dnd';
-import { Glyphicon, Grid, Row, Col } from 'react-bootstrap';
+import { Glyphicon, Grid, Row, Button, Col } from 'react-bootstrap';
 import ComponentContainer from '../components/ComponentContainer';
 import styles from '../styles/styles.less';
+import ReactDOMServer from 'react-dom/server';
+
 
 const boxTarget = {
   hover() {
@@ -48,6 +50,17 @@ export default class Dustbin extends Component {
     {this.props.onDelete(key);}
   }
 
+  submitForm(components) {
+    const componentArr = components.componentArray;
+
+    let html = "";
+    Object.keys(componentArr).map(key => {
+        html += ReactDOMServer.renderToString(React.createElement(componentArr[key].component, componentArr[key].props));
+    });
+    console.log(html);
+    this.props.onSubmitForm(html);
+  }
+
   render() {
 
     const { canDrop, isOver, connectDropTarget, components } = this.props;
@@ -67,6 +80,7 @@ export default class Dustbin extends Component {
                     return(
                       <Row key={key} style={{ background: key == components.selectedComponent ? 'lightblue' : 'whitesmoke', padding: '5px'}}>
                         <Glyphicon glyph="remove" id="delete-button" onClick={this.remove.bind(this, key)} style={{float: "right"}} />
+
                         <Row key={key} onClick={this.handleSelect.bind(this, key)}>
                           <ComponentContainer component={components.componentArray[key]} key={key} />
                         </Row>
@@ -74,6 +88,7 @@ export default class Dustbin extends Component {
                     );
                   }
               )}
+              <Button onClick={this.submitForm.bind(this, components)} bsStyle="info"> Save Form </Button>
             </form>
           </Row>
           </Col>

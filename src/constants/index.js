@@ -3,9 +3,9 @@
  */
 
 
-export const DragDrop =  {
-    item: 'Todo'
-};
+ /**
+  * Constants used for the Form Builder Actions
+  */
 
 export const Actions = {
     addTodo: "ADD_TODO",
@@ -17,6 +17,7 @@ export const Actions = {
     editComponent: "EDIT_COMPONENT",
     deleteComponent: "DELETE_COMPONENT",
     selectElement: "SELECT_ELEMENT",
+     saveFormPOST: "SAVE_FORM_POST"
 };
 
 export const Filters = {
