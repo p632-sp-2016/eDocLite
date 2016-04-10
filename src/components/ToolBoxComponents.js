@@ -174,7 +174,7 @@ export const TextArea = (props) => {
     return (
         <div>
             {props.elements.map( (obj, objKey) => {
-                <Input type="textarea" {...obj} key={objKey} />
+                return <Input type="textarea" {...obj} key={objKey} />
             })}
         </div>
 
