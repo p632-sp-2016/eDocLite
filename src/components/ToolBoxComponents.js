@@ -8,7 +8,6 @@ import { FormControls, Select, Input, Button, ButtonToolbar } from 'react-bootst
  * This function provides the TextLabel component for toolbox.
  */
 export const TextLabel = (props) => {
-    console.log({...props.elements[props.selectedElement]})
     return (
         <div className="form-horizontal">
             {props.elements.map((obj, key) => {
@@ -76,7 +75,7 @@ export const RadioButton = (props) => {
                 return (
                     <Input key={objKey}>
                         {obj.options.map( (opt, optKey) => {
-                            return <div><label><input type="radio" {...obj} key={optKey} /> { opt } </label></div>
+                            return <div><label><input type="radio" value={opt.value}{...obj} key={optKey} /> { opt.label } </label></div>
                         })}
 
                     </Input>
@@ -94,7 +93,18 @@ RadioButton.defaultProps = {
             name: "RadioButtonSet",
             label: "RadioButtonSet",
             options:[
-                "AA", "BB", "CC"
+                {
+                  label:"A",
+                  value:"AA"
+                },
+                {
+                  label:"B",
+                   value:"BB"
+                },
+                {
+                   label:"C"
+                   ,value:"CC"
+                }
             ],
             bsSize: {
                 value: "large",
@@ -152,7 +162,6 @@ Btn.defaultProps = {
     elements: [
         {
             children: "Button",
-            bsStyle: "primary",
             bsStyle: {
                 value: "default",
                 options: ["default", "danger", "info", "primary", "success", "warning"]
@@ -206,7 +215,7 @@ export const Dropdown = (props) => {
             {props.elements.map( (obj, objKey) => {
                 return (<Input type="select" {...obj} key={objKey}>
                     {obj.options.map((opt,optKey) => {
-                        return  (<option value={opt} key={optKey}>{opt}</option>)
+                        return  (<option value={opt.value} key={optKey}>{opt.label}</option>)
                     })}
                 </Input>)
             })}
@@ -220,7 +229,18 @@ Dropdown.defaultProps = {
         {
             label: "Dropdown Menu",
             options:[
-                "A", "B", "C"
+                {
+                  label:"A",
+                  value:"AA"
+                },
+                {
+                  label:"B",
+                   value:"BB"
+                },
+                {
+                   label:"C"
+                   ,value:"CC"
+                }
             ],
             bsSize: {
                 value: "medium",
