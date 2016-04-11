@@ -38,7 +38,7 @@ class EditForm extends Component {
                                 <div key={name}>
                                     {
                                         (name === 'options') ?
-                                            <TagEditor fields={['tags', 'val']}
+                                            <TagEditor fields={['tags', 'val','label']}
                                                        initialTags={fields[name].defaultValue}/>
                                             :
                                             (name == 'bsSize' || name == 'bsStyle') ?

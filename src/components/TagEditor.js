@@ -11,14 +11,16 @@ export default class TagEditor extends Component {
     /**
      * This function represents the UI render method for the EditFormContainer Class
      */
-    addTag = (array, text) => {
-        array.push(text.value);
+    addTag = (array, value,label) => {
+
+      array.push ( {"label":label.value,"value":value.value} );
         this.props.dispatch(change('tag-editor', 'tags', array));
         this.props.resetForm();
     };
 
-    editTag = (array, text) => {
-        array[this.selected] = text.value;
+    editTag = (array, value,label) => {
+        array[this.selected].label = label.value;
+        array[this.selected].value = value.value;
         this.props.dispatch(change('tag-editor', 'tags', array));
         this.props.resetForm();
         this.selected = -1;
@@ -30,11 +32,12 @@ export default class TagEditor extends Component {
     };
 
     renderTags = (tags) => {
+
         return (
             tags.map((value, index) => {
                     return (<div style={{position: 'relative'}}>
-                        <ListGroupItem key={index} class="tags" onClick={this.onSelect.bind(this, value, index)} style={{}}>
-                            {value}
+                        <ListGroupItem key={index} class="tags" onClick={this.onSelect.bind(this, value.label,value.value,index)} style={{}}>
+                            {value.label}
                         </ListGroupItem>
                         <Glyphicon glyph="remove" id="delete-button" onClick={this.removeTag.bind(this, tags, index)} style={{position: 'absolute', zIndex: '2', float:'right'}} />
                     </div>)
@@ -42,10 +45,11 @@ export default class TagEditor extends Component {
         )
     };
 
-    onSelect = (value, index) => {
+    onSelect = (label, value, index) => {
         if (this.selected != index) {
             this.selected = index;
             this.props.dispatch(change('tag-editor', 'val', value));
+            this.props.dispatch(change('tag-editor', 'label', label));
         }
         else {
             this.selected = -1;
@@ -58,22 +62,26 @@ export default class TagEditor extends Component {
     selected = -1;
 
     render() {
-        let {fields: {tags, val}, initialTags, handleSubmit, dispatch, resetForm } = this.props;
+        let {fields: {tags, val, label}, initialTags, handleSubmit, dispatch, resetForm } = this.props;
 
         //this.selected.bind(this);
 
         tags = initialTags;
-
-        const addButton = (<Button bsStyle="primary" onClick={this.addTag.bind(this, tags, val)}><Glyphicon glyph="plus" /></Button>);
-        const editButton = (<Button bsStyle="primary" onClick={this.editTag.bind(this, tags, val)}><Glyphicon glyph="edit" /></Button>);
+      //  const addButton = (<Button bsStyle="primary" onClick={this.addTag.bind(this, tags, val, label)}><Glyphicon glyph= "plus" /></Button>);
+      //  const editButton = (<Button bsStyle="primary" onClick={this.editTag.bind(this, tags,val, label)}><Glyphicon glyph="edit" /></Button>);
 
         return (
             <div>
                 <ListGroup style={{height: '120px', overflow: 'auto'}}>
                     {this.renderTags(tags)}
                 </ListGroup>
+                  <Input type="text" label="value" {...val} placeholder={val.value} />
+                  <Input type="text"label="label" {...label} placeholder={label.value}/>
+                {(this.selected == -1) ?
+                  <Button bsStyle="primary" onClick={this.addTag.bind(this, tags, val, label)}><Glyphicon glyph= "plus" /></Button>
+                  :<Button bsStyle="primary" onClick={this.editTag.bind(this, tags,val, label)}><Glyphicon glyph="edit" /></Button>
+                }
 
-                <Input type="text" {...val} placeholder={val.value} buttonAfter={this.selected == -1 ? addButton : editButton} />
             </div>
         );
     }
