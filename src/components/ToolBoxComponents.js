@@ -73,12 +73,17 @@ export const RadioButton = (props) => {
         <div>
             {props.elements.map( (obj, objKey) => {
                 return (
-                    <Input key={objKey}>
+                    <Input key={objKey} label={obj.label}>
                         {obj.options.map( (opt, optKey) => {
-                            return (<div><label><input type="radio" value={opt.value}{...obj} key={optKey} /> { opt.label } </label></div>);
+                            return (
+                              <div key={optKey}>
+                                <label key={optKey}>
+                                  <input type="radio" value={opt.value}{...obj} key={optKey} /> { opt.label }
+                                </label>
+                              </div>
+                            );
                         })}
-
-                    </Input>
+                   </Input>
                 );
             })}
 
@@ -89,7 +94,6 @@ export const RadioButton = (props) => {
 RadioButton.defaultProps = {
     elements: [
         {
-            type: "radio",
             name: "RadioButtonSet",
             label: "RadioButtonSet",
             options:[
@@ -124,7 +128,7 @@ export const TextBox = (props) => {
     return(
         <div>
             {props.elements.map( (obj, objKey) => {
-                return (<Input type='text' {...obj} key={objKey} />);
+                return (<Input type='text' {...obj} key={objKey} bsSize={obj.bsSize.value}/>);
             })}
         </div>
     );
@@ -136,8 +140,8 @@ TextBox.defaultProps = {
             label: 'Text Box',
             placeholder: 'Some Text',
             bsSize: {
-                value: "large",
-                options: ["default", "large", "small", "xsmall"]
+                value: "default",
+                options: ["default", "large", "medium", "small"]
             }
         }
     ],
@@ -152,7 +156,7 @@ export const Btn = (props) => {
     return (
         <div>
             {props.elements.map( (obj, objKey) => {
-                return (<Button {...obj} key={objKey} />);
+                return (<Button {...obj} key={objKey} bsStyle={obj.bsStyle.value} bsSize={obj.bsSize.value}/>);
             })}
         </div>
     );
@@ -183,7 +187,7 @@ export const TextArea = (props) => {
     return (
         <div>
             {props.elements.map( (obj, objKey) => {
-                return (<Input type="textarea" {...obj} key={objKey} />);
+                return (<Input type="textarea" {...obj} key={objKey} bsSize={obj.bsSize.value}/>);
             })}
         </div>
 
@@ -197,8 +201,8 @@ TextArea.defaultProps = {
             placeholder: "This is a description",
             label: "Text Area",
             bsSize: {
-                value: "large",
-                options: ["default", "large", "small", "xsmall"]
+                value: "default",
+                options: ["default", "large", "medium", "small"]
             }
 
         }
@@ -214,7 +218,7 @@ export const Dropdown = (props) => {
         <div>
             {props.elements.map( (obj, objKey) => {
                 return (
-                  <Input type="select" {...obj} key={objKey}>
+                  <Input type="select" {...obj} key={objKey} bsSize={obj.bsSize.value}>
                     {obj.options.map((opt,optKey) => {
                         return  (<option value={opt.value} key={optKey}>{opt.label}</option>);
                     })}
@@ -240,13 +244,13 @@ Dropdown.defaultProps = {
                    value:"BB"
                 },
                 {
-                   label:"C"
-                   ,value:"CC"
+                   label:"C",
+                   value:"CC"
                 }
             ],
             bsSize: {
-                value: "medium",
-                options: ["default", "large", "small", "xsmall"]
+                value: "default",
+                options: ["default", "large", "medium", "small"]
             }
 
         }
