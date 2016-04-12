@@ -2,7 +2,7 @@
  * Created by parikhv on 3/14/16.
  */
 import React from 'react';
-import { FormControls, Select, Input, Button, ButtonToolbar } from 'react-bootstrap';
+import { FormControls, Select, Input, Button, ButtonToolbar,Label } from 'react-bootstrap';
 
 /**
  * This function provides the TextLabel component for toolbox.
@@ -140,7 +140,7 @@ TextBox.defaultProps = {
             label: 'Text Box',
             placeholder: 'Some Text',
             bsSize: {
-                value: "default",
+                value: "medium",
                 options: ["default", "large", "medium", "small"]
             }
         }
@@ -249,7 +249,7 @@ Dropdown.defaultProps = {
                 }
             ],
             bsSize: {
-                value: "default",
+                value: "medium",
                 options: ["default", "large", "medium", "small"]
             }
 
@@ -281,4 +281,92 @@ Link.defaultProps = {
     ],
     selectedElement: 0
 
+};
+
+/**
+ * This function provides the checkbox component for toolbox.
+ */
+
+export const Checkbox = (props) => {
+
+    return (
+    <div>
+        {props.elements.map( (obj, objKey) => {
+
+            return (<Input key={objKey}>
+                <h3><Label>{obj.textLabel}</Label></h3>
+                    {obj.options.map( (opt, optKey) => {
+                        return <div key={optKey}><Input type="checkbox"  {...obj}  label={opt.label} value={opt.value} checked readOnly /></div>
+                    })}
+                </Input>
+            );
+        })}
+
+    </div>
+  )
+}
+
+Checkbox.defaultProps = {
+  elements: [
+      {
+        options:[
+            {
+              label:"Checkbox1",
+              value:"AA"
+            },
+            {
+              label:"Checkbox2",
+               value:"BB"
+            },
+            {
+               label:"Checkbox3",
+               value:"CC"
+            }
+        ],
+        textLabel : "CheckboxLabel"
+      }
+  ],
+  selectedElement: 0,
+};
+
+
+/**
+ * This function provides the year component for toolbox.
+ */
+export const yearComponent = (props) => {
+
+    let minyear =  new Date().getFullYear();
+    console.log(minyear);
+    let maxyear = minyear + 5;
+
+    let yearArray = [];
+
+    for (let i = minyear; i<=maxyear; i++){
+      yearArray.push(i);}
+
+return (
+    <div>
+        {props.elements.map( (obj, objKey) => {
+            return (<Input type="select" {...obj} bsSize={obj.bsSize.value} key={objKey}>
+                {yearArray.map((opt,optKey) => {
+                    return  (<option value={opt}  key={optKey}>{opt}</option>)
+                })}
+            </Input>);
+        })}
+    </div>
+  )
+}
+
+yearComponent.defaultProps = {
+    elements: [
+        {
+            label: "Year Menu",
+            bsSize: {
+                value: "medium",
+                options: ["default", "large", "small", "xsmall"]
+            }
+
+        }
+    ],
+    selectedElement: 0
 };

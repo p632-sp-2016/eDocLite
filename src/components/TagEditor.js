@@ -35,8 +35,8 @@ export default class TagEditor extends Component {
 
         return (
             tags.map((value, index) => {
-                    return (<div style={{position: 'relative'}}>
-                        <ListGroupItem key={index} class="tags" onClick={this.onSelect.bind(this, value.label,value.value,index)} style={{}}>
+                    return (<div key={index} style={{position: 'relative'}}>
+                        <ListGroupItem key={index} className="tags" onClick={this.onSelect.bind(this, value.label,value.value,index)} style={{}}>
                             {value.label}
                         </ListGroupItem>
                         <Glyphicon glyph="remove" id="delete-button" onClick={this.removeTag.bind(this, tags, index)} style={{position: 'absolute', zIndex: '2', float:'right'}} />

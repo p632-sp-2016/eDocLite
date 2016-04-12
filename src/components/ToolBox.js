@@ -21,7 +21,8 @@ const ToolBox = () => {
                 <Box name='Link' component={ToolBoxActions.Link}/>
                 <Box name='Radio' component={ToolBoxActions.RadioButton}/>
                 <Box name='ButtonGroup' component={ToolBoxActions.ButtonGroup}/>
-                <Box name='ButtonGroup' component={ToolBoxActions.TextLabel}/>
+                <Box name='Checkbox' component={ToolBoxActions.Checkbox}/>
+                <Box name='Year' component={ToolBoxActions.yearComponent}/>
             </ListGroup>
         </Grid>
     );
