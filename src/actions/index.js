@@ -1,3 +1,4 @@
+import 'babel-polyfill';
 import { createAction } from 'redux-actions';
 import { Actions } from '../constants';
 

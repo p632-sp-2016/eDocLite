@@ -35,14 +35,16 @@ describe('todo actions', () => {
    });
 
    it('editComponent should return EDIT_COMPONENT action', () => {
+     let component= ToolBoxActions.TextBox;
      const input = {
          label: 'abc',
          placeholder: 'klm'
      };
-     expect(actions.editComponent(0, input)).toEqual({
+     expect(actions.editComponent(0, component, input)).toEqual({
        type: 'EDIT_COMPONENT',
        payload: {
          id: 0,
+         selectedElement: component,
          props: {
            label: 'abc',
            placeholder: 'klm'

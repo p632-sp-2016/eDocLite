@@ -11,7 +11,7 @@ export const TextLabel = (props) => {
     return (
         <div className="form-horizontal">
             {props.elements.map((obj, key) => {
-                return <FormControls.Static {...obj} key={key} wrapperClassName="col-md-8"/>
+                return (<FormControls.Static {...obj} key={key} wrapperClassName="col-md-8"/>);
             })}
         </div>
     );
@@ -34,7 +34,7 @@ export const ButtonGroup = (props) => {
     return (
         <ButtonToolbar>
             {props.elements.map((obj, key) =>{
-                return (<Button bsStyle={obj.bsStyle.value} bsSize={obj.bsSize.value} key={key}>{obj.label}</Button>)
+                return (<Button bsStyle={obj.bsStyle.value} bsSize={obj.bsSize.value} key={key}>{obj.label}</Button>);
             })}
         </ButtonToolbar>
     );
@@ -75,11 +75,11 @@ export const RadioButton = (props) => {
                 return (
                     <Input key={objKey}>
                         {obj.options.map( (opt, optKey) => {
-                            return <div><label><input type="radio" value={opt.value}{...obj} key={optKey} /> { opt.label } </label></div>
+                            return (<div><label><input type="radio" value={opt.value}{...obj} key={optKey} /> { opt.label } </label></div>);
                         })}
 
                     </Input>
-                )
+                );
             })}
 
         </div>
@@ -102,8 +102,8 @@ RadioButton.defaultProps = {
                    value:"BB"
                 },
                 {
-                   label:"C"
-                   ,value:"CC"
+                   label:"C",
+                   value:"CC"
                 }
             ],
             bsSize: {
@@ -124,7 +124,7 @@ export const TextBox = (props) => {
     return(
         <div>
             {props.elements.map( (obj, objKey) => {
-                return <Input type='text' {...obj} key={objKey} />
+                return (<Input type='text' {...obj} key={objKey} />);
             })}
         </div>
     );
@@ -152,7 +152,7 @@ export const Btn = (props) => {
     return (
         <div>
             {props.elements.map( (obj, objKey) => {
-                return <Button {...obj} key={objKey} />
+                return (<Button {...obj} key={objKey} />);
             })}
         </div>
     );
@@ -183,7 +183,7 @@ export const TextArea = (props) => {
     return (
         <div>
             {props.elements.map( (obj, objKey) => {
-                return <Input type="textarea" {...obj} key={objKey} />
+                return (<Input type="textarea" {...obj} key={objKey} />);
             })}
         </div>
 
@@ -213,11 +213,13 @@ export const Dropdown = (props) => {
     return (
         <div>
             {props.elements.map( (obj, objKey) => {
-                return (<Input type="select" {...obj} key={objKey}>
+                return (
+                  <Input type="select" {...obj} key={objKey}>
                     {obj.options.map((opt,optKey) => {
-                        return  (<option value={opt.value} key={optKey}>{opt.label}</option>)
+                        return  (<option value={opt.value} key={optKey}>{opt.label}</option>);
                     })}
-                </Input>)
+                  </Input>
+              );
             })}
         </div>
 
@@ -259,7 +261,7 @@ export const Link = (props) => {
     return (
     <div>
         {props.elements.map( (obj, objKey) => {
-            return <a {...obj} key={objKey} />
+            return (<a {...obj} key={objKey} />);
         })}
     </div>
 );

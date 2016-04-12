@@ -13,9 +13,8 @@ describe('Box tests', () => {
     var root = TestUtils.renderIntoDocument(
         <OriginalBox name='Text Input' connectDragSource={identity} isDragging />
     );
-
-    var comp = TestUtils.findRenderedDOMComponentWithTag(root, 'span');
-    expect(comp.props.children).toEqual('Text Input');
+    var comp = TestUtils.findRenderedDOMComponentWithClass(root, 'glyphicon glyphicon-pencil');
+    expect(comp.props.glyph).toEqual('pencil');
   });
 
 });
