@@ -42,7 +42,7 @@ class EditForm extends Component {
                                             <TagEditor fields={['tags', 'val','label']}
                                                        initialTags={fields[name].defaultValue}/>
                                             :
-                                            (name == 'bsSize' || name == 'bsStyle') ?
+                                            (name == 'bsSize' || name == 'bsStyle' || name == 'ComponentWidth') ?
 
                                                 <EditList { ...fields[name] } options={fields[name].defaultValue.options} name={name} />
                                                 :

@@ -2,17 +2,31 @@
  * Created by parikhv on 3/14/16.
  */
 import React from 'react';
-import { FormControls, Select, Input, Button, ButtonToolbar,Label } from 'react-bootstrap';
+import { FormControls, Select, Input, Button, ButtonToolbar,Label,Col } from 'react-bootstrap';
 
+
+/**
+ * This represents the column width options for form components
+ */
+
+const componentWidthOptions = ["1", "2", "3", "4","5","6","7","8","9","10","11","12"];
+/**
+ * This represents the default column width for all the form components
+ */
+
+const defaultComponentWidth = "5"
 /**
  * This function provides the TextLabel component for toolbox.
  */
 export const TextLabel = (props) => {
-    console.log({...props.elements[props.selectedElement]})
     return (
         <div className="form-horizontal">
-            {props.elements.map((obj, key) => {
-                return <FormControls.Static {...obj} key={key} wrapperClassName="col-md-8"/>
+            {props.elements.map((obj, objKey) => {
+                return (
+                <Col md={Number.parseInt(obj.ComponentWidth.value)} key={objKey}>
+                <FormControls.Static {...obj} key={objKey} wrapperClassName="col-md-8"/>
+                </Col>
+                );
             })}
         </div>
     );
@@ -22,7 +36,11 @@ TextLabel.defaultProps = {
     elements: [
         {
             label: "Label",
-            value: "Sample label"
+            value: "Sample label",
+            ComponentWidth :{
+                value: defaultComponentWidth,
+                options: componentWidthOptions
+            }
         }
     ],
     selectedElement: 0
@@ -34,8 +52,10 @@ TextLabel.defaultProps = {
 export const ButtonGroup = (props) => {
     return (
         <ButtonToolbar>
-            {props.elements.map((obj, key) =>{
-                return (<Button bsStyle={obj.bsStyle.value} bsSize={obj.bsSize.value} key={key}>{obj.label}</Button>)
+            {props.elements.map((obj, objKey) =>{
+                return (
+                       <Button bsStyle={obj.bsStyle.value} bsSize={obj.bsSize.value} key={objKey}>{obj.label}</Button>
+                      );
             })}
         </ButtonToolbar>
     );
@@ -73,7 +93,8 @@ export const RadioButton = (props) => {
     return (
         <div>
             {props.elements.map( (obj, objKey) => {
-                return (
+                return(
+                  <Col md={Number.parseInt(obj.ComponentWidth.value)} key={objKey}>
                     <Input key={objKey} label={obj.label}>
                         {obj.options.map( (opt, optKey) => {
                             return (
@@ -85,6 +106,7 @@ export const RadioButton = (props) => {
                             );
                         })}
                    </Input>
+                  </Col>
                 );
             })}
 
@@ -115,7 +137,11 @@ RadioButton.defaultProps = {
                 value: "large",
                 options: ["default", "large", "small", "xsmall"]
             },
-            wrapperClassName:"col-sm-offset-2 col-sm-2"
+            wrapperClassName:"col-sm-offset-2 col-sm-2",
+            ComponentWidth :{
+                value: defaultComponentWidth,
+                options: componentWidthOptions
+            }
         }
     ],
     selectedElement: 0
@@ -125,30 +151,40 @@ RadioButton.defaultProps = {
 /**
  * This function provides the text box component for toolbox.
  */
-export const TextBox = (props) => {
-    return(
-        <div>
-            {props.elements.map( (obj, objKey) => {
-                return <Input type='text' {...obj} bsSize={obj.bsSize.value} key={objKey} />
-            })}
-        </div>
-    );
-};
+ export const TextBox = (props) => {
+     return(
+         <div>
+             {props.elements.map( (obj, objKey) => {
 
-TextBox.defaultProps = {
-    elements: [
-        {
-            label: 'Text Box',
-            placeholder: 'Some Text',
-            bsSize: {
-                value: "medium",
-                options: ["default", "large", "medium", "small"]
-            }
-        }
-    ],
-    selectedElement: 0
+                 return(
+                   <Col md={Number.parseInt(obj.ComponentWidth.value)} key={objKey}>
+                   <Input type='text' {...obj} bsSize={obj.bsSize.value} key={objKey} />
+                   </Col>
+               );
+             })}
+           </div>
+     );
+ };
 
-};
+ TextBox.defaultProps = {
+     elements: [
+         {
+             label: 'Text Box',
+             placeholder: 'Some Text',
+             bsSize: {
+                 value: "medium",
+                 options: ["default", "large", "medium", "small"]
+             },
+             ComponentWidth :{
+                 value: defaultComponentWidth,
+                 options: componentWidthOptions
+             },
+         }
+     ],
+
+     selectedElement: 0
+
+ };
 
 /**
  * This function provides the Button component for toolbox.
@@ -157,7 +193,11 @@ export const Btn = (props) => {
     return (
         <div>
             {props.elements.map( (obj, objKey) => {
-                return (<Button bsStyle={obj.bsStyle.value} key={objKey} > {obj.children} </Button>);
+                return (
+                  <Col md={Number.parseInt(obj.ComponentWidth.value)} key={objKey}>
+                  <Button bsStyle={obj.bsStyle.value} key={objKey} > {obj.children} </Button>
+                  </Col>
+                );
             })}
         </div>
     );
@@ -174,6 +214,10 @@ Btn.defaultProps = {
             bsSize: {
                 value: "small",
                 options: ["default", "large", "small", "xsmall"]
+            },
+            ComponentWidth :{
+                value: defaultComponentWidth,
+                options: componentWidthOptions
             }
         }
     ],
@@ -188,7 +232,10 @@ export const TextArea = (props) => {
     return (
         <div>
             {props.elements.map( (obj, objKey) => {
-                return (<Input type="textarea" {...obj} key={objKey} bsSize={obj.bsSize.value}/>);
+                return (
+                     <Col md={Number.parseInt(obj.ComponentWidth.value)} key={objKey}>
+                     <Input type="textarea" {...obj} key={objKey} bsSize={obj.bsSize.value}/>
+                     </Col>);
             })}
         </div>
 
@@ -204,6 +251,10 @@ TextArea.defaultProps = {
             bsSize: {
                 value: "default",
                 options: ["default", "large", "medium", "small"]
+            },
+            ComponentWidth :{
+                value: defaultComponentWidth,
+                options: componentWidthOptions
             }
 
         }
@@ -219,11 +270,13 @@ export const Dropdown = (props) => {
         <div>
             {props.elements.map( (obj, objKey) => {
                 return (
+                  <Col md={Number.parseInt(obj.ComponentWidth.value)} key={objKey}>
                   <Input type="select" {...obj} key={objKey} bsSize={obj.bsSize.value}>
                     {obj.options.map((opt,optKey) => {
                         return  (<option value={opt.value} key={optKey}>{opt.label}</option>);
                     })}
                   </Input>
+                  </Col>
               );
             })}
         </div>
@@ -252,6 +305,10 @@ Dropdown.defaultProps = {
             bsSize: {
                 value: "medium",
                 options: ["default", "large", "medium", "small"]
+            },
+            ComponentWidth :{
+                value: defaultComponentWidth,
+                options: componentWidthOptions
             }
 
         }
@@ -266,7 +323,11 @@ export const Link = (props) => {
     return (
     <div>
         {props.elements.map( (obj, objKey) => {
-            return (<a {...obj} key={objKey} />);
+            return(
+              <Col md={Number.parseInt(obj.ComponentWidth.value)} key={objKey}>
+              <a {...obj} key={objKey} />
+              </Col>
+                );
         })}
     </div>
 );
@@ -277,7 +338,11 @@ Link.defaultProps = {
         {
             label: "Link",
             href: "http://www.google.com/",
-            children: "Google"
+            children: "Google",
+            ComponentWidth :{
+                value: defaultComponentWidth,
+                options: componentWidthOptions
+            }
         }
     ],
     selectedElement: 0
@@ -294,12 +359,15 @@ export const Checkbox = (props) => {
     <div>
         {props.elements.map( (obj, objKey) => {
 
-            return (<Input key={objKey}>
-                <h3><Label>{obj.textLabel}</Label></h3>
-                    {obj.options.map( (opt, optKey) => {
-                        return <div key={optKey}><Input type="checkbox"  {...obj}  label={opt.label} value={opt.value} checked readOnly /></div>
-                    })}
-                </Input>
+            return (
+                    <Col md={Number.parseInt(obj.ComponentWidth.value)} key={objKey}>
+                    <Input key={objKey}>
+                      <h3><Label>{obj.textLabel}</Label></h3>
+                          {obj.options.map( (opt, optKey) => {
+                              return <div key={optKey}><Input type="checkbox"  {...obj}  label={opt.label} value={opt.value} checked readOnly /></div>
+                           })}
+                    </Input>
+                    </Col>
             );
         })}
 
@@ -324,7 +392,11 @@ Checkbox.defaultProps = {
                value:"CC"
             }
         ],
-        textLabel : "CheckboxLabel"
+        textLabel : "CheckboxLabel",
+        ComponentWidth :{
+            value: defaultComponentWidth,
+            options: componentWidthOptions
+        }
       }
   ],
   selectedElement: 0,
@@ -343,11 +415,13 @@ return (
             let startYear = Number.parseInt(obj.startYear);
             let numberOfYears = Number.parseInt(obj.numberOfYears);
             return (
+                <Col md={Number.parseInt(obj.ComponentWidth.value)} key={objKey}>
                 <Input type="select" {...obj} bsSize={obj.bsSize.value} key={objKey}>
                     {[...Array(numberOfYears)].map((opt,optKey) => {
                         return  (<option value={optKey+startYear}  key={optKey}>{optKey+startYear}</option>)
                     })}
                 </Input>
+                </Col>
             );
         })}
     </div>
@@ -363,7 +437,11 @@ yearComponent.defaultProps = {
                 options: ["default", "large", "small", "xsmall"]
             },
             startYear: "2016",
-            numberOfYears: "10"
+            numberOfYears: "10",
+            ComponentWidth :{
+                value: defaultComponentWidth,
+                options: componentWidthOptions
+            }
         }
     ],
     selectedElement: 0
