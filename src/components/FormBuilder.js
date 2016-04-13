@@ -9,7 +9,6 @@ import ReactDOMServer from 'react-dom/server';
 
 const boxTarget = {
   hover() {
-
   },
   canDrop() {
     return true;
@@ -79,7 +78,7 @@ export default class Dustbin extends Component {
               {Object.keys(components.componentArray).map(key =>{
                     return(
                       <Row key={key} style={{ background: key == components.selectedComponent ? 'lightblue' : 'whitesmoke', padding: '5px'}}>
-                        <Glyphicon glyph="remove" id="delete-button" onClick={this.remove.bind(this, key)} style={{float: "right", zIndex: '3'}} />
+                        <Glyphicon glyph="remove" id="delete-button" onClick={this.remove.bind(this, key)} style={{float: "right", zIndex: '-1'}} />
 
                         <Row key={key} onClick={this.handleSelect.bind(this, key)} >
                           <ComponentContainer component={components.componentArray[key]} key={key} />

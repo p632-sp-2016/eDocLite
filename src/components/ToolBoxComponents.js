@@ -336,27 +336,23 @@ Checkbox.defaultProps = {
  */
 export const yearComponent = (props) => {
 
-    let minyear =  new Date().getFullYear();
-    console.log(minyear);
-    let maxyear = minyear + 5;
-
-    let yearArray = [];
-
-    for (let i = minyear; i<=maxyear; i++){
-      yearArray.push(i);}
 
 return (
     <div>
         {props.elements.map( (obj, objKey) => {
-            return (<Input type="select" {...obj} bsSize={obj.bsSize.value} key={objKey}>
-                {yearArray.map((opt,optKey) => {
-                    return  (<option value={opt}  key={optKey}>{opt}</option>)
-                })}
-            </Input>);
+            let startYear = Number.parseInt(obj.startYear);
+            let numberOfYears = Number.parseInt(obj.numberOfYears);
+            return (
+                <Input type="select" {...obj} bsSize={obj.bsSize.value} key={objKey}>
+                    {[...Array(numberOfYears)].map((opt,optKey) => {
+                        return  (<option value={optKey+startYear}  key={optKey}>{optKey+startYear}</option>)
+                    })}
+                </Input>
+            );
         })}
     </div>
   )
-}
+};
 
 yearComponent.defaultProps = {
     elements: [
@@ -365,8 +361,9 @@ yearComponent.defaultProps = {
             bsSize: {
                 value: "medium",
                 options: ["default", "large", "small", "xsmall"]
-            }
-
+            },
+            startYear: "2016",
+            numberOfYears: "10"
         }
     ],
     selectedElement: 0

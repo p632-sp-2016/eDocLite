@@ -5,7 +5,7 @@ import React, {  PropTypes, Component } from 'react'; // eslint-disable-line no-
 import { Input, Button, ButtonToolbar} from 'react-bootstrap';
 import {reduxForm} from 'redux-form';
 import { connect } from 'react-redux';
-import { editComponent } from '../actions';
+import { editComponent, selectComponent } from '../actions';
 import TagEditor from './TagEditor';
 import * as ToolBoxComponents from './ToolBoxComponents';
 import ComponentContainer from './ComponentContainer';
@@ -15,12 +15,13 @@ import EditList from './EditList';
  * This class represents the editor panel redux form that is dynamically generated using component properties
  */
 class EditForm extends Component {
+
+    handleCancel = () => {
+        this.props.dispatch(selectComponent(-1));
+    };
+
     render() {
         const {fields, handleSubmit, dispatch, resetForm, selectedComponent, selectedElement} = this.props;
-
-        const parse = (event, options) => {
-            return {value: {value: event.target.value, options}};
-        };
 
         if(selectedComponent != undefined){
 
@@ -55,7 +56,7 @@ class EditForm extends Component {
 
                         <ButtonToolbar>
                             <Button type="submit" bsStyle="info">Save</Button>
-                            <Button type="button" bsStyle="danger">Cancel</Button>
+                            <Button type="button" bsStyle="danger" onClick={this.handleCancel.bind(this)}>Cancel</Button>
                         </ButtonToolbar>
                     </form>
                 </div>
