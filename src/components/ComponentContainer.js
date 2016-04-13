@@ -14,7 +14,7 @@ class ComponentContainer extends React.Component {
         const Component = <this.props.component.component {...Props}/>;
 
         return (
-          <Col sm={5} md={8}>
+          <Col sm={5} md={8} style={{ pointerEvents: 'none'}}>
             {Component}
           </Col>
         );

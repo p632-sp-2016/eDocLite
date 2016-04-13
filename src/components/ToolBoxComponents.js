@@ -8,10 +8,11 @@ import { FormControls, Select, Input, Button, ButtonToolbar,Label } from 'react-
  * This function provides the TextLabel component for toolbox.
  */
 export const TextLabel = (props) => {
+    console.log({...props.elements[props.selectedElement]})
     return (
         <div className="form-horizontal">
             {props.elements.map((obj, key) => {
-                return (<FormControls.Static {...obj} key={key} wrapperClassName="col-md-8"/>);
+                return <FormControls.Static {...obj} key={key} wrapperClassName="col-md-8"/>
             })}
         </div>
     );
@@ -34,7 +35,7 @@ export const ButtonGroup = (props) => {
     return (
         <ButtonToolbar>
             {props.elements.map((obj, key) =>{
-                return (<Button bsStyle={obj.bsStyle.value} bsSize={obj.bsSize.value} key={key}>{obj.label}</Button>);
+                return (<Button bsStyle={obj.bsStyle.value} bsSize={obj.bsSize.value} key={key}>{obj.label}</Button>)
             })}
         </ButtonToolbar>
     );
@@ -128,7 +129,7 @@ export const TextBox = (props) => {
     return(
         <div>
             {props.elements.map( (obj, objKey) => {
-                return (<Input type='text' {...obj} key={objKey} bsSize={obj.bsSize.value}/>);
+                return <Input type='text' {...obj} bsSize={obj.bsSize.value} key={objKey} />
             })}
         </div>
     );
@@ -156,7 +157,7 @@ export const Btn = (props) => {
     return (
         <div>
             {props.elements.map( (obj, objKey) => {
-                return (<Button {...obj} key={objKey} bsStyle={obj.bsStyle.value} bsSize={obj.bsSize.value}/>);
+                return (<Button bsStyle={obj.bsStyle.value} key={objKey} > {obj.children} </Button>);
             })}
         </div>
     );

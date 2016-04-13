@@ -6,7 +6,7 @@ import TestUtils from "react-addons-test-utils";
 
 describe('Edit form tests', () => {
  let component = ToolBoxActions.TextBox;
- let selectedComponent : 0;
+ let selectedComponent = 0;
 
  let c = {
    ...component,

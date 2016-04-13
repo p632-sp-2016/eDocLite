@@ -1,6 +1,8 @@
 import 'babel-polyfill';
 import { createAction } from 'redux-actions';
 import { Actions } from '../constants';
+import 'babel-polyfill';
+import deepcopy from'deepcopy'
 
 
 /**
@@ -19,7 +21,7 @@ const payload = {
       return {
             id: componentId++,
             component,
-            props: JSON.parse(JSON.stringify(component.defaultProps))
+            props: deepcopy(component.defaultProps)
         };
     },
 
