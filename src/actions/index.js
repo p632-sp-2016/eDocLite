@@ -1,9 +1,7 @@
 import 'babel-polyfill';
 import { createAction } from 'redux-actions';
 import { Actions } from '../constants';
-import 'babel-polyfill';
 import deepcopy from'deepcopy'
-
 
 /**
  * this variable holds unique incremental ID for every todo item.

@@ -2,7 +2,7 @@
  * Created by parikhv on 3/14/16.
  */
 import React from 'react';
-import { FormControls, Select, Input, Button, ButtonToolbar,Label,Col } from 'react-bootstrap';
+import { Row, FormControls, Select, Input, Button, ButtonToolbar,Label, Col } from 'react-bootstrap';
 
 
 /**
@@ -24,7 +24,7 @@ export const TextLabel = (props) => {
             {props.elements.map((obj, objKey) => {
                 return (
                 <Col md={Number.parseInt(obj.ComponentWidth.value)} key={objKey}>
-                <FormControls.Static {...obj} key={objKey} wrapperClassName="col-md-8"/>
+                <FormControls.Static {...obj} key={objKey} labelClassName="col-md-2" wrapperClassName="col-md-8"/>
                 </Col>
                 );
             })}
@@ -93,20 +93,26 @@ export const RadioButton = (props) => {
     return (
         <div>
             {props.elements.map( (obj, objKey) => {
-                return(
-                  <Col md={Number.parseInt(obj.ComponentWidth.value)} key={objKey}>
+                const selectedWrapperClassVal = obj.alignment.value;
+                let numberOfOptions = obj.options.length;
+                let wrapperClass = 7;
+                if(selectedWrapperClassVal == 'Horizontal'){
+                  wrapperClass = 12/numberOfOptions;
+                }
+                return (
+                    <Col md={Number.parseInt(obj.ComponentWidth.value)} key={objKey}>
                     <Input key={objKey} label={obj.label}>
+                    <Row key={objKey}>
                         {obj.options.map( (opt, optKey) => {
                             return (
-                              <div key={optKey}>
-                                <label key={optKey}>
+                              <Col key={optKey} md={Number.parseInt(wrapperClass)}>
                                   <input type="radio" value={opt.value}{...obj} key={optKey} /> { opt.label }
-                                </label>
-                              </div>
+                              </Col>
                             );
                         })}
+                    </Row>
                    </Input>
-                  </Col>
+                   </Col>
                 );
             })}
 
@@ -121,23 +127,22 @@ RadioButton.defaultProps = {
             label: "RadioButtonSet",
             options:[
                 {
-                  label:"A",
-                  value:"AA"
+                  label:"Yes",
+                  value:"yes"
                 },
                 {
-                  label:"B",
-                   value:"BB"
-                },
-                {
-                   label:"C",
-                   value:"CC"
+                  label:"No",
+                  value:"no"
                 }
             ],
             bsSize: {
                 value: "large",
                 options: ["default", "large", "small", "xsmall"]
             },
-            wrapperClassName:"col-sm-offset-2 col-sm-2",
+            alignment: {
+                value: "Vertical",
+                options: ["Vertical", "Horizontal"]
+            },
             ComponentWidth :{
                 value: defaultComponentWidth,
                 options: componentWidthOptions
@@ -195,7 +200,7 @@ export const Btn = (props) => {
             {props.elements.map( (obj, objKey) => {
                 return (
                   <Col md={Number.parseInt(obj.ComponentWidth.value)} key={objKey}>
-                  <Button bsStyle={obj.bsStyle.value} key={objKey} > {obj.children} </Button>
+                  <Button bsStyle={obj.bsStyle.value} key={objKey} bsSize={obj.bsSize.value}>{obj.children}</Button>
                   </Col>
                 );
             })}
@@ -249,7 +254,7 @@ TextArea.defaultProps = {
             placeholder: "This is a description",
             label: "Text Area",
             bsSize: {
-                value: "default",
+                value: "medium",
                 options: ["default", "large", "medium", "small"]
             },
             ComponentWidth :{
@@ -358,15 +363,25 @@ export const Checkbox = (props) => {
     return (
     <div>
         {props.elements.map( (obj, objKey) => {
-
+            const selectedWrapperClassVal = obj.alignment.value;
+            let numberOfOptions = obj.options.length;
+            let wrapperClass = 7;
+            if(selectedWrapperClassVal == 'Horizontal'){
+              wrapperClass = 12/numberOfOptions;
+            }
             return (
                     <Col md={Number.parseInt(obj.ComponentWidth.value)} key={objKey}>
-                    <Input key={objKey}>
-                      <h3><Label>{obj.textLabel}</Label></h3>
+                    <Input key={objKey} label={obj.label}>
+                    <Row key={objKey}>
                           {obj.options.map( (opt, optKey) => {
-                              return <div key={optKey}><Input type="checkbox"  {...obj}  label={opt.label} value={opt.value} checked readOnly /></div>
+				return (
+	                          <Col key={optKey} md={Number.parseInt(wrapperClass)}>
+	                              <input type="checkbox" value={opt.value} {...obj} key={optKey} /> {opt.label}
+	                          </Col>
+	                        );
                            })}
-                    </Input>
+                    </Row>
+              	    </Input>
                     </Col>
             );
         })}
@@ -392,7 +407,11 @@ Checkbox.defaultProps = {
                value:"CC"
             }
         ],
-        textLabel : "CheckboxLabel",
+        label : "Check Box",
+	alignment: {
+            value: "Vertical",
+            options: ["Vertical", "Horizontal"]
+        },
         ComponentWidth :{
             value: defaultComponentWidth,
             options: componentWidthOptions
@@ -434,7 +453,7 @@ yearComponent.defaultProps = {
             label: "Year Menu",
             bsSize: {
                 value: "medium",
-                options: ["default", "large", "small", "xsmall"]
+                options: ["default", "large", "medium", "small"]
             },
             startYear: "2016",
             numberOfYears: "10",

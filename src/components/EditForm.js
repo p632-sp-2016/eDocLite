@@ -1,7 +1,7 @@
 /**
  * Created by parikhv on 4/1/16.
  */
-import React, {  PropTypes, Component } from 'react'; // eslint-disable-line no-unused-vars
+import React, {  PropTypes, Component } from 'react';
 import { Input, Button, ButtonToolbar} from 'react-bootstrap';
 import {reduxForm} from 'redux-form';
 import { connect } from 'react-redux';
@@ -40,11 +40,11 @@ class EditForm extends Component {
                                     {
                                         (name === 'options') ?
                                             <TagEditor fields={['tags', 'val','label']}
-                                                       initialTags={fields[name].defaultValue}/>
+                                                       initialTags={fields[name].initialValue}/>
                                             :
-                                            (name == 'bsSize' || name == 'bsStyle' || name == 'ComponentWidth') ?
+                                            (name == 'bsSize' || name == 'bsStyle' || name == 'ComponentWidth' || name == 'alignment') ?
 
-                                                <EditList { ...fields[name] } options={fields[name].defaultValue.options} name={name} />
+                                                <EditList { ...fields[name] } options={fields[name].initialValue.options} name={name} value={fields[name].initialValue.value} />
                                                 :
                                                 <Input type="text" label={name} {...fields[name]} />
                                     }

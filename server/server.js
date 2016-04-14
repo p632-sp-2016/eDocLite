@@ -1,5 +1,3 @@
-//import path from 'path';
-//import Express from 'express';
 var path = require('path');
 var Express = require('express');
 var httpProxy = require('http-proxy');
@@ -31,12 +29,6 @@ app.use(Express.static(PATH_DIST));
 
 bundle();
 
-//app.all('/assets/*', function(req, res) {
-//    proxy.web(req, res, {
-//        target: 'http://localhost:8080/'
-//    });
-//});
-
 app.get('/', function (req, res)  {
     res.sendFile(path.resolve(__dirname, '../src/index.html'));
 });
@@ -49,7 +41,6 @@ app.post('/saveForm', jsonParser, function (req, res) {
 
     components += skeleton.header;
     components += req.body;
-    //components += reactComp;
     components += skeleton.footer;
 
     fs.writeFile("../Form.js", components, function(err) {
