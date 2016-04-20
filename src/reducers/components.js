@@ -11,10 +11,6 @@ const editComp = ( component, selectedElement, props ) => {
     return {...component, props: {...component.props, elements: [...component.props.elements ] }};
 };
 
-const edit = ( state, props ) => {
-      return {...state, props};
-};
-
 /**
  * This function adds dragged component to form builder.
  */

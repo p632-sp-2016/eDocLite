@@ -2,7 +2,7 @@
  * Created by parikhv on 3/14/16.
  */
 import React from 'react';
-import { Row, FormControls, Select, Input, Button, ButtonToolbar,Label, Col } from 'react-bootstrap';
+import { Row, FormControls, Input, Button, ButtonToolbar, Col } from 'react-bootstrap';
 
 
 /**
@@ -14,7 +14,7 @@ const componentWidthOptions = ["1", "2", "3", "4","5","6","7","8","9","10","11",
  * This represents the default column width for all the form components
  */
 
-const defaultComponentWidth = "5"
+const defaultComponentWidth = "5";
 /**
  * This function provides the TextLabel component for toolbox.
  */
@@ -183,7 +183,7 @@ RadioButton.defaultProps = {
              ComponentWidth :{
                  value: defaultComponentWidth,
                  options: componentWidthOptions
-             },
+             }
          }
      ],
 
@@ -375,20 +375,19 @@ export const Checkbox = (props) => {
                     <Row key={objKey}>
                           {obj.options.map( (opt, optKey) => {
 				return (
-	                          <Col key={optKey} md={Number.parseInt(wrapperClass)}>
-	                              <input type="checkbox" value={opt.value} {...obj} key={optKey} /> {opt.label}
-	                          </Col>
-	                        );
-                           })}
-                    </Row>
-              	    </Input>
-                    </Col>
-            );
-        })}
-
-    </div>
-  )
-}
+          <Col key={optKey} md={Number.parseInt(wrapperClass)}>
+          <input type="checkbox" value={opt.value} {...obj} key={optKey} /> {opt.label}
+          </Col>
+        );
+      })}
+      </Row>
+      </Input>
+      </Col>
+    );
+  })}
+</div>
+  );
+};
 
 Checkbox.defaultProps = {
   elements: [
@@ -418,7 +417,7 @@ Checkbox.defaultProps = {
         }
       }
   ],
-  selectedElement: 0,
+  selectedElement: 0
 };
 
 
@@ -437,14 +436,14 @@ return (
                 <Col md={Number.parseInt(obj.ComponentWidth.value)} key={objKey}>
                 <Input type="select" {...obj} bsSize={obj.bsSize.value} key={objKey}>
                     {[...Array(numberOfYears)].map((opt,optKey) => {
-                        return  (<option value={optKey+startYear}  key={optKey}>{optKey+startYear}</option>)
+                        return  (<option value={optKey+startYear}  key={optKey}>{optKey+startYear}</option>);
                     })}
                 </Input>
                 </Col>
             );
         })}
     </div>
-  )
+  );
 };
 
 yearComponent.defaultProps = {

@@ -1,7 +1,7 @@
 import 'babel-polyfill';
 import { createAction } from 'redux-actions';
 import { Actions } from '../constants';
-import deepcopy from'deepcopy'
+import deepcopy from'deepcopy';
 
 /**
  * this variable holds unique incremental ID for every todo item.
@@ -94,6 +94,5 @@ export const saveFormPOST = createAction(Actions.saveFormPOST, async components 
         }).then(
             data => console.log(data),
             error => console.log(error)
-        )
-
+        );
 });

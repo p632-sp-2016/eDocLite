@@ -6,7 +6,6 @@ import AddComponent from '../containers/AddComponent';
 import ToolBox from './ToolBox';
 import styles from '../styles/styles.less';
 import EditFormContainer from './EditFormContainer';
-import Form from './Form'
 
 /**
  * This class represents the main UI container for form builder application. It holds component toolbox, editor panel and builder form.

@@ -15,9 +15,9 @@ export default class EditList extends Component {
         return (
             <Input type="select" label={name} defaultValue={value} onChange={event => onChange(parse(event))} >
                 {options.map((opt, optKey) => {
-                    return ( <option value={opt} key={optKey} >{opt}</option>)
+                    return ( <option value={opt} key={optKey} >{opt}</option>);
                 })}
             </Input>
-        )
+        );
     }
 }

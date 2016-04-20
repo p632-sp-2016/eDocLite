@@ -2,8 +2,6 @@ var path = require('path');
 var Express = require('express');
 var httpProxy = require('http-proxy');
 
-var proxy = httpProxy.createProxyServer();
-
 var bundle = require('./dev-server.js');
 
 var bodyParser = require('body-parser');
