@@ -17,7 +17,8 @@ describe('ComponentContainer tests', () => {
 
     shallowRenderer.render(<ComponentContainer component={c} />);
     const component = shallowRenderer.getRenderOutput();
-    expect(component.props.id).toEqual('ComponentContainer');
+    expect(component.props.componentClass).toEqual('div');
+    expect(component.props.children.props.elements[0].label).toEqual('Text Box');
   });
 
 });

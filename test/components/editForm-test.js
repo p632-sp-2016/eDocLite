@@ -6,7 +6,7 @@ import TestUtils from "react-addons-test-utils";
 
 describe('Edit form tests', () => {
  let component = ToolBoxActions.TextBox;
- let selectedComponent : 0;
+ let selectedComponent = 0;
 
  let c = {
    ...component,
@@ -18,7 +18,7 @@ describe('Edit form tests', () => {
 
     shallowRenderer.render(<EditForm fields={ Object.keys(c.props) } selectedComponent={ selectedComponent } />);
     const component = shallowRenderer.getRenderOutput();
-    expect(component.props.fields).toEqual(['label','placeholder']);
+    expect(component.props.fields).toEqual(['elements', 'selectedElement']);
  });
 
 });

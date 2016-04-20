@@ -1,8 +1,10 @@
 @import '~bootstrap/less/bootstrap.less';
 
 :local(.sidepanelstyle) {
-  position: static;
-  height: 800px;
+  position: fixed;
+  height: 100%;
+  width: 24%;
+  overflow-y: auto;
   background: whitesmoke;
   // background: black;
 }
@@ -10,7 +12,7 @@
 :local(.panelstyle){
   background: whitesmoke;
   // background: black;
-  border: none
+  border: none;
 }
 
 :local(.buttonstyle){

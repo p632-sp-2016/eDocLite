@@ -6,8 +6,13 @@ import { handleActions } from  'redux-actions';
 /**
  * This function assigns modified properties to a selected form component as specified by user.
  */
-const editComp = ( component, props ) => {
-      return {...component, props: props};
+const editComp = ( component, selectedElement, props ) => {
+    component.props.elements[selectedElement] = props;
+    return {...component, props: {...component.props, elements: [...component.props.elements ] }};
+};
+
+const edit = ( state, props ) => {
+      return {...state, props};
 };
 
 /**
@@ -25,6 +30,10 @@ const deleteComp = ( state = {}, id ) => {
     return {...state};
 };
 
+const selectElement = ( state = {}, selectedElement ) => {
+    return {...state, props: {...state.props, selectedElement: selectedElement}};
+};
+
 /**
  * This function handles creation and modification of form builder components
  */
@@ -39,14 +48,17 @@ const components = handleActions({
         else
             return {...state, selectedComponent:id.id};
     },
-    EDIT_COMPONENT: (state, { payload: {id, props} }) => {
-        return {...state, componentArray: {...state.componentArray, [id]: editComp(state.componentArray[id], props)}};
+    EDIT_COMPONENT: (state, { payload: {id, selectedElement, props} }) => {
+        return {...state, componentArray: {...state.componentArray, [id]: editComp(state.componentArray[id], selectedElement, props)}};
     },
     DELETE_COMPONENT: (state, { payload: id }) => {
       if (id.id === state.selectedComponent)
         return {...state, componentArray: deleteComp(state.componentArray, id.id), selectedComponent: -1};
       else
         return {...state, componentArray: deleteComp(state.componentArray, id.id)};
+    },
+    SELECT_ELEMENT: (state, { payload: {selectedComponent, selectedElement} }) => {
+        return {...state, componentArray: {...state.componentArray, [selectedComponent]: selectElement(state.componentArray[selectedComponent], selectedElement)}};
     }
 },  ({}));
 

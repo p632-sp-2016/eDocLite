@@ -18,11 +18,9 @@ export default class ComponentContainer extends React.Component {
         const Component = <this.props.component.component {...Props}/>;
 
         return (
-            <Grid id="ComponentContainer" >
-            <Col xs={4} md={10}>
-                {Component}
-            </Col>
-            </Grid>
+          <Col md={10} style={{ pointerEvents: 'none'}}>
+            {Component}
+          </Col>
         );
     }
 }

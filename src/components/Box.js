@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import ItemTypes from './ItemTypes';
 import { DragSource } from 'react-dnd';
-import { ListGroupItem } from 'react-bootstrap';
+import { Glyphicon, ListGroupItem } from 'react-bootstrap';
 
 const boxSource = {
   beginDrag(props) {
@@ -31,7 +31,7 @@ export default class Box extends Component {
       connectDragSource(
         <div>
             <ListGroupItem bsStyle="info" font-weight="bold">
-              {name}
+              <Glyphicon glyph="pencil" /> {name}
             </ListGroupItem>
         </div>
       )

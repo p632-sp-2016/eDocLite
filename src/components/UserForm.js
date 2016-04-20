@@ -6,6 +6,7 @@ import AddComponent from '../containers/AddComponent';
 import ToolBox from './ToolBox';
 import styles from '../styles/styles.less';
 import EditFormContainer from './EditFormContainer';
+import Form from './Form'
 
 /**
  * This class represents the main UI container for form builder application. It holds component toolbox, editor panel and builder form.
@@ -13,11 +14,14 @@ import EditFormContainer from './EditFormContainer';
 @DragDropContext(HTML5Backend)
 export default class UserForm extends Component {
 
+
+
     render() {
+
         return (
             <Grid fluid>
                 <Row>
-                    <Col xs={4} md={3}>
+                    <Col xs={6} md={3}>
                       <Row>
                         <Accordion className={styles.sidepanelstyle}>
                             <Panel bsStyle="primary" collapsible defaultExpanded header="Drag Source" className={styles.panelstyle}>
@@ -29,7 +33,7 @@ export default class UserForm extends Component {
                         </Accordion>
                       </Row>
                    </Col>
-                   <Col xs={6} md={4} col-md-push-mdPush={5}>
+                   <Col xs={11} md={8}>
                       <PageHeader>eDocLite</PageHeader>
                       <AddComponent />
                    </Col>
@@ -38,5 +42,6 @@ export default class UserForm extends Component {
         );
     }
 }
+
 
 export default UserForm;

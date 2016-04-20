@@ -115,6 +115,7 @@ describe('Components reducer', () => {
        type: 'EDIT_COMPONENT',
        payload: {
          id: 0,
+         selectedElement: 0,
          props: {
            label: "abc",
            placeholder: "xyz"
@@ -127,8 +128,13 @@ describe('Components reducer', () => {
          0: {
            component: component,
            props: {
-             label: "abc",
-             placeholder: "xyz"
+             elements: [
+               {
+                 label: "abc",
+                 placeholder: "xyz"
+               }
+             ],
+             selectedElement: 0
            }
          }
        },

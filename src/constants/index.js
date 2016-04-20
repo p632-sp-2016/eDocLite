@@ -15,5 +15,7 @@ export const Actions = {
     addComponent: "ADD_COMPONENT",
     selectComponent: "SELECT_COMPONENT",
     editComponent: "EDIT_COMPONENT",
-    deleteComponent: "DELETE_COMPONENT"
+    deleteComponent: "DELETE_COMPONENT",
+    selectElement: "SELECT_ELEMENT",
+     saveFormPOST: "SAVE_FORM_POST"
 };

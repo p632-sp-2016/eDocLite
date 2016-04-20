@@ -13,13 +13,16 @@ const ToolBox = () => {
     return (
         <Grid name="ToolBox" fluid>
             <ListGroup>
-                <Box name='Text Input'  component={ToolBoxActions.TextBox}/>
+                <Box name='Text Label' component={ToolBoxActions.TextLabel}/>
+                <Box name='Text Input' component={ToolBoxActions.TextBox}/>
                 <Box name='Button' component={ToolBoxActions.Btn}/>
                 <Box name='Drop Down' component={ToolBoxActions.Dropdown}/>
                 <Box name='Text Area' component={ToolBoxActions.TextArea}/>
                 <Box name='Link' component={ToolBoxActions.Link}/>
                 <Box name='Radio' component={ToolBoxActions.RadioButton}/>
                 <Box name='ButtonGroup' component={ToolBoxActions.ButtonGroup}/>
+                <Box name='Checkbox' component={ToolBoxActions.Checkbox}/>
+                <Box name='Year' component={ToolBoxActions.yearComponent}/>
             </ListGroup>
         </Grid>
     );
