@@ -1,7 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import {reduxForm, change} from 'redux-form';
-import { connect } from 'react-redux';
-import EditForm from './EditForm';
 import { Input, Button, Glyphicon, ListGroup, ListGroupItem } from 'react-bootstrap';
 
 /**
@@ -10,7 +8,7 @@ import { Input, Button, Glyphicon, ListGroup, ListGroupItem } from 'react-bootst
 export default class TagEditor extends Component {
     selected = -1;
     render() {
-        let {fields: {tags, val, label}, initialTags, handleSubmit, dispatch, resetForm } = this.props;
+        let {fields: {tags, val, label}, initialTags, dispatch, resetForm } = this.props;
         tags = initialTags;
 
         const addTag = (array, value,label) => {
@@ -42,7 +40,7 @@ export default class TagEditor extends Component {
                             <Glyphicon glyph="remove" id="delete-button" onClick={removeTag.bind(this, tags, index)} style={{position: 'absolute', zIndex: '2', float:'right'}} />
                         </div>);
                 })
-            )
+            );
         };
 
         const onSelect = (label, value, index) => {

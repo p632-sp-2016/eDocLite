@@ -1,8 +1,8 @@
 /**
  * Created by parikhv on 3/9/16.
  */
-import React, { PropTypes } from 'react';
-import { Grid, Col} from 'react-bootstrap';
+import React from 'react';
+import {Col} from 'react-bootstrap';
 
 
 /**

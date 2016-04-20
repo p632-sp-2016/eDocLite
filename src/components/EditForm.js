@@ -4,11 +4,8 @@
 import React, {  PropTypes, Component } from 'react';
 import { Input, Button, ButtonToolbar} from 'react-bootstrap';
 import {reduxForm} from 'redux-form';
-import { connect } from 'react-redux';
 import { editComponent, selectComponent } from '../actions';
 import TagEditor from './TagEditor';
-import * as ToolBoxComponents from './ToolBoxComponents';
-import ComponentContainer from './ComponentContainer';
 import EditList from './EditList';
 
 /**

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { change, reduxForm} from 'redux-form';
+import { reduxForm} from 'redux-form';
 import EditForm from './EditForm';
 import { selectElement } from '../actions';
-import { Input, DropdownButton, MenuItem } from 'react-bootstrap';
+import { DropdownButton, MenuItem } from 'react-bootstrap';
 
 /**
  * This class represents the container for editor panel redux form. It generates form for editing compnent properties dynamically.
@@ -23,7 +23,7 @@ export default class EditFormContainer extends Component {
                 {component.props.elements != undefined ?
                     <DropdownButton title="Selected Component" id="selectedElement">
                       {component.props.elements.map((obj, key) => {
-                          return (<MenuItem value={obj.label} key={key} onClick={this.compSelectionHandler.bind(this, key)}>{obj.label}</MenuItem>)
+                          return (<MenuItem value={obj.label} key={key} onClick={this.compSelectionHandler.bind(this, key)}>{obj.label}</MenuItem>);
                       })}
                     </DropdownButton>
                   :''}
