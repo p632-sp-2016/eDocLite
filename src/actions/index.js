@@ -12,10 +12,9 @@ let componentId = 0;
  * This action creates and returns an object to add a new form element in the form builder.
  */
 const payload = {
-    /**
-     * This action creates and returns an object to add a new form element in the form builder.
-     */
+
     getAddComponent: (component) => {
+
       return {
             id: componentId++,
             component,
@@ -23,9 +22,7 @@ const payload = {
         };
     },
 
-    /**
-    * This action returns an object representing the selected/clicked element for editing its props.
-    */
+
     getSelectComponent: (id) => {
         return {
             id
@@ -62,19 +59,26 @@ const payload = {
         };
     }
 };
-
+/**
+ * Export constant ADD_COMPONENT Action.
+ */
 export const addCompnent = createAction(Actions.addComponent, payload.getAddComponent);
-
+/**
+ * Export constant SELECT_COMPONENT Action.
+ */
 export const selectComponent = createAction(Actions.selectComponent, payload.getSelectComponent);
-
+/**
+ * Export constant SELECT_ELEMENT Action.
+ */
 export const selectElement = createAction(Actions.selectElement, payload.getSelectElement);
-
+/**
+ * Export constant DELETE_COMPONENT Action.
+ */
 export const deleteComponent = createAction(Actions.deleteComponent, payload.getDeleteComponent);
 /**
  * Export constant EDIT_COMPONENT Action.
  */
 export const editComponent = createAction(Actions.editComponent, payload.getEditComponent);
-
 /**
  * Export constant SAVE_FORM Action
  */

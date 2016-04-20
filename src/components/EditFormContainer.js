@@ -18,6 +18,7 @@ export default class EditFormContainer extends Component {
         const {component, selectedComponent, fields: {selectedElement}} = this.props;
         if (selectedComponent != -1) {
             return (
+
                 <div>
                 {component.props.elements != undefined ?
                     <DropdownButton title="Selected Component" id="selectedElement">

@@ -38,4 +38,9 @@ const AddComponent = connect(
     mapDispatchToProps
 )(FormBuilder);
 
+
+
+/**
+ * Export default AddComponent.
+ */
 export default AddComponent;

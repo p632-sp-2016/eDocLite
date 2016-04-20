@@ -4,11 +4,15 @@
 import React, { PropTypes } from 'react';
 import { Grid, Col} from 'react-bootstrap';
 
-/**
- * ComponentContainer
- */
-class ComponentContainer extends React.Component {
 
+/**
+ *  This class represents the container for the form build by dragged components.
+ *  This class wraps Components of the form built by drag and drop functions.
+ */
+export default class ComponentContainer extends React.Component {
+  /**
+   *  ComponentContainer UI render method
+   */
     render() {
         const Props = this.props.component.props;
         const Component = <this.props.component.component {...Props}/>;

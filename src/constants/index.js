@@ -19,7 +19,3 @@ export const Actions = {
     selectElement: "SELECT_ELEMENT",
      saveFormPOST: "SAVE_FORM_POST"
 };
-
-export const Filters = {
-    showAll: "SHOW_ALL"
-};
