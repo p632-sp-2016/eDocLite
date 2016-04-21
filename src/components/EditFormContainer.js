@@ -15,7 +15,7 @@ export default class EditFormContainer extends Component {
     };
 
     render() {
-        const {component, selectedComponent, fields: {selectedElement}} = this.props;
+        const {component, selectedComponent } = this.props;
         if (selectedComponent != -1) {
             return (
 

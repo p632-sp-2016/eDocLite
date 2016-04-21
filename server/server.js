@@ -1,6 +1,5 @@
 var path = require('path');
 var Express = require('express');
-var httpProxy = require('http-proxy');
 
 var bundle = require('./dev-server.js');
 
@@ -35,7 +34,6 @@ var components = "";
 
 app.post('/saveForm', jsonParser, function (req, res) {
 
-    const reactComp = babel.transform(req.body, {presets: ['react']}).code;
 
     components += skeleton.header;
     components += req.body;

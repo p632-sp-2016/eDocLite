@@ -2,11 +2,17 @@ import React, { Component, PropTypes } from 'react';
 import {reduxForm, change} from 'redux-form';
 import { Input, Button, Glyphicon, ListGroup, ListGroupItem } from 'react-bootstrap';
 
+
 /**
- * This class represents the container for editor panel redux form. It generates form for editing compnent properties dynamically.
+ * This class represents editor panel to edit/add/delete options for the dropdown/radio/checkbox form components
  */
+
 export default class TagEditor extends Component {
     selected = -1;
+
+    /**
+     *  TagEditor UI render method
+    */
     render() {
         let {fields: {tags, val, label}, initialTags, dispatch, resetForm } = this.props;
         tags = initialTags;
@@ -77,10 +83,11 @@ TagEditor.propTypes = {
     handleSubmit: PropTypes.func.isRequired,
     resetForm: PropTypes.func.isRequired
 };
+
+
 /**
  * Returns the selected component and selected component id
  */
 TagEditor = reduxForm({form: 'tag-editor'})(TagEditor);
-
 
 export default TagEditor;

@@ -4,8 +4,16 @@
 import React, { Component } from 'react';
 import { Input } from 'react-bootstrap';
 
+
+/**
+ * This class represents the editor dropdown option for bsSize', 'bsStyle', 'ComponentWidth', 'alignment' for the compnent properties
+ */
+
 export default class EditList extends Component {
 
+/**
+ *  EditList dropdown UI render method
+*/
     render() {
         let { value, name, options, onChange } = this.props;
         const parse = event => {

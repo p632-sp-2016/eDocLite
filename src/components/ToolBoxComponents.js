@@ -89,6 +89,10 @@ ButtonGroup.defaultProps = {
     selectedElement: 0
 };
 
+/**
+ * This function provides the RadioButton group component for toolbox.
+ */
+ 
 export const RadioButton = (props) => {
     return (
         <div>
