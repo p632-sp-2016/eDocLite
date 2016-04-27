@@ -87,10 +87,10 @@ export const saveFormPOST = createAction(Actions.saveFormPOST, async components 
         await fetch('/saveForm', {
             method: 'POST',
             headers: {
-                'Accept': 'text/html',
-                'Content-Type': 'text/html'
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
             },
-            body: components
+            body: JSON.stringify(components)
         }).then(
             data => console.log(data),
             error => console.log(error)

@@ -33,6 +33,7 @@ export const TextLabel = (props) => {
 };
 
 TextLabel.defaultProps = {
+    name: "TextLabel",
     elements: [
         {
             label: "Label",
@@ -62,6 +63,7 @@ export const ButtonGroup = (props) => {
 };
 
 ButtonGroup.defaultProps = {
+    name: "ButtonGroup",
     elements: [
         {
             label: "Button1",
@@ -92,7 +94,7 @@ ButtonGroup.defaultProps = {
 /**
  * This function provides the RadioButton group component for toolbox.
  */
- 
+
 export const RadioButton = (props) => {
     return (
         <div>
@@ -125,6 +127,7 @@ export const RadioButton = (props) => {
 };
 
 RadioButton.defaultProps = {
+    name: "RadioButton",
     elements: [
         {
             name: "RadioButtonSet",
@@ -176,6 +179,7 @@ RadioButton.defaultProps = {
  };
 
  TextBox.defaultProps = {
+     name: "TextBox",
      elements: [
          {
              label: 'Text Box',
@@ -213,6 +217,7 @@ export const Btn = (props) => {
 };
 
 Btn.defaultProps = {
+    name: "Btn",
     elements: [
         {
             children: "Button",
@@ -252,6 +257,7 @@ export const TextArea = (props) => {
 };
 
 TextArea.defaultProps = {
+    name: "TextArea",
     elements: [
         {
             name: "description",
@@ -294,6 +300,7 @@ export const Dropdown = (props) => {
 };
 
 Dropdown.defaultProps = {
+    name: "Dropdown",
     elements: [
         {
             label: "Dropdown Menu",
@@ -343,6 +350,7 @@ export const Link = (props) => {
 };
 
 Link.defaultProps = {
+    name: "Link",
     elements: [
         {
             label: "Link",
@@ -394,7 +402,8 @@ export const Checkbox = (props) => {
 };
 
 Checkbox.defaultProps = {
-  elements: [
+    name: "Checkbox",
+    elements: [
       {
         options:[
             {
@@ -451,6 +460,7 @@ return (
 };
 
 yearComponent.defaultProps = {
+    name: "YearComponent",
     elements: [
         {
             label: "Year Menu",
