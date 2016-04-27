@@ -48,3 +48,6 @@ build
 # Coverage Report
 lcov.info
 
+# Generated form
+forms/
+
