@@ -52,12 +52,7 @@ export default class Dustbin extends Component {
   submitForm(components) {
     const componentArr = components.componentArray;
 
-    let html = "";
-    Object.keys(componentArr).map(key => {
-        html += ReactDOMServer.renderToString(React.createElement(componentArr[key].component, componentArr[key].props));
-    });
-    console.log(html);
-    this.props.onSubmitForm(html);
+    this.props.onSubmitForm(componentArr);
   }
 
   render() {

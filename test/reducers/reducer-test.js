@@ -126,8 +126,9 @@ describe('Components reducer', () => {
      {
        componentArray:{
          0: {
-           component: component,
+            component: component,
            props: {
+               name: "TextBox",
              elements: [
                {
                  label: "abc",
