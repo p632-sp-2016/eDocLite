@@ -15,6 +15,41 @@ const componentWidthOptions = ["1", "2", "3", "4","5","6","7","8","9","10","11",
  */
 
 const defaultComponentWidth = "5";
+
+const props = {
+    getComponentWidth : () => (
+    {
+        value: defaultComponentWidth,
+        options: componentWidthOptions
+    }
+    ),
+    getStyle : () => (
+    {
+        value: "default",
+        options: ["default", "danger", "info", "primary", "success", "warning"]
+    }
+    ),
+    getSize : () => (
+    {
+        value: "small",
+        options: ["default", "large", "small", "xsmall"]
+    }
+    ),
+    getAlignment : () => (
+    {
+        value: "Vertical",
+        options: ["Vertical", "Horizontal"]
+    }
+    ),
+    getOptions : (opts) => (
+        opts.map((opt) => {
+            return {
+                label: opt,
+                value: opt
+            }
+        })
+    )
+};
 /**
  * This function provides the TextLabel component for toolbox.
  */
@@ -23,9 +58,9 @@ export const TextLabel = (props) => {
         <div className="form-horizontal">
             {props.elements.map((obj, objKey) => {
                 return (
-                <Col md={Number.parseInt(obj.ComponentWidth.value)} key={objKey}>
-                <FormControls.Static {...obj} key={objKey} labelClassName="col-md-2" wrapperClassName="col-md-8"/>
-                </Col>
+                    <Col md={Number.parseInt(obj.ComponentWidth.value)} key={objKey}>
+                        <FormControls.Static {...obj} key={objKey} labelClassName="col-md-2" wrapperClassName="col-md-8"/>
+                    </Col>
                 );
             })}
         </div>
@@ -38,10 +73,7 @@ TextLabel.defaultProps = {
         {
             label: "Label",
             value: "Sample label",
-            ComponentWidth :{
-                value: defaultComponentWidth,
-                options: componentWidthOptions
-            }
+            ComponentWidth: props.getComponentWidth(),
         }
     ],
     selectedElement: 0
@@ -55,8 +87,8 @@ export const ButtonGroup = (props) => {
         <ButtonToolbar>
             {props.elements.map((obj, objKey) =>{
                 return (
-                       <Button bsStyle={obj.bsStyle.value} bsSize={obj.bsSize.value} key={objKey}>{obj.label}</Button>
-                      );
+                    <Button bsStyle={obj.bsStyle.value} bsSize={obj.bsSize.value} key={objKey}>{obj.label}</Button>
+                );
             })}
         </ButtonToolbar>
     );
@@ -64,30 +96,17 @@ export const ButtonGroup = (props) => {
 
 ButtonGroup.defaultProps = {
     name: "ButtonGroup",
-    elements: [
-        {
-            label: "Button1",
-            bsStyle: {
-                value: "default",
-                options: ["default", "danger", "info", "primary", "success", "warning"]
-            },
-            bsSize: {
-                value: "small",
-                options: ["default", "large", "small", "xsmall"]
+    elements:
+        [...Array(2)].map((opt,optKey) => {
+            return  (
+            {
+                label: "Button"+optKey,
+                bsStyle: props.getStyle(),
+                bsSize: props.getSize()
             }
-        },
-        {
-            label: "Button2",
-            bsStyle: {
-                value: "danger",
-                options: ["default", "danger", "info", "primary", "success", "warning"]
-            },
-            bsSize: {
-                value: "large",
-                options: ["default", "large", "small", "xsmall"]
-            }
-        }
-    ],
+            );
+        })
+    ,
     selectedElement: 0
 };
 
@@ -103,22 +122,22 @@ export const RadioButton = (props) => {
                 let numberOfOptions = obj.options.length;
                 let wrapperClass = 7;
                 if(selectedWrapperClassVal == 'Horizontal'){
-                  wrapperClass = 12/numberOfOptions;
+                    wrapperClass = 12/numberOfOptions;
                 }
                 return (
                     <Col md={Number.parseInt(obj.ComponentWidth.value)} key={objKey}>
-                    <Input key={objKey} label={obj.label}>
-                    <Row key={objKey}>
-                        {obj.options.map( (opt, optKey) => {
-                            return (
-                              <Col key={optKey} md={Number.parseInt(wrapperClass)}>
-                                  <input type="radio" value={opt.value}{...obj} key={optKey} /> { opt.label }
-                              </Col>
-                            );
-                        })}
-                    </Row>
-                   </Input>
-                   </Col>
+                        <Input key={objKey} label={obj.label}>
+                            <Row key={objKey}>
+                                {obj.options.map( (opt, optKey) => {
+                                    return (
+                                        <Col key={optKey} md={Number.parseInt(wrapperClass)}>
+                                            <input type="radio" value={opt.value}{...obj} key={optKey} /> { opt.label }
+                                        </Col>
+                                    );
+                                })}
+                            </Row>
+                        </Input>
+                    </Col>
                 );
             })}
 
@@ -132,28 +151,10 @@ RadioButton.defaultProps = {
         {
             name: "RadioButtonSet",
             label: "RadioButtonSet",
-            options:[
-                {
-                  label:"Yes",
-                  value:"yes"
-                },
-                {
-                  label:"No",
-                  value:"no"
-                }
-            ],
-            bsSize: {
-                value: "large",
-                options: ["default", "large", "small", "xsmall"]
-            },
-            alignment: {
-                value: "Vertical",
-                options: ["Vertical", "Horizontal"]
-            },
-            ComponentWidth :{
-                value: defaultComponentWidth,
-                options: componentWidthOptions
-            }
+            options:props.getOptions(["Yes", "No"]),
+            bsSize: props.getSize(),
+            alignment: props.getAlignment(),
+            ComponentWidth :props.getComponentWidth()
         }
     ],
     selectedElement: 0
@@ -163,41 +164,34 @@ RadioButton.defaultProps = {
 /**
  * This function provides the text box component for toolbox.
  */
- export const TextBox = (props) => {
-     return(
-         <div>
-             {props.elements.map( (obj, objKey) => {
+export const TextBox = (props) => {
+    return(
+        <div>
+            {props.elements.map( (obj, objKey) => {
 
-                 return(
-                   <Col md={Number.parseInt(obj.ComponentWidth.value)} key={objKey}>
-                   <Input type='text' {...obj} bsSize={obj.bsSize.value} key={objKey} />
-                   </Col>
-               );
-             })}
-           </div>
-     );
- };
+                return(
+                    <Col md={Number.parseInt(obj.ComponentWidth.value)} key={objKey}>
+                        <Input type='text' {...obj} bsSize={obj.bsSize.value} key={objKey} />
+                    </Col>
+                );
+            })}
+        </div>
+    );
+};
 
- TextBox.defaultProps = {
-     name: "TextBox",
-     elements: [
-         {
-             label: 'Text Box',
-             placeholder: 'Some Text',
-             bsSize: {
-                 value: "medium",
-                 options: ["default", "large", "medium", "small"]
-             },
-             ComponentWidth :{
-                 value: defaultComponentWidth,
-                 options: componentWidthOptions
-             }
-         }
-     ],
+TextBox.defaultProps = {
+    name: "TextBox",
+    elements: [
+        {
+            label: 'Text Box',
+            placeholder: 'Some Text',
+            bsSize: props.getSize(),
+            ComponentWidth : props.getComponentWidth()
+        }
+    ],
+    selectedElement: 0
 
-     selectedElement: 0
-
- };
+};
 
 /**
  * This function provides the Button component for toolbox.
@@ -207,9 +201,9 @@ export const Btn = (props) => {
         <div>
             {props.elements.map( (obj, objKey) => {
                 return (
-                  <Col md={Number.parseInt(obj.ComponentWidth.value)} key={objKey}>
-                  <Button bsStyle={obj.bsStyle.value} key={objKey} bsSize={obj.bsSize.value}>{obj.children}</Button>
-                  </Col>
+                    <Col md={Number.parseInt(obj.ComponentWidth.value)} key={objKey}>
+                        <Button bsStyle={obj.bsStyle.value} key={objKey} bsSize={obj.bsSize.value}>{obj.children}</Button>
+                    </Col>
                 );
             })}
         </div>
@@ -221,22 +215,12 @@ Btn.defaultProps = {
     elements: [
         {
             children: "Button",
-            bsStyle: {
-                value: "default",
-                options: ["default", "danger", "info", "primary", "success", "warning"]
-            },
-            bsSize: {
-                value: "small",
-                options: ["default", "large", "small", "xsmall"]
-            },
-            ComponentWidth :{
-                value: defaultComponentWidth,
-                options: componentWidthOptions
-            }
+            bsStyle: props.getStyle(),
+            bsSize: props.getSize(),
+            ComponentWidth :props.getComponentWidth()
         }
     ],
     selectedElement: 0
-
 };
 
 /**
@@ -247,9 +231,9 @@ export const TextArea = (props) => {
         <div>
             {props.elements.map( (obj, objKey) => {
                 return (
-                     <Col md={Number.parseInt(obj.ComponentWidth.value)} key={objKey}>
-                     <Input type="textarea" {...obj} key={objKey} bsSize={obj.bsSize.value}/>
-                     </Col>);
+                    <Col md={Number.parseInt(obj.ComponentWidth.value)} key={objKey}>
+                        <Input type="textarea" {...obj} key={objKey} bsSize={obj.bsSize.value}/>
+                    </Col>);
             })}
         </div>
 
@@ -263,15 +247,8 @@ TextArea.defaultProps = {
             name: "description",
             placeholder: "This is a description",
             label: "Text Area",
-            bsSize: {
-                value: "medium",
-                options: ["default", "large", "medium", "small"]
-            },
-            ComponentWidth :{
-                value: defaultComponentWidth,
-                options: componentWidthOptions
-            }
-
+            bsSize: props.getSize(),
+            ComponentWidth :props.getComponentWidth()
         }
     ],
     selectedElement: 0
@@ -285,14 +262,14 @@ export const Dropdown = (props) => {
         <div>
             {props.elements.map( (obj, objKey) => {
                 return (
-                  <Col md={Number.parseInt(obj.ComponentWidth.value)} key={objKey}>
-                  <Input type="select" {...obj} key={objKey} bsSize={obj.bsSize.value}>
-                    {obj.options.map((opt,optKey) => {
-                        return  (<option value={opt.value} key={optKey}>{opt.label}</option>);
-                    })}
-                  </Input>
-                  </Col>
-              );
+                    <Col md={Number.parseInt(obj.ComponentWidth.value)} key={objKey}>
+                        <Input type="select" {...obj} key={objKey} bsSize={obj.bsSize.value}>
+                            {obj.options.map((opt,optKey) => {
+                                return  (<option value={opt.value} key={optKey}>{opt.label}</option>);
+                            })}
+                        </Input>
+                    </Col>
+                );
             })}
         </div>
 
@@ -304,29 +281,9 @@ Dropdown.defaultProps = {
     elements: [
         {
             label: "Dropdown Menu",
-            options:[
-                {
-                  label:"A",
-                  value:"AA"
-                },
-                {
-                  label:"B",
-                   value:"BB"
-                },
-                {
-                   label:"C",
-                   value:"CC"
-                }
-            ],
-            bsSize: {
-                value: "medium",
-                options: ["default", "large", "medium", "small"]
-            },
-            ComponentWidth :{
-                value: defaultComponentWidth,
-                options: componentWidthOptions
-            }
-
+            options:props.getOptions(["A", "B", "C"]),
+            bsSize: props.getSize(),
+            ComponentWidth : props.getComponentWidth()
         }
     ],
     selectedElement: 0
@@ -337,16 +294,16 @@ Dropdown.defaultProps = {
  */
 export const Link = (props) => {
     return (
-    <div>
-        {props.elements.map( (obj, objKey) => {
-            return(
-              <Col md={Number.parseInt(obj.ComponentWidth.value)} key={objKey}>
-              <a {...obj} key={objKey} />
-              </Col>
+        <div>
+            {props.elements.map( (obj, objKey) => {
+                return(
+                    <Col md={Number.parseInt(obj.ComponentWidth.value)} key={objKey}>
+                        <a {...obj} key={objKey} />
+                    </Col>
                 );
-        })}
-    </div>
-);
+            })}
+        </div>
+    );
 };
 
 Link.defaultProps = {
@@ -356,10 +313,7 @@ Link.defaultProps = {
             label: "Link",
             href: "http://www.google.com/",
             children: "Google",
-            ComponentWidth :{
-                value: defaultComponentWidth,
-                options: componentWidthOptions
-            }
+            ComponentWidth :props.getComponentWidth()
         }
     ],
     selectedElement: 0
@@ -373,64 +327,45 @@ Link.defaultProps = {
 export const Checkbox = (props) => {
 
     return (
-    <div>
-        {props.elements.map( (obj, objKey) => {
-            const selectedWrapperClassVal = obj.alignment.value;
-            let numberOfOptions = obj.options.length;
-            let wrapperClass = 7;
-            if(selectedWrapperClassVal == 'Horizontal'){
-              wrapperClass = 12/numberOfOptions;
-            }
-            return (
+        <div>
+            {props.elements.map( (obj, objKey) => {
+                const selectedWrapperClassVal = obj.alignment.value;
+                let numberOfOptions = obj.options.length;
+                let wrapperClass = 7;
+                if(selectedWrapperClassVal == 'Horizontal'){
+                    wrapperClass = 12/numberOfOptions;
+                }
+                return (
                     <Col md={Number.parseInt(obj.ComponentWidth.value)} key={objKey}>
-                    <Input key={objKey} label={obj.label}>
-                    <Row key={objKey}>
-                          {obj.options.map( (opt, optKey) => {
-				return (
-          <Col key={optKey} md={Number.parseInt(wrapperClass)}>
-          <input type="checkbox" value={opt.value} {...obj} key={optKey} /> {opt.label}
-          </Col>
-        );
-      })}
-      </Row>
-      </Input>
-      </Col>
+                        <Input key={objKey} label={obj.label}>
+                            <Row key={objKey}>
+                                {obj.options.map( (opt, optKey) => {
+                                    return (
+                                        <Col key={optKey} md={Number.parseInt(wrapperClass)}>
+                                            <input type="checkbox" value={opt.value} {...obj} key={optKey} /> {opt.label}
+                                        </Col>
+                                    );
+                                })}
+                            </Row>
+                        </Input>
+                    </Col>
+                );
+            })}
+        </div>
     );
-  })}
-</div>
-  );
 };
 
 Checkbox.defaultProps = {
     name: "Checkbox",
     elements: [
-      {
-        options:[
-            {
-              label:"Checkbox1",
-              value:"AA"
-            },
-            {
-              label:"Checkbox2",
-               value:"BB"
-            },
-            {
-               label:"Checkbox3",
-               value:"CC"
-            }
-        ],
-        label : "Check Box",
-	alignment: {
-            value: "Vertical",
-            options: ["Vertical", "Horizontal"]
-        },
-        ComponentWidth :{
-            value: defaultComponentWidth,
-            options: componentWidthOptions
+        {
+            options : props.getOptions(["CB1", "CB2", "CB3"]),
+            label : "Check Box",
+            alignment: props.getAlignment(),
+            ComponentWidth :props.getComponentWidth()
         }
-      }
-  ],
-  selectedElement: 0
+    ],
+    selectedElement: 0
 };
 
 
@@ -440,23 +375,23 @@ Checkbox.defaultProps = {
 export const yearComponent = (props) => {
 
 
-return (
-    <div>
-        {props.elements.map( (obj, objKey) => {
-            let startYear = Number.parseInt(obj.startYear);
-            let numberOfYears = Number.parseInt(obj.numberOfYears);
-            return (
-                <Col md={Number.parseInt(obj.ComponentWidth.value)} key={objKey}>
-                <Input type="select" {...obj} bsSize={obj.bsSize.value} key={objKey}>
-                    {[...Array(numberOfYears)].map((opt,optKey) => {
-                        return  (<option value={optKey+startYear}  key={optKey}>{optKey+startYear}</option>);
-                    })}
-                </Input>
-                </Col>
-            );
-        })}
-    </div>
-  );
+    return (
+        <div>
+            {props.elements.map( (obj, objKey) => {
+                let startYear = Number.parseInt(obj.startYear);
+                let numberOfYears = Number.parseInt(obj.numberOfYears);
+                return (
+                    <Col md={Number.parseInt(obj.ComponentWidth.value)} key={objKey}>
+                        <Input type="select" {...obj} bsSize={obj.bsSize.value} key={objKey}>
+                            {[...Array(numberOfYears)].map((opt,optKey) => {
+                                return  (<option value={optKey+startYear}  key={optKey}>{optKey+startYear}</option>);
+                            })}
+                        </Input>
+                    </Col>
+                );
+            })}
+        </div>
+    );
 };
 
 yearComponent.defaultProps = {
@@ -464,16 +399,10 @@ yearComponent.defaultProps = {
     elements: [
         {
             label: "Year Menu",
-            bsSize: {
-                value: "medium",
-                options: ["default", "large", "medium", "small"]
-            },
+            bsSize: props.getSize(),
             startYear: "2016",
             numberOfYears: "10",
-            ComponentWidth :{
-                value: defaultComponentWidth,
-                options: componentWidthOptions
-            }
+            ComponentWidth : props.getComponentWidth()
         }
     ],
     selectedElement: 0
