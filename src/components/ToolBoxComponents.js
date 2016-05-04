@@ -43,10 +43,10 @@ const props = {
     ),
     getOptions : (opts) => (
         opts.map((opt) => {
-            return {
+            return ({
                 label: opt,
                 value: opt
-            }
+            })
         })
     )
 };
@@ -73,7 +73,7 @@ TextLabel.defaultProps = {
         {
             label: "Label",
             value: "Sample label",
-            ComponentWidth: props.getComponentWidth(),
+            ComponentWidth: props.getComponentWidth()
         }
     ],
     selectedElement: 0
@@ -117,7 +117,7 @@ ButtonGroup.defaultProps = {
 export const RadioButton = (props) => {
     return (
         <div>
-            {props.elements.map( (obj, objKey) => {
+            {props.elements.map((obj, objKey) => {
                 const selectedWrapperClassVal = obj.alignment.value;
                 let numberOfOptions = obj.options.length;
                 let wrapperClass = 7;
@@ -328,7 +328,7 @@ export const Checkbox = (props) => {
 
     return (
         <div>
-            {props.elements.map( (obj, objKey) => {
+            {props.elements.map((obj, objKey) => {
                 const selectedWrapperClassVal = obj.alignment.value;
                 let numberOfOptions = obj.options.length;
                 let wrapperClass = 7;
